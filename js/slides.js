@@ -8,7 +8,7 @@
   for (var i = 0, s; s = scs[i]; i++) {
     var sc = document.createElement('script');
     sc.type = 'text/javascript';
-    sc.async = true;
+    sc.defer = true;
     sc.src = 'js/' + s;
     b.parentNode.insertBefore(sc, b);
   }
