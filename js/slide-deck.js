@@ -167,20 +167,12 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
       break;
 
     case 40: // down arrow
-      //if (this.isChromeVoxActive()) {
-      //  speakNextItem();
-      //} else {
-        this.nextSlide();
-      //}
+      this.nextSlide();
       e.preventDefault();
       break;
 
     case 38: // up arrow
-      //if (this.isChromeVoxActive()) {
-      //  speakPrevItem();
-      //} else {
-        this.prevSlide();
-      //}
+      this.prevSlide();
       e.preventDefault();
       break;
 
@@ -379,10 +371,6 @@ SlideDeck.prototype.buildNextItem_ = function() {
   toBuild.classList.remove('to-build');
   toBuild.classList.add('build-current');
 
-  /*if (isChromeVoxActive()) {
-    speakAndSyncToNode(toBuild);
-  }*/
-
   return true;
 };
 
@@ -509,10 +497,6 @@ SlideDeck.prototype.updateSlides_ = function(opt_dontPush) {
    // No way to tell when all slide transitions + auto builds are done.
    // Give ourselves a good buffer to preload the next slide's iframes.
    window.setTimeout(this.enableSlideFrames_.bind(this, curSlide + 2), 1000);
-
-  /*if (isChromeVoxActive()) {
-    speakAndSyncToNode(slideEls[curSlide]);
-  }*/
 
   this.updateHash_(dontPush);
 };
