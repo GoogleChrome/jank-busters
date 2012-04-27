@@ -48,10 +48,6 @@ $article-content-top-padding: 45px;
 @mixin backdrop {
   @include background(linear-gradient(white, white 85%, $gray-1));
   background-color: white;
-
-  &:after, &:before {
-    display: none;
-  }
 }
 
 
@@ -211,6 +207,10 @@ slides > slide {
     z-index: -10;
     display: block !important;
     @include backdrop;
+
+    &:after, &:before {
+      display: none; // Prevent double set of slide nums and footer icons.
+    }
   }
 
   > hgroup + article {
@@ -990,10 +990,6 @@ aside.gdbar {
       &.current {
         opacity: 1;
       }
-    }
-
-    &:before, &:after {
-      display: none;
     }
   }
 
