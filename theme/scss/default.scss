@@ -865,7 +865,7 @@ aside.gdbar {
   height: 97px;
   width: 215px;
   position: absolute;
-  left: 0;
+  left: -1px;
   top: 125px;
   @include border-radius(0 10px 10px 0);
   @include background(linear-gradient(left, $gray-1, $gray-1) no-repeat);
@@ -945,5 +945,42 @@ aside.gdbar {
   span {
     width: 115px;
     display: inline-block;
+  }
+}
+
+.overview {
+  slides {
+
+    slide {
+      &.backdrop-hide {
+        display: none !important;
+      }
+
+      display: block;
+      cursor: pointer;
+      opacity: 0.5;
+      pointer-events: auto !important;
+
+      &.far-past,
+      &.past,
+      &.next,
+      &.far-next,
+      &.far-past {
+        opacity: 0.5;
+        display: block;
+      }
+
+      &.current {
+        opacity: 1;
+      }
+    }
+
+    &:before, &:after {
+      display: none;
+    }
+  }
+
+  .slide-area {
+    display: none;
   }
 }
