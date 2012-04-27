@@ -91,12 +91,12 @@ SlideDeck.prototype.onDomLoaded_ = function(e) {
     slide.addEventListener('click', function(e) {
       if (document.body.classList.contains('overview')) {
         that.loadSlide(this.dataset.slideNum);
+        e.preventDefault();
         window.setTimeout(function() {
           that.toggleOverview();
         }, 500);
-        e.preventDefault();
       }
-    });
+    }, false);
   }
 
   // Note: this needs to come after addEventListeners_(), which adds a
@@ -263,13 +263,9 @@ SlideDeck.prototype.focusOverview_ = function() {
   var overview = document.body.classList.contains('overview');
 
   for (var i = 0, slide; slide = this.slides[i]; i++) {
-    var style = slide.style;
-    var htransform = overview ? 'translateZ(-2500px) translate(' + (( i - this.curSlide_ ) * 105) + '%, 0%)' : '';
-
-    style.WebkitTransform = style.MozTransform = style.msTransform =
-        style.OTransform = style.transform = htransform;
-
-    slide.style = style;
+    slide.style[Modernizr.prefixed('transform')] = overview ?
+        'translateZ(-2500px) translate(' + (( i - this.curSlide_ ) * 105) +
+                                       '%, 0%)' : '';
   }
 };
 
@@ -277,26 +273,6 @@ SlideDeck.prototype.focusOverview_ = function() {
  */
 SlideDeck.prototype.toggleOverview = function() {
   document.body.classList.toggle('overview');
-
-  var overview = document.body.classList.contains('overview');
-
-  if (overview) {
-    var b = document.querySelector('.backdrop');
-    b.classList.remove('backdrop');
-    b.classList.add('backdrop-hide');
-  } else {
-    var b = document.querySelector('.backdrop-hide');
-    b.classList.add('backdrop');
-    b.classList.remove('backdrop-hide');
-  }
-
-  for (var i = 0, slide; slide = this.slides[i]; i++) {
-    if (overview) {
-      slide.classList.add('backdrop');
-    } else {
-      slide.classList.remove('backdrop');
-    }
-  }
 
   this.focusOverview_();
 };

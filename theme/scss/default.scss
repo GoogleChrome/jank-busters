@@ -45,6 +45,17 @@ $article-content-top-padding: 45px;
   tap-highlight-color: $color;
 }
 
+@mixin backdrop {
+  @include background(linear-gradient(white, white 85%, $gray-1));
+  background-color: white;
+
+  &:after, &:before {
+    display: none;
+  }
+}
+
+
+
 /**
  * Theme Styles
  */
@@ -199,12 +210,7 @@ slides > slide {
   &.backdrop {
     z-index: -10;
     display: block !important;
-    @include background(linear-gradient(white, white 85%, $gray-1));
-    background-color: white;
-
-    &:after, &:before {
-      display: none;
-    }
+    @include backdrop;
   }
 
   > hgroup + article {
@@ -960,9 +966,8 @@ aside.gdbar {
 
 .overview {
   slides {
-
     slide {
-      &.backdrop-hide {
+      &.backdrop {
         display: none !important;
       }
 
@@ -970,6 +975,8 @@ aside.gdbar {
       cursor: pointer;
       opacity: 0.5;
       pointer-events: auto !important;
+
+      @include backdrop();
 
       &.far-past,
       &.past,
