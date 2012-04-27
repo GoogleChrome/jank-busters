@@ -171,7 +171,7 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
   if (this.controller && this.controller.isPopup) {
     this.controller.sendMsg({keyCode: e.keyCode});
   }
-console.log(e.keyCode);
+
   switch (e.keyCode) {
     case 13: // Enter
       if (document.body.classList.contains('overview')) {
@@ -264,7 +264,7 @@ SlideDeck.prototype.focusOverview_ = function() {
 
   for (var i = 0, slide; slide = this.slides[i]; i++) {
     var style = slide.style;
-    var htransform = overview ? 'translateZ(-2500px) translate(' + ( ( i - this.curSlide_ ) * 105 ) + '%, 0%)' : '';
+    var htransform = overview ? 'translateZ(-2500px) translate(' + (( i - this.curSlide_ ) * 105) + '%, 0%)' : '';
 
     style.WebkitTransform = style.MozTransform = style.msTransform =
         style.OTransform = style.transform = htransform;
