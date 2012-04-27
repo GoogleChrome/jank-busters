@@ -853,11 +853,11 @@ article.smaller q:before, article.smaller q:after {
 }
 
 /* line 607, ../scss/default.scss */
-.popup .build .to-build {
+.popup .next .build .to-build {
   opacity: 1;
 }
 /* line 611, ../scss/default.scss */
-.popup .build .build-fade {
+.popup .next .build .build-fade {
   opacity: 1;
 }
 
