@@ -603,6 +603,16 @@ article.smaller {
   }
 }
 
+.popup .build {
+  .to-build {
+    opacity: 1;
+  }
+
+  .build-fade {
+    opacity: 1;
+  }
+}
+
 /* Pretty print */
 
 .prettyprint .str, /* string content */
