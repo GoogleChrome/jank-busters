@@ -1,4 +1,4 @@
-/* line 17, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, ../../../../../.gem/ruby/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -1374,7 +1374,11 @@ aside.gdbar img {
   display: inline-block;
 }
 
-/* line 969, ../scss/default.scss */
+/* line 970, ../scss/default.scss */
+.overview.popup .note {
+  display: none !important;
+}
+/* line 976, ../scss/default.scss */
 .overview slides slide {
   display: block;
   cursor: pointer;
@@ -1388,26 +1392,26 @@ aside.gdbar img {
   background: linear-gradient(#ffffff, #ffffff 85%, #e6e6e6);
   background-color: white;
 }
-/* line 970, ../scss/default.scss */
+/* line 977, ../scss/default.scss */
 .overview slides slide.backdrop {
   display: none !important;
 }
-/* line 985, ../scss/default.scss */
+/* line 992, ../scss/default.scss */
 .overview slides slide.far-past, .overview slides slide.past, .overview slides slide.next, .overview slides slide.far-next, .overview slides slide.far-past {
   opacity: 0.5;
   display: block;
 }
-/* line 990, ../scss/default.scss */
+/* line 997, ../scss/default.scss */
 .overview slides slide.current {
   opacity: 1;
 }
-/* line 996, ../scss/default.scss */
+/* line 1003, ../scss/default.scss */
 .overview .slide-area {
   display: none;
 }
 
 @media print {
-  /* line 1003, ../scss/default.scss */
+  /* line 1010, ../scss/default.scss */
   slides slide {
     display: block !important;
     position: relative;
@@ -1433,12 +1437,12 @@ aside.gdbar img {
     opacity: 1 !important;
     color: #555;
   }
-  /* line 1023, ../scss/default.scss */
+  /* line 1030, ../scss/default.scss */
   slides slide.far-past, slides slide.past, slides slide.next, slides slide.far-next, slides slide.far-past, slides slide.current {
     opacity: 1 !important;
     display: block !important;
   }
-  /* line 1029, ../scss/default.scss */
+  /* line 1036, ../scss/default.scss */
   slides slide .build > * {
     -webkit-transition: none;
     -moz-transition: none;
@@ -1446,34 +1450,34 @@ aside.gdbar img {
     -o-transition: none;
     transition: none;
   }
-  /* line 1034, ../scss/default.scss */
+  /* line 1041, ../scss/default.scss */
   slides slide .build .to-build,
   slides slide .build .build-fade {
     opacity: 1;
   }
-  /* line 1039, ../scss/default.scss */
+  /* line 1046, ../scss/default.scss */
   slides slide .auto-fadein {
     opacity: 1 !important;
   }
-  /* line 1043, ../scss/default.scss */
+  /* line 1050, ../scss/default.scss */
   slides slide.backdrop {
     display: none !important;
   }
-  /* line 1047, ../scss/default.scss */
+  /* line 1054, ../scss/default.scss */
   slides slide table.rows {
     border-right: 0;
   }
-  /* line 1052, ../scss/default.scss */
+  /* line 1059, ../scss/default.scss */
   slides slide[hidden] {
     display: none !important;
   }
 
-  /* line 1057, ../scss/default.scss */
+  /* line 1064, ../scss/default.scss */
   .slide-area {
     display: none;
   }
 
-  /* line 1061, ../scss/default.scss */
+  /* line 1068, ../scss/default.scss */
   .reflect {
     -webkit-box-reflect: none;
     -moz-box-reflect: none;
@@ -1482,7 +1486,7 @@ aside.gdbar img {
     box-reflect: none;
   }
 
-  /* line 1069, ../scss/default.scss */
+  /* line 1076, ../scss/default.scss */
   pre, code {
     font-family: monospace !important;
   }

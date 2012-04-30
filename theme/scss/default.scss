@@ -965,6 +965,13 @@ aside.gdbar {
 }
 
 .overview {
+
+  &.popup {
+    .note {
+      display: none !important;
+    }
+  }
+  
   slides {
     slide {
       &.backdrop {
