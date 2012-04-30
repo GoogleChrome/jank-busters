@@ -997,3 +997,76 @@ aside.gdbar {
     display: none;
   }
 }
+
+@media print {
+  slides {
+    slide {
+      display: block !important;
+      position: relative;
+      @include backdrop();
+      @include transform(none !important);
+      width: 100%;
+      height: 100%;
+      page-break-after:always;
+      top: auto !important;
+      left: auto !important;
+      margin-top: 0 !important;
+      margin-left: 0 !important;
+      opacity: 1 !important;
+      color: #555;
+
+      &.far-past,
+      &.past,
+      &.next,
+      &.far-next,
+      &.far-past,
+      &.current {
+        opacity: 1 !important;
+        display: block !important;
+      }
+
+      .build {
+        > * {
+          @include transition(none);
+        }
+
+        .to-build,
+        .build-fade {
+          opacity: 1;
+        }
+      }
+
+      .auto-fadein {
+        opacity: 1 !important;
+      }
+
+      &.backdrop {
+        display: none !important;
+      }
+
+      table.rows {
+        border-right: 0;
+      }
+    }
+
+    slide[hidden] {
+      display: none !important;
+    }
+  }
+
+  .slide-area {
+    display: none;
+  }
+
+  .reflect {
+    -webkit-box-reflect: none;
+    -moz-box-reflect: none;
+    -o-box-reflect: none;
+    -ms-box-reflect: none;
+    box-reflect: none;
+  }
+
+  pre, code {
+    font-family: monospace !important;
+  }
+}
