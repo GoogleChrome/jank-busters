@@ -49,6 +49,16 @@ SlideDeck.prototype.getCurrentSlideFromHash_ = function() {
 };
 
 /**
+ * @param {number} slideNo
+ */
+SlideDeck.prototype.loadSlide = function(slideNo) {
+  if (slideNo) {
+    this.curSlide_ = slideNo - 1;
+    this.updateSlides_();
+  }
+};
+
+/**
  * @private
  */
 SlideDeck.prototype.onDomLoaded_ = function(e) {
@@ -73,9 +83,20 @@ SlideDeck.prototype.onDomLoaded_ = function(e) {
   this.updateSlides_();
 
   // Add slide numbers and total slide count metadata to each slide.
+  var that = this;
   for (var i = 0, slide; slide = this.slides[i]; ++i) {
     slide.dataset.slideNum = i + 1;
     slide.dataset.totalSlides = this.slides.length;
+
+    slide.addEventListener('click', function(e) {
+      if (document.body.classList.contains('overview')) {
+        that.loadSlide(this.dataset.slideNum);
+        e.preventDefault();
+        window.setTimeout(function() {
+          that.toggleOverview();
+        }, 500);
+      }
+    }, false);
   }
 
   // Note: this needs to come after addEventListeners_(), which adds a
@@ -152,6 +173,12 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
   }
 
   switch (e.keyCode) {
+    case 13: // Enter
+      if (document.body.classList.contains('overview')) {
+        this.toggleOverview();
+      }
+      break;
+
     case 39: // right arrow
     case 32: // space
     case 34: // PgDn
@@ -180,6 +207,10 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
       document.body.classList.toggle('highlight-code');
       break;
 
+    case 79: // O: Toggle overview
+      this.toggleOverview();
+      break;
+
     case 80: // P
       if (this.controller && this.controller.isPopup) {
         document.body.classList.toggle('with-notes');
@@ -195,6 +226,10 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
     case 27: // ESC: Hide notes and highlighting
       document.body.classList.remove('with-notes');
       document.body.classList.remove('highlight-code');
+
+      if (document.body.classList.contains('overview')) {
+        this.toggleOverview();
+      }
       break;
 
     case 70: // F: Toggle fullscreen
@@ -219,6 +254,27 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
       }
       break;
   }
+};
+
+/**
+ *
+ */
+SlideDeck.prototype.focusOverview_ = function() {
+  var overview = document.body.classList.contains('overview');
+
+  for (var i = 0, slide; slide = this.slides[i]; i++) {
+    slide.style[Modernizr.prefixed('transform')] = overview ?
+        'translateZ(-2500px) translate(' + (( i - this.curSlide_ ) * 105) +
+                                       '%, 0%)' : '';
+  }
+};
+
+/**
+ */
+SlideDeck.prototype.toggleOverview = function() {
+  document.body.classList.toggle('overview');
+
+  this.focusOverview_();
 };
 
 /**
@@ -400,7 +456,7 @@ SlideDeck.prototype.prevSlide = function(opt_dontPush) {
  * @param {boolean=} opt_dontPush
  */
 SlideDeck.prototype.nextSlide = function(opt_dontPush) {
-  if (this.buildNextItem_()) {
+  if (!document.body.classList.contains('overview') && this.buildNextItem_()) {
     return;
   }
 
@@ -499,6 +555,12 @@ SlideDeck.prototype.updateSlides_ = function(opt_dontPush) {
    window.setTimeout(this.enableSlideFrames_.bind(this, curSlide + 2), 1000);
 
   this.updateHash_(dontPush);
+
+  if (document.body.classList.contains('overview')) {
+    this.focusOverview_();
+    return;
+  }
+
 };
 
 /**
