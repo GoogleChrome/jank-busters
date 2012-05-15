@@ -327,7 +327,7 @@ SlideDeck.prototype.loadConfig_ = function(config) {
 
     var html = [];
     if (presenters.length == 1) {
-      var p = presenters[0]
+      var p = presenters[0];
 
       html = [p.name, p.company].join('<br>');
 
