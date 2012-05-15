@@ -179,7 +179,7 @@ slide.fill img {
 /* line 58, ../scss/default.scss */
 ::selection {
   color: white;
-  background-color: #2a7cdf;
+  background-color: #ffd14d;
   text-shadow: none;
 }
 
