@@ -397,6 +397,10 @@ pre {
   }
 }
 
+pre[data-lang="go"] {
+  color: #333;
+}
+
 code {
   font-size: 95%;
   font-family: 'Inconsolata', 'Courier New', monospace;
