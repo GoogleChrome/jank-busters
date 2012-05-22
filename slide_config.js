@@ -22,13 +22,15 @@ var SLIDE_CONFIG = {
     company: 'Job Title, Google',
     gplus: 'http://plus.google.com/1234567890',
     twitter: '@yourhandle',
-    www: 'http://www.you.com'
+    www: 'http://www.you.com',
+    github: 'http://github.com/you'
   }/*, {
     name: 'Eric Bidelman',
     gplus: 'http://plus.ericbidelman.com',
     company: 'Senior Developer Programs Engineer, Google Chrome',
     twitter: '@ebidel',
-    www: 'http://www.ericbidelman.com'
+    www: 'http://www.ericbidelman.com',
+    github: 'http://github.com/ebidel'
   }*/]
 };
 

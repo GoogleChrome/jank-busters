@@ -340,10 +340,13 @@ SlideDeck.prototype.loadConfig_ = function(config) {
           '<a href="http://twitter.com/' + p.twitter + '">' +
           p.twitter + '</a>' : '';
 
-     var www = p.www ? '<span>www</span><a href="' + p.www +
+      var www = p.www ? '<span>www</span><a href="' + p.www +
                        '">' + p.www.replace('http://', '') + '</a>' : '';
 
-      var html2 = [gplus, twitter, www].join('<br>');
+      var github = p.github ? '<span>github</span><a href="' + p.github +
+          '">' + p.github.replace('http://', '') + '</a>' : '';
+
+      var html2 = [gplus, twitter, www, github].join('<br>');
 
       if (dataConfigContact) {
         dataConfigContact.innerHTML = html2;
