@@ -1,5 +1,6 @@
 /**
- * @authors TODO
+ * @authors Luke Mahe
+ * @authors Eric Bidelman
  * @fileoverview TODO
  */
 document.cancelFullScreen = document.webkitCancelFullScreen ||
@@ -324,10 +325,11 @@ SlideDeck.prototype.loadConfig_ = function(config) {
 
   if (this.config_.presenters) {
     var presenters = this.config_.presenters;
+    var dataConfigContact = document.querySelector('[data-config-contact]');
 
     var html = [];
     if (presenters.length == 1) {
-      var p = presenters[0]
+      var p = presenters[0];
 
       html = [p.name, p.company].join('<br>');
 
@@ -343,15 +345,21 @@ SlideDeck.prototype.loadConfig_ = function(config) {
 
       var html2 = [gplus, twitter, www].join('<br>');
 
-      document.querySelector('[data-config-contact]').innerHTML = html2;
+      if (dataConfigContact) {
+        dataConfigContact.innerHTML = html2;
+      }
     } else {
       for (var i = 0, p; p = presenters[i]; ++i) {
         html.push(p.name + ' - ' + p.company);
       }
       html = html.join('<br>');
+      dataConfigContact.innerHTML = html;
     }
 
-    document.querySelector('[data-config-presenter]').innerHTML = html;
+    var dataConfigPresenter = document.querySelector('[data-config-presenter]');
+    if (dataConfigPresenter) {
+      document.querySelector('[data-config-presenter]').innerHTML = html;
+    }
   }
 
   /* Left/Right tap areas. Default to including. */
