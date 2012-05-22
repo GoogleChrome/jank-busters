@@ -23,12 +23,12 @@ var SLIDE_CONFIG = {
     gplus: 'http://plus.google.com/1234567890',
     twitter: '@yourhandle',
     www: 'http://www.you.com'
-  }, {
+  }/*, {
     name: 'Eric Bidelman',
     gplus: 'http://plus.ericbidelman.com',
     company: 'Senior Developer Programs Engineer, Google Chrome',
     twitter: '@ebidel',
     www: 'http://www.ericbidelman.com'
-  }]
+  }*/]
 };
 
