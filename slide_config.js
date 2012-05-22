@@ -8,7 +8,7 @@ var SLIDE_CONFIG = {
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
     enableTouch: true, // Default: true. If touch support should enabled. Note: the device must support touch.
     //analytics: 'UA-XXXXXXXX-1',
-    favIcon: 'http://bleedinghtml5.appspot.com/images/chrome-logo-tiny2.png',
+    favIcon: 'images/google_developers_logo_tiny.png',
     fonts: [
       'Open Sans:regular,semibold,italic,italicsemibold',
       'Inconsolata'
@@ -23,12 +23,12 @@ var SLIDE_CONFIG = {
     gplus: 'http://plus.google.com/1234567890',
     twitter: '@yourhandle',
     www: 'http://www.you.com'
-  }/*, {
+  }, {
     name: 'Eric Bidelman',
     gplus: 'http://plus.ericbidelman.com',
     company: 'Senior Developer Programs Engineer, Google Chrome',
     twitter: '@ebidel',
     www: 'http://www.ericbidelman.com'
-  }*/]
+  }]
 };
 
