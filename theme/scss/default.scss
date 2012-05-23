@@ -384,7 +384,7 @@ pre {
   @include box-sizing(border-box);
   /*overflow: hidden;*/
 
-  &:after {
+  &[data-lang]:after {
     content: attr(data-lang);
     background-color: $gray-2;
     right: 0;
