@@ -408,7 +408,7 @@ SlideDeck.prototype.loadConfig_ = function(config) {
 SlideDeck.prototype.addFonts_ = function(fonts) {
   var el = document.createElement('link');
   el.rel = 'stylesheet';
-  e.href = ('https:' == document.location.protocol ? 'https' : 'http') +
+  el.href = ('https:' == document.location.protocol ? 'https' : 'http') +
       '://fonts.googleapis.com/css?family=' + fonts.join('|') + '&v2';
   document.querySelector('head').appendChild(el);
 };
