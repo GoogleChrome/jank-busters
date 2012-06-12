@@ -356,7 +356,9 @@ SlideDeck.prototype.loadConfig_ = function(config) {
         html.push(p.name + ' - ' + p.company);
       }
       html = html.join('<br>');
-      dataConfigContact.innerHTML = html;
+      if (dataConfigContact) {
+        dataConfigContact.innerHTML = html;
+      }
     }
 
     var dataConfigPresenter = document.querySelector('[data-config-presenter]');
