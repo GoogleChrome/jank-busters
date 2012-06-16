@@ -121,15 +121,15 @@ Authors:  Nat Duca <nduca@google.com>
       <div class="flexbox threeimage">
         <div>
           <img src="images/galaxy-nexus.jpg" alt="Galaxy Nexus" title="Galaxy Nexus" height="250">
-          <p>60Hz</p>
+          <p>Galaxy Nexus<br />60Hz</p>
         </div>
         <div>
           <img src="images/chromebook.jpg" alt="Chromebook" title="Chromebook" height="250">
-          <p>60Hz <br /><i>or</i> 50Hz in low-power mode</p>
+          <p>Chromebook 60Hz <br /><i>or</i> 50Hz in low-power mode</p>
         </div>
         <div>
           <img src="images/flat-monitor.svg" alt="Monitor" title="Monitor" height="250">
-          <p>50-70Hz </p>
+          <p>Random monitors<br />50-70Hz </p>
         </div>
       </div>
       <footer class="source">source: http://commons.wikimedia.org/wiki/File:Flat_monitor.svg</footer>
@@ -161,14 +161,14 @@ Authors:  Nat Duca <nduca@google.com>
       <h2>Animation Timing</h2>
       <h3>Avoiding Missed or Wasted Frames</h3>
     </hgroup>
-    <article>
-      <img src="images/vsync-timing.jpg" width="800" />
+    <article class="flexbox vcenter">
+      <img src="images/vsync-timing.png" width="900" style="margin-top:-100px;" />
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>requestAnimationFrame</h2>
+      <h2>Enter requestAnimationFrame</h2>
       <h3>The New Way</h3>
     </hgroup>
     <article>
@@ -360,6 +360,19 @@ Authors:  Nat Duca <nduca@google.com>
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>These are Technique, Not Recipes</h2>
+      <h3>An Important Last Point</h3>
+    </hgroup>
+    <article>
+      <p>We've highlighted a few current sources of jank, but browsers are <b>evolving fast</b>.</p>
+      <p>The <b>architectural best practices</b> are here to stay.</p>
+      <p>But, don't rely on the specifics of <b>what's currently slow</b> being true six months from now.</p>
+      <p>Rather, <b>use the tools</b> to hunt down jank when it appears.</p>
+    </article>
+  </slide>
+
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
     <hgroup class="auto-fadein">
@@ -382,10 +395,10 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Wrap up</h2>
+      <h2>Wrap Up</h2>
+      <h3>Discussed in This Talk</h3>
     </hgroup>
     <article>
-      <p>We've discussed:</p>
       <ul>
         <li>How to notice jank
           <ul>
