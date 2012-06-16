@@ -61,13 +61,13 @@ Authors:  Nat Duca <nduca@google.com>
       <h2>Defining Jank</h2>
     </hgroup>
     <article>
-      <p>On a webpage, when</p>
+      <p>On a webpage, when:</p>
       <ul>
         <li>Scrolling isn't smooth</li>
         <li>Animations stutter and hitch</li>
         <li>Things slow down at random</li>
       </ul>
-      <p>...we call that jank.</p>
+      <p>...we call that <b>jank</b>.</p>
     </article>
   </slide>
 
@@ -111,17 +111,23 @@ Authors:  Nat Duca <nduca@google.com>
     <hgroup>
       <h2>Refresh Rates</h2>
     </hgroup>
-    <article class="flexbox vcenter">
+    <article>
       <p>Different devices have very different refresh rates:</p>
-      <div>
-        <img src="images/chromebook.jpg" alt="Chromebook" title="Chromebook" width="300">
-        <p>60Hz or 50Hz in low-power mode</p>
+      <div class="columns-3">
+        <div class="centered">
+          <img src="images/galaxy-nexus.jpg" alt="Galaxy Nexus" title="Galaxy Nexus" width="200">
+          <p>60Hz</p>
+        </div>
+        <div>
+          <img src="images/chromebook.jpg" alt="Chromebook" title="Chromebook" width="300">
+          <p>60Hz <i>or</i> 50Hz in low-power mode</p>
+        </div>
+        <div>
+          <img src="images/flat-monitor.svg" alt="Galaxy Nexus" title="Galaxy Nexus" width="200">
+          <p>50-70Hz </p>
+        </div>
       </div>
-      <div>
-        <img src="images/galaxy-nexus.jpg" alt="Galaxy Nexus" title="Galaxy Nexus" width="200">
-        <p>60Hz or 50Hz in low-power mode</p>
-      </div>
-      <footer class="source">source: place source info here</footer>
+      <footer class="source">source: http://commons.wikimedia.org/wiki/File:Flat_monitor.svg</footer>
     </article>
   </slide>
 
@@ -185,7 +191,7 @@ Authors:  Nat Duca <nduca@google.com>
       <ul>
         <li>Even if you only drop 1 frame in 16, you'll notice</li>
         <li>Device framerates vary, hard-coding timers won't work</li>
-        <li>The browser can be smart
+        <li>The browser can be smart:
           <ul>
             <li>Pause non-visible animations, save battery life!</li>
             <li>Throttle animations if the system's strained</li>
@@ -229,10 +235,10 @@ Authors:  Nat Duca <nduca@google.com>
       <p>So you're using rAF and keeping your rAF callback short. Great!</p>
       <p>What else can get in the way? Lots:
         <ul>
-          <li>The garbage collector running</li>
-          <li>JS timers firing</li>
-          <li>XHR handling</li>
-          <li>Input event handling</li>
+          <li>The garbage collector</li>
+          <li>JS timers</li>
+          <li>XHR handlers</li>
+          <li>Input event handlers</li>
         </ul>
       </p>
       <p>Use Timeline to find these!</p>
@@ -247,7 +253,7 @@ Authors:  Nat Duca <nduca@google.com>
     <article>
       <p>The takeaway is to:
         <ul>
-          <li>Save minimal state in the hanlder</li>
+          <li>Save minimal state in the handler</li>
           <li>Do your logic &amp; DOM updates in the rAF callback</p>
         </ul>
       </p>
