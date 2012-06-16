@@ -790,6 +790,20 @@ article.smaller {
   @include flexbox;
 }
 
+.flexbox.threeimage {
+  @include box-orient(horizontal);
+  @include box-pack(center);
+}
+
+.flexbox.threeimage > div {
+  text-align: center;
+  @include box-flex(1);
+}
+
+.flexbox.threeimage > div > p {
+  margin-top: 2em;
+}
+
 .flexbox.vcenter {
   @include flex-center-center;
   height: 100%;

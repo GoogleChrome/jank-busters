@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this div scrolls slowly</title>
+    <style>
+      body > div {
+        overflow: scroll;
+        width: 800px;
+        height: 800px;
+        background-image: -webkit-linear-gradient(45deg,rgba(0, 0, 0, 0.05) 25%,transparent 25%,transparent),-webkit-linear-gradient(-45deg,rgba(0, 0, 0, 0.05) 25%,transparent 25%,transparent),-webkit-linear-gradient(45deg,transparent 75%,rgba(0, 0, 0, 0.05) 75%),-webkit-linear-gradient(-45deg,transparent 75%,rgba(0, 0, 0, 0.05) 75%);
+        background-size: 3px 3px;
+      }
+      body > div > img {
+        -webkit-box-shadow: 15px 15px 15px;
+      }
+      .fixed {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        -webkit-filter: opacity(50%);
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <div>
+      <img class="fixed" src="chrome-logo.png" width="50">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+      <img src="chrome-logo.png" width="250">
+    </div>
+  </body>
+</html>

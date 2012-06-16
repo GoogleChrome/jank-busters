@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this animation stutters</title>
+    <style>
+      img {
+        -webkit-transition: all 2s linear;
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img src="chrome-logo.png" width="250">
+    <script>
+      el = document.querySelector("img");
+      var rotation = 0;
+      el.addEventListener("webkitTransitionEnd", function() {
+        console.log('hello');
+        rotation += 180;
+        el.style.webkitTransform = "rotate(" + rotation + "deg)";
+      });
+      rotation += 180;
+      el.style.webkitTransform = "rotate(180deg)";
+
+      // hitch once a second
+      window.setInterval(function() {
+        // fake sleeping for 300ms
+        var start = new Date().getTime();
+        while(new Date().getTime() - start < 250) {
+          ;
+        }
+        }, 2000);
+    </script>
+  </body>
+</html>

@@ -61,11 +61,11 @@ Authors:  Nat Duca <nduca@google.com>
       <h2>Defining Jank</h2>
     </hgroup>
     <article>
-      <p>On a webpage, when:</p>
+      <p>On the web, when:</p>
       <ul>
-        <li>Scrolling isn't smooth</li>
-        <li>Animations stutter and hitch</li>
-        <li>Things slow down at random</li>
+        <li><i>Scrolling</i> <b>isn't smooth</b></li>
+        <li><i>Animations</i> <b>stutter and hitch</b></li>
+        <li>Things <b>slow down at random</b></li>
       </ul>
       <p>...we call that <b>jank</b>.</p>
     </article>
@@ -78,9 +78,9 @@ Authors:  Nat Duca <nduca@google.com>
     <article>
       <p>We'll cover:</p>
       <ul>
-        <li>Noticing jank</li>
-        <li>Best practices for avoiding jank</li>
-        <li>Tools for fighting jank when it appears</li>
+        <li><b>Noticing jank</b></li>
+        <li><b>Best practices</b> for avoiding jank</li>
+        <li><b>Tools for fighting jank</b> when it appears</li>
       </ul>
     </article>
   </slide>
@@ -91,10 +91,15 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>But users notice!</h3>
     </hgroup>
     <article>
-      <p>The difference between a janky site and not is polish. Causes include:</p>
-      <div>
-        <div style="float:left;">stuttering animation example</div>
-        <div style="float:left;">slow vs not slow scrolling iframe</div>
+      <p>The difference between a janky site and a smooth one is <b>polish</b>. Symptoms include:</p>
+      <div class="flexbox threeimage">
+        <div>
+          <iframe src="examples/forced-hitch/forced-hitch.html" height="300"></iframe>
+          <p>Stuttering animations</p>
+        </div>
+        <div>
+          <iframe src="examples/sluggish-scroll/index.html" height="100"></iframe>
+          <p>Sluggish scrolls</p></div>
       </div>
       <p style="clear:both;">As a developer, train your eyes to catch jank, and make your app feel "native."</p>
     </article>
@@ -113,17 +118,17 @@ Authors:  Nat Duca <nduca@google.com>
     </hgroup>
     <article>
       <p>Different devices have very different refresh rates:</p>
-      <div class="columns-3">
-        <div class="centered">
-          <img src="images/galaxy-nexus.jpg" alt="Galaxy Nexus" title="Galaxy Nexus" width="200">
+      <div class="flexbox threeimage">
+        <div>
+          <img src="images/galaxy-nexus.jpg" alt="Galaxy Nexus" title="Galaxy Nexus" height="250">
           <p>60Hz</p>
         </div>
         <div>
-          <img src="images/chromebook.jpg" alt="Chromebook" title="Chromebook" width="300">
-          <p>60Hz <i>or</i> 50Hz in low-power mode</p>
+          <img src="images/chromebook.jpg" alt="Chromebook" title="Chromebook" height="250">
+          <p>60Hz <br /><i>or</i> 50Hz in low-power mode</p>
         </div>
         <div>
-          <img src="images/flat-monitor.svg" alt="Galaxy Nexus" title="Galaxy Nexus" width="200">
+          <img src="images/flat-monitor.svg" alt="Monitor" title="Monitor" height="250">
           <p>50-70Hz </p>
         </div>
       </div>
