@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Title Goes Here<br>Up To Two Lines',
-    subtitle: 'Subtitle Goes Here',
+    title: 'Jank Busters',
+    subtitle: 'Building High-Performance Web Apps',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
@@ -18,13 +18,22 @@ var SLIDE_CONFIG = {
 
   // Author information
   presenters: [{
-    name: 'Firstname Lastname',
-    company: 'Job Title, Google',
+    name: 'Nat Duca',
+    company: 'Chrome Graphics Wizard, Google',
     gplus: 'http://plus.google.com/1234567890',
     twitter: '@yourhandle',
     www: 'http://www.you.com',
     github: 'http://github.com/you'
-  }/*, {
+  },
+  {
+    name: 'Tom Wiltzius',
+    company: 'Chrome Graphics Cheerleader, Google',
+    gplus: 'http://plus.google.com/1234567890',
+    twitter: '@yourhandle',
+    www: 'http://www.you.com',
+    github: 'http://github.com/you'
+  }
+  /*, {
     name: 'Eric Bidelman',
     gplus: 'http://plus.ericbidelman.com',
     company: 'Senior Developer Programs Engineer, Google Chrome',

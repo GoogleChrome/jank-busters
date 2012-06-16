@@ -505,6 +505,10 @@ button:not(:disabled):active {
   @include column-count(2);
 }
 
+.columns-3 {
+  @include column-count(3);
+}
+
 table {
   width: 100%;
   border-collapse: -moz-initial;

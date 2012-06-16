@@ -6,6 +6,12 @@ Authors: Eric Bidelman <ebidel@gmail.com>
 
 URL: https://code.google.com/p/io-2012-slides
 -->
+<!--
+Talk: Jank Busters
+
+Authors:  Nat Duca <nduca@google.com>
+          Tom Wiltzius <wiltzius@google.com>
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +38,14 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Opening Demo</h2>
+      <h3>What's wrong with this picture?</h3>
+    </hgroup>
+  </slide>
+
   <slide class="title-slide segue nobackground">
     <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
@@ -39,6 +53,373 @@ URL: https://code.google.com/p/io-2012-slides
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>  
+
+  <slide>
+    <hgroup>
+      <h2>Defining Jank</h2>
+    </hgroup>
+    <article>
+      <p>On a webpage, when</p>
+      <ul>
+        <li>Scrolling isn't smooth</li>
+        <li>Animations stutter and hitch</li>
+        <li>Things slow down at random</li>
+      </ul>
+      <p>...we call that jank.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>In this talk...</h2>
+    </hgroup>
+    <article>
+      <p>We'll cover:</p>
+      <ul>
+        <li>Noticing jank</li>
+        <li>Best practices for avoiding jank</li>
+        <li>Tools for fighting jank when it appears</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Jank is Subtle</h2>
+      <h3>But users notice!</h3>
+    </hgroup>
+    <article>
+      <p>The difference between a janky site and not is polish. Causes include:</p>
+      <div>
+        <div style="float:left;">stuttering animation example</div>
+        <div style="float:left;">slow vs not slow scrolling iframe</div>
+      </div>
+      <p style="clear:both;">As a developer, train your eyes to catch jank, and make your app feel "native."</p>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Frames, Frame Rate, FPS</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Refresh Rates</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <p>Different devices have very different refresh rates:</p>
+      <div>
+        <img src="images/chromebook.jpg" alt="Chromebook" title="Chromebook" width="300">
+        <p>60Hz or 50Hz in low-power mode</p>
+      </div>
+      <div>
+        <img src="images/galaxy-nexus.jpg" alt="Galaxy Nexus" title="Galaxy Nexus" width="200">
+        <p>60Hz or 50Hz in low-power mode</p>
+      </div>
+      <footer class="source">source: place source info here</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Writing Animation Loops</h2>
+      <h3>The Old Way</h3>
+    </hgroup>
+    <article>
+      <p>To draw repeatedly on the screen, many devs are used to something like:</p>
+      <pre class="prettyprint" data-lang="javascript">
+        &lt;script type='text/javascript'&gt;
+          var left = 0;
+          <b>setInterval</b>(function animate(){
+            el = document.querySelector("#myEl");
+            el.style.left = (left++) + "px";
+          }, <b>16.66</b>);
+        &lt;/script&gt;
+      </pre>
+      <footer>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Animation Timing</h2>
+      <h3>Avoiding Missed or Wasted Frames</h3>
+    </hgroup>
+    <article>
+      <img src="images/vsync-timing.jpg" width="800" />
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>requestAnimationFrame</h2>
+      <h3>The New Way</h3>
+    </hgroup>
+    <article>
+      <p>To align with the monitor's refresh every time, use requestAnimationFrame:</p>
+      <pre class="prettyprint" data-lang="javascript">
+        &lt;script type='text/javascript'&gt;
+          var left = 0;
+          function <b>animate</b>(time) {
+            el = document.querySelector("#myEl");
+            el.style.left = (left++) + "px";
+            <b>requestAnimationFrame</b>(animate);
+            }
+          <b>requestAnimationFrame</b>(animate);
+        &lt;/script&gt;
+      </pre>
+      <footer>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Why requestAnimationFrame?</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Even if you only drop 1 frame in 16, you'll notice</li>
+        <li>Device framerates vary, hard-coding timers won't work</li>
+        <li>The browser can be smart
+          <ul>
+            <li>Pause non-visible animations, save battery life!</li>
+            <li>Throttle animations if the system's strained</li>
+          </ul>
+        </li>
+      </ul>
+      <p>With rAF you get what we call <b>"vsync"</b> -- perfect monitor refresh alignment</p>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Staying in Budget</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Staying Fast</h2>
+    </hgroup>
+    <article>
+      <p>You only get the time between refreshes to update the screen. We call this a <b>frame budget</b>.</p>
+      <p>On a 60Hz display, that's only <b>~16ms</b>!</p>
+      <p>A great way to visualize this budget is the Dev Tools Timeline. Let's look at an example.</p>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Juggling Input</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Minimal Event Handlers</h2>
+    </hgroup>
+    <article>
+      <p>So you're using rAF and keeping your rAF callback short. Great!</p>
+      <p>What else can get in the way? Lots:
+        <ul>
+          <li>The garbage collector running</li>
+          <li>JS timers firing</li>
+          <li>XHR handling</li>
+          <li>Input event handling</li>
+        </ul>
+      </p>
+      <p>Use Timeline to find these!</p>
+      <p>Let's look at another example.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Minimal Event Handlers</h2>
+    </hgroup>
+    <article>
+      <p>The takeaway is to:
+        <ul>
+          <li>Save minimal state in the hanlder</li>
+          <li>Do your logic &amp; DOM updates in the rAF callback</p>
+        </ul>
+      </p>
+      <p>We showed this for input, but it applies broadly.</p>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>CSS Animation</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Smooth Animation</h2>
+      <h3>Better than lightweight-JS animation? Zero-JS animation.</h3>
+    </hgroup>
+    <article>
+      <p>Most of what happens in a tab happens on <b>one thread</b>.</p>
+      <p>We're teaching the browser to run things on its own, even when JS is running.</p>
+      <p>One of the first is CSS animation.</p>
+      <p>This is on Chrome for Android first, everywhere else soon. Let's look at a mobile example.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Smooth Animation</h2>
+    </hgroup>
+    <article>
+      <p>When you can, use CSS animation to let the browser do the right thing:
+        <ul>
+          <li>CSS transitions</li>
+          <li>CSS keyframe animations</li>
+          <li>etc.</li>
+        </ul>
+      </p>
+      <p>
+        Like with rAF, the benefits are:
+        <ul>
+          <li>Better-timed, smoother-looking animations</li>
+          <li>Better battery life</li>
+          <li>More graceful degredation</li>
+        </ul>
+      </p>
+    </article>
+  </slide>  
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Paint Times</h2>
+      <h3>The Browser Doth Churn</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Slow Scrolls</h2>
+    </hgroup>
+    <article>
+      <p>Even if you're not animating anything, your page can scroll slowly.</p>
+      <p>Timeline in frame view can show you what's happening during a scroll. Odds are, you'll see long paint events.</p>
+      <p>What's going on? A brief aside on browser rendering...</p>
+    </article>
+  </slide>  
+
+  <slide>
+    <hgroup>
+      <h2>Painting</h2>
+    </hgroup>
+    <article>
+      <p>The DOM is our model of the page. Every time it changes, we repaint.</p>
+      <p>Often when the viewport changes (e.g. you scroll) we need to repaint, too.</p>
+      <p><a href="">Example time.</a></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Painting Takeaways</h2>
+    </hgroup>
+    <article>
+      <p>When you see a long paint time, first find what painted:
+        <ul>
+          <li>Highlight the paint event in Timeline</li>
+          <li>Match paint sizes to regions of the page</li>
+          <li>Try the Dev Tools 'Show paint rectangles' tool</li>
+          <li>Worst case, bisect: remove elements until the problem goes away</li>
+        </ul>
+      </p>
+      <p>Then find why its slow to paint:
+        <ul>
+          <li>Unnecessarily painting large areas</li>
+          <li>Bisect heavy styles</li>
+      </p>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>about:tracing</h2>
+      <h3>Down the Rabbit Hole</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>about:tracing</h2>
+      <h3>For when you get really desparate</h3>
+    </hgroup>
+    <article>
+      <p>Sometimes when diagnosing performance you just can't figure out where the time is going.</p>
+      <p>When you get really desperate, you can turn to <a href="about:tracing">about:tracing</a>. This is what we use to debug Chrome performance.</p>
+      <p><a href="http://www.chromium.org/developers/how-tos/trace-event-profiling-tool">Documentation is here</a></p>
+    </article>
+  </slide>  
+
+  <slide>
+    <hgroup>
+      <h2>Wrap up</h2>
+    </hgroup>
+    <article>
+      <p>We've discussed:</p>
+      <ul>
+        <li>How to notice jank
+          <ul>
+            <li>Train your eyes</li>
+          </ul>
+        </li>
+        <li>Best practices for avoiding jank
+          <ul>
+            <li>Use requestAnimFrame</li>
+            <li>Use CSS animations</li>
+            <li>Keep your input handlers light; remember frame budgets</li>
+          </ul>
+        </li>
+        <li>Tools for fighting jank when it appears
+          <ul>
+            <li>Use the Dev Tools Timeline</li>
+            <li>Disable CSS styles &amp; elements to isolate slow cases</li>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thanks!</h2>
+      <p>Important contact information goes here.</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo_white.png"></span>
+    </article>
+  </slide>
+
+  <!-- below here are the template slides -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Slide Templates</h2>
+      <h3>ignore plz</h3>
     </hgroup>
   </slide>
 
