@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>smooth loader</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <script src="pixastic.custom.js"></script>
+    <script src="md5.js"></script>
+    <script>
+      $(document).ready(function() {
+        //** Handle Rotation
+        el = document.querySelector("img");
+        var rotation = 0;
+        var rotating = false;
+
+        function rotate() {
+          rotation += 180;
+          el.style.webkitTransform = "rotate(" + rotation + "deg)";
+        }
+
+        // clicking the image starts and stops the animation
+        el.onclick = function() {
+          console.log ('boo');
+          if(rotating) {
+            rotating = false;
+            el.style.webkitTransition = "";
+            }
+          else {
+            rotating = true;
+            rotate();
+            el.style.webkitTransition = "all 2s linear";
+            }
+          };
+        el.click();
+        
+        // each time the rotation finishes, keep it going
+        el.addEventListener("webkitTransitionEnd", function() {
+          rotate();
+        });
+        // start rotating
+        rotation += 180;
+        el.style.webkitTransform = "rotate(180deg)";
+
+        //** Handle page content loading
+        $.ajax({
+          url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=barack%20obama',
+          success: function(data) {
+            console.log(data);
+            for(var i in data.responseData.results) {
+              console.log(data.responseData.results[i].image.url);
+              var img = new Image();
+              img.onload = function() {
+                $(img).pixastic("mosaic", {blockSize: 20});
+              }
+              img.src = "chrome-logo.png";
+            }
+          },
+          dataType: 'jsonp'
+        })
+      });
+    </script>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="chrome-logo.png" width="250">
+    <p>Loading...</p>
+  </body>
+</html>
