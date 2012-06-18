@@ -2,66 +2,41 @@
 <html>
   <head>
     <title>smooth loader</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-    <script src="pixastic.custom.js"></script>
-    <script src="md5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>
-      $(document).ready(function() {
-        //** Handle Rotation
-        el = document.querySelector("img");
-        el.style.webkitTransition = "2s linear all";
-
-        var rotation = 0;
-        
-        function rotate() {
-          rotation += 180;
-          el.style.webkitTransform = "rotate(" + rotation + "deg)";
+        function churn() {
+            for(var i=0; i<15; i++) {
+              // burn some CPU time
+              console.log('flail!');
+              var start = new Date().getTime();
+              while(new Date().getTime() - start < 200) {
+                ;
+              }
+            }
         }
-        
-        // each time the rotation finishes, keep it going
-        el.addEventListener("webkitTransitionEnd", function() {
-          rotate();
+        $(document).ready(function() {
+            var el = document.querySelector('img');
+            el.style.webkitAnimationName = 'rotation';
         });
-        // start rotating
-        rotate();
-
-        for(var i=0; i<15; i++) {
-          // do some JS stuffs
-          process();
-        }
-
-        function process() {
-          // burn some CPU time
-          console.log('flail!');
-          var start = new Date().getTime();
-          while(new Date().getTime() - start < 200) {
-            ;
-          }
-        }
-
-        document.querySelector("p").innerHTML = "done";
-
-        //** Handle page content loading
-        // $.ajax({
-        //   url: 'https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=barack%20obama',
-        //   success: function(data) {
-        //     console.log(data);
-        //     for(var i in data.responseData.results) {
-        //       //console.log(data.responseData.results[i].image.url);
-        //       //var img = new Image();
-        //       //img.onload = function() {
-        //       //  $(img).pixastic("mosaic", {blockSize: 20});
-        //       //}
-        //       //img.src = "chrome-logo.png";
-        //     }
-        //   },
-        //   dataType: 'jsonp'
-        // })
-      });
     </script>
-  </head>
+    <style>
+        img {
+            -webkit-animation-duration: 20s;
+            /*-webkit-animation-name: rotation; */
+        }
+        @-webkit-keyframes rotation {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(1024deg);
+            }
+        }
+    </style>
+    </head>
   <body style="-webkit-transform:translateZ(0)">
     <img id="foo" src="chrome-logo.png" width="250">
     <p>Loading...</p>
-  </body>
+    <input type="button" onclick="churn()" value="churn">
+</body>
 </html>
