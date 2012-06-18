@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Measuring FPS</title>
+    <style>
+      #fps {
+        font-size: 300%;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <p>
+      <span id="fps"></span> frames/sec
+    </p>
+    <img id="foo" src="chrome-logo.png" width="250">
+    <script>
+      el = document.querySelector("img");
+      var rotation = 0;
+      var rotating = false;
+
+      function rotate() {
+        rotation += 180;
+        el.style.webkitTransform = "rotate(" + rotation + "deg)";
+      }
+      el.addEventListener("webkitTransitionEnd", function() {
+        rotate();
+      });
+
+      // start rotating
+      el.style.webkitTransition = "all 2s linear";
+      el.style.webkitTransform = "rotate(180deg)";
+      rotate();
+
+      // measure FPS
+      var lastFrameTime = 0;
+      var fpsRounded = 0;
+      function raf() {
+        if (lastFrameTime) {
+          var elapsed = window.performance.webkitNow() - lastFrameTime;
+          var fps = 1000 / elapsed;
+          fpsRounded = Math.floor(fps * 100) / 100;
+        }
+        lastFrameTime = window.performance.webkitNow();
+        webkitRequestAnimationFrame(raf);
+      }
+      webkitRequestAnimationFrame(raf);
+      setInterval(function() {
+        document.querySelector('#fps').textContent = fpsRounded;
+      }, 150);
+    </script>
+  </body>
+</html>
