@@ -305,7 +305,7 @@ Authors:  Nat Duca <nduca@google.com>
       <p>Timeline in frame view can show you what's happening during a scroll. Odds are, you'll see long paint events.</p>
       <p>What's going on? A brief aside on browser rendering...</p>
     </article>
-  </slide>  
+  </slide>
 
   <slide>
     <hgroup>
@@ -314,6 +314,35 @@ Authors:  Nat Duca <nduca@google.com>
     <article>
       <p>The DOM is our model of the page. Every time it changes, we repaint.</p>
       <p>Often when the viewport changes (e.g. you scroll) we need to repaint, too.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Diagnosing Long Paint Times</h2>
+      <h3>A Strategy</h3>
+    </hgroup>
+    <article>
+      <ol>
+        <li>
+          <p>Find the slow element:</p>
+          <ol>
+            <li>Set a chunk of the DOM tree to display: none</li>
+            <li>Start a Timeline recording</li>
+            <li>Perform any necessary interaction</li>
+            <li>Stop recording; <i>note paint times</i></li>
+          </ol>
+        </li>
+        <li><p>Find the slow style:</p>
+          <ol>
+            <li>Turn off a CSS style in the Inspector</li>
+            <li>Start a Timeline recording</li>
+            <li>Perform any necessary interaction</li>
+            <li>Stop recording; <i>note paint times</i></li>
+          </ol>
+        </li>
+      </ol>
+      <p>It isn't always one thing killing you, but it often is</p>
       <p><a href="examples/css-filters">Example time.</a></p>
     </article>
   </slide>
