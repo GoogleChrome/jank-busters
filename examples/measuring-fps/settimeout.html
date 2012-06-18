@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dont measure FPS with Date.now</title>
+    <title>The Wrong Way To Animate</title>
     <style>
+      .fps {
+        font-family: sans-serif;
+        font-size: 150%;
+      }
+
       #fps {
-        font-size: 300%;
         width: 400px;
       }
     </style>
   </head>
   <body style="-webkit-transform:translateZ(0)">
-    <p>
-      <span id="fps"></span> frames/sec
-    </p>
     <img id="foo" src="chrome-logo.png" width="250">
     <script>
       el = document.querySelector("img");
@@ -31,23 +32,6 @@
       el.style.webkitTransition = "all 2s linear";
       el.style.webkitTransform = "rotate(180deg)";
       rotate();
-
-      // Measure FPS.
-      var lastFrameTime = 0;
-      var fpsRounded = 0;
-      function raf() {
-        if (lastFrameTime) {
-          var elapsed = Date.now() - lastFrameTime;
-          var fps = 1000 / elapsed;
-          fpsRounded = Math.floor(fps * 100) / 100;
-        }
-        lastFrameTime = Date.now();
-        webkitRequestAnimationFrame(raf);
-      }
-      webkitRequestAnimationFrame(raf);
-      setInterval(function() {
-        document.querySelector('#fps').textContent = fpsRounded;
-      }, 150);
     </script>
   </body>
 </html>

@@ -4,13 +4,12 @@
     <title>this div scrolls slowly</title>
     <style>
       body > div {
-        overflow: scroll;
         width: 800px;
-        height: 800px;
         background-image: -webkit-linear-gradient(45deg,rgba(0, 0, 0, 0.05) 25%,transparent 25%,transparent),-webkit-linear-gradient(-45deg,rgba(0, 0, 0, 0.05) 25%,transparent 25%,transparent),-webkit-linear-gradient(45deg,transparent 75%,rgba(0, 0, 0, 0.05) 75%),-webkit-linear-gradient(-45deg,transparent 75%,rgba(0, 0, 0, 0.05) 75%);
         background-size: 3px 3px;
       }
       body > div > img {
+        box-shadow: 15px 15px 15px;
         -webkit-box-shadow: 15px 15px 15px;
       }
       .fixed {
@@ -20,8 +19,14 @@
         -webkit-filter: opacity(50%);
       }
     </style>
+    <script>
+      window.addEventListener('scroll', function() {
+         var now = Date.now();
+         while(Date.now() < now + 30) { }
+      });
+    </script>
   </head>
-  <body style="-webkit-transform:translateZ(0)">
+  <body>
     <div>
       <img class="fixed" src="chrome-logo.png" width="50">
       <img src="chrome-logo.png" width="250">

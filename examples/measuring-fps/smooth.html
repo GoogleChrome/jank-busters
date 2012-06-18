@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Measuring FPS</title>
+    <style>
+      .fps {
+        font-family: sans-serif;
+        font-size: 150%;
+      }
+
+      #fps {
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="chrome-logo.png" width="250">
+    <script>
+      el = document.querySelector("img");
+      var rotation = 0;
+      var rotating = false;
+
+      function rotate() {
+        rotation += 180;
+        el.style.webkitTransform = "rotate(" + rotation + "deg)";
+      }
+      el.addEventListener("webkitTransitionEnd", function() {
+        rotate();
+      });
+
+      // start rotating
+      el.style.webkitTransition = "all 2s linear";
+      el.style.webkitTransform = "rotate(180deg)";
+      rotate();
+    </script>
+  </body>
+</html>
