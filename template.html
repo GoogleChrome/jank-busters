@@ -323,29 +323,24 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>A Strategy</h3>
     </hgroup>
     <article>
-      <ol>
+      <ul>
         <li>
           <p>Find the slow element:</p>
-          <ol>
+          <ul>
             <li>Set a chunk of the DOM tree to display: none</li>
-            <li>Start a Timeline recording</li>
-            <li>Perform any necessary interaction</li>
-            <li>Stop recording; <i>note paint times</i></li>
-          </ol>
+            <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
+          </ul>
         </li>
         <li><p>Do you need to paint this element at this time?</p>
         </li>
-        <li><p>Find the slow style:</p>
-          <ol>
+        <li><p>If yes, find the slow style:</p>
+          <ul>
             <li>Turn off a CSS style in the Inspector</li>
-            <li>Start a Timeline recording</li>
-            <li>Perform any necessary interaction</li>
-            <li>Stop recording; <i>note paint times</i></li>
-          </ol>
+            <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
+          </ul>
         </li>
-      </ol>
-      <p>It isn't always one thing killing you, but it often is</p>
-      <p><a href="examples/css-filters">Example time.</a></p>
+      </ul>
+      <p>It isn't always one slow thing, but often can be. <a href="examples/css-filters">Example time.</a></p>
     </article>
   </slide>
 
