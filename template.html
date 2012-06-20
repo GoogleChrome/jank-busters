@@ -103,38 +103,10 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Scrolling and Touch make Jank Extra-Noticeable</h2>
+      <h2>Scrolling Jank</h2>
     </hgroup>
     <article>
-      <p>6% error feels terrible; 1% error still feels bad; requestAnimationFrame!</p>
-      <iframe src="examples/sluggish-scroll/sluggish-scroll.html" style="height: 370px"></iframe>
-      <p>Please please please, use webkitRequestAnimationFrame.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Staying in Budget</h2>
-    </hgroup>
-    <article>
-      <iframe src="examples/sluggish-scroll/sluggish-scroll.html" style="height: 370px"></iframe>
-      There are lots of things
-      <a href="examples/measuring-fps/uber.html">Let's look at an example.</a></p>
-
-        <li>Garbage collection</li>
-        <li>Heavy DOM manipulation</li>
-        <li>JS timers</li>
-        <li>XHR handlers</li>
-
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Deep Dive: Style Recalc</h2>
-    </hgroup>
-    <article>
-      <a href="examples/too-much-layout/too-much-layout.html">Let's look at an example.</a></p>
+      <iframe src="examples/sluggish-scroll/sluggish-scroll.html" style="height: 500px"></iframe>
     </article>
   </slide>
 
