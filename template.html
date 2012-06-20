@@ -286,7 +286,7 @@ Authors:  Nat Duca <nduca@google.com>
         </ul>
       </p>
     </article>
-  </slide>  
+  </slide>
 
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
@@ -298,22 +298,24 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Slow Scrolls</h2>
+      <h2>Why Paint?</h2>
+      <h3>Basic Rendering Questions</h3>
     </hgroup>
     <article>
-      <p>Even if you're not animating anything, your page can scroll slowly.</p>
-      <p>Timeline in frame view can show you what's happening during a scroll. Odds are, you'll see long paint events.</p>
-      <p>What's going on? A brief aside on browser rendering...</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Painting</h2>
-    </hgroup>
-    <article>
-      <p>The DOM is our model of the page. Every time it changes, we repaint.</p>
-      <p>Often when the viewport changes (e.g. you scroll) we need to repaint, too.</p>
+      <p>Sometimes you get stuck with long paint times in Timeline.</p>
+      <p>What's going on? Three questions:
+        <ul>
+          <li><i>What</i> was painted?</li>
+          <li><i>Why</i> was it painted?</li>
+          <li><i>What made it take long</i> to paint?</li>
+        </ul>
+      </p>
+      <p>Common scenarios:
+        <ul>
+          <li>Scrolling</li>
+          <li>Animating</li>
+        </ul>
+      </p>
     </article>
   </slide>
 
