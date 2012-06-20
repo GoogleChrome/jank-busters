@@ -69,25 +69,10 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Jank is the <u>lack of smoothness</u></h2>
+      <h2>Frame Budget</h2>
     </hgroup>
     <article>
-      <p>Smoothness is:</p>
-      <ul>
-        <li>Doing work regularly</li>
-        <li>Staying within your computer's <b>frame budget.</b></li>
-      </ul>
-      <iframe src="examples/measuring-fps/smooth.html" style="height: 300px"></iframe>
-    </article>
-  </slide>
-
-
-  <slide>
-    <hgroup>
-      <h2>Display Refresh Rate</h2>
-    </hgroup>
-    <article>
-      <p>Different devices update the screen at different rates:</p>
+      <p>Your animation rate should match the refresh rate of your device:</p>
       <div class="flexbox threeimage">
         <div>
           <img src="images/galaxy-nexus.jpg" alt="Galaxy Nexus" title="Galaxy Nexus" height="250">
@@ -108,107 +93,22 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>On this computer, my frame budget is...</h2>
+      <h2>Jank is the <u>lack of smoothness</u></h2>
     </hgroup>
     <article>
-      <iframe src="examples/measuring-fps/measuring-fps.html" style="height: 400px"></iframe>
+      <p>To stay smooth, update the screen at exactly its refresh rate.</p>
+      <iframe src="examples/measuring-fps/smooth.html" style="height: 300px"></iframe>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>When you exceed the budget, you get jank</h2>
+      <h2>Scrolling and Touch make Jank Extra-Noticeable</h2>
     </hgroup>
     <article>
-      <iframe src="examples/forced-hitch/forced-hitch.html" style="height: 400px"></iframe>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Even small errors can feel bad</h2>
-    </hgroup>
-    <article>
-      <iframe src="examples/forced-hitch/forced-hitch-smaller.html" style="height: 400px"></iframe>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>This is especialy noticeable during scrolling</h2>
-    </hgroup>
-    <article>
-      <iframe src="examples/sluggish-scroll/sluggish-scroll.html" style="height: 400px"></iframe>
-      <p>Beware the uncanny valley: Even a 6% error will "feel bad."</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2><u><i>Do not animate with setTimeout</i></u>(..., 16)</h2>
-    </hgroup>
-    <article>
-      <p>To animate(etc), this is the typical pattern:</p>
-      <pre class="prettyprint" data-lang="javascript">
-        &lt;script type='text/javascript'&gt;
-          var left = 0;
-          <b>setInterval</b>(function animate(){
-            el = document.querySelector("#myEl");
-            el.style.left = (left++) + "px";
-          }, <b>16</b>);
-        &lt;/script&gt;
-      </pre>
-      <p>This will feel "uncannily wrong" to users!</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Animation Timing</h2>
-      <h3>Avoiding Missed or Wasted Frames</h3>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/vsync-timing.png" width="900" style="margin-top:-100px;" />
-    </article>
-  </slide>
-
-  <slide hidden>
-    <hgroup>
-      <h2>Measuring Time</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>60 frames per second = 1000 / 60 = 16.6666... ms.</li>
-        <li>
-          Date.now:
-          <iframe src="examples/measuring-fps/date_now_precision.html" style="height: 60px"></iframe>
-        </li>
-        <li>
-          window.performance.webkitNow(ms/moz):
-          <iframe src="examples/measuring-fps/performance_now_precision.html" style="height: 40px"></iframe>
-        </li>
-
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>requestAnimationFrame</h2>
-      <h3>The correct way to animate</h3>
-    </hgroup>
-    <article>
-      <pre class="prettyprint" data-lang="javascript">
-        &lt;script type='text/javascript'&gt;
-          var left = 0;
-          function <b>animate</b>(time) {
-            el = document.querySelector("#myEl");
-            el.style.left = (left++) + "px";
-            <b>requestAnimationFrame</b>(animate);
-            }
-          <b>requestAnimationFrame</b>(animate);
-        &lt;/script&gt;
-      </pre>
-      Good for performance. Good for battery life!
+      <p>6% error feels terrible; 1% error still feels bad; requestAnimationFrame!</p>
+      <iframe src="examples/sluggish-scroll/sluggish-scroll.html" style="height: 370px"></iframe>
+      <p>Please please please, use webkitRequestAnimationFrame.</p>
     </article>
   </slide>
 
@@ -217,31 +117,24 @@ Authors:  Nat Duca <nduca@google.com>
       <h2>Staying in Budget</h2>
     </hgroup>
     <article>
-      <a href="examples/too-much-layout/too-much-layout.html">Let's look at an example.</a></p>
-    </article>
-  </slide>
+      <iframe src="examples/sluggish-scroll/sluggish-scroll.html" style="height: 370px"></iframe>
+      There are lots of things
+      <a href="examples/measuring-fps/uber.html">Let's look at an example.</a></p>
 
-  <slide>
-    <hgroup>
-      <h2>Minimal Event Handlers</h2>
-    </hgroup>
-    <article>
-      <a href="examples/input-handlers/input-handlers.html">Let's look at an example.</a></p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Other things to watch for</h2>
-    </hgroup>
-    <article>
-      <ul>
         <li>Garbage collection</li>
         <li>Heavy DOM manipulation</li>
         <li>JS timers</li>
         <li>XHR handlers</li>
-      </ul>
-      <p>Use DevTools' timeline to identify jank!</p>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Deep Dive: Style Recalc</h2>
+    </hgroup>
+    <article>
+      <a href="examples/too-much-layout/too-much-layout.html">Let's look at an example.</a></p>
     </article>
   </slide>
 

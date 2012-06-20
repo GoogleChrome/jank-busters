@@ -21,8 +21,37 @@
     </style>
     <script>
       window.addEventListener('scroll', function() {
-         var now = Date.now();
-         while(Date.now() < now + 30) { }
+         var oldEl = document.body.querySelector('.filler');
+         if (oldEl)
+           document.body.removeChild(oldEl);
+
+         // The intent of this code is to just manipulate the dom a bit, inside
+         // a scroll handler. Scroll-based dom manipulation is very common and a
+         // frequent source of jank on the web.
+         var el = document.createElement('div');
+         el.className = 'filler';
+         document.body.appendChild(el);
+
+         if(true) {
+           for (var i = 0; i < 250; i++) {
+             var el2 = document.createElement('div');
+             // As part of our "naieve" implementation, we retrieve scrollTop.
+             el2.textContent = 'scroll is ' + document.body.scrollTop;
+
+             // Every time we append this el2, we dirty the document style. This causes
+             // us to recalculate scrollTop every iteration through this loop. :'(
+             el.appendChild(el2);
+           }
+         } else {
+           // If we instead cache scrollTop, we will never force a style recalc
+           // and, as a result, scrolling will be wonderful.
+           var cachedScrollTop = document.body.scrollTop;
+           for (var i = 0; i < 250; i++) {
+             var el2 = document.createElement('div');
+             el2.textContent = 'scroll is ' + cachedScrollTop;
+             el.appendChild(el2);
+           }
+         }
       });
     </script>
   </head>
