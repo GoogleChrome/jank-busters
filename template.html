@@ -305,9 +305,9 @@ Authors:  Nat Duca <nduca@google.com>
       <p>Sometimes you get stuck with long paint times in Timeline.</p>
       <p>What's going on? Three questions:
         <ul>
-          <li><i>What</i> was painted?</li>
-          <li><i>Why</i> was it painted?</li>
-          <li><i>What made it take long</i> to paint?</li>
+          <li><i>What</i> was painted? [parts of the DOM]</li>
+          <li><i>Why</i> was it painted? [dirtying the DOM]</li>
+          <li><i>What made it take long</i> to paint? [CSS styles]</li>
         </ul>
       </p>
       <p>Common scenarios:
@@ -335,6 +335,7 @@ Authors:  Nat Duca <nduca@google.com>
         </li>
         <li><p>Do you need to paint this element at this time?</p>
         </li>
+        <li><p>If no, try to avoid invalidation</p></li>
         <li><p>If yes, find the slow style:</p>
           <ul>
             <li>Turn off a CSS style in the Inspector</li>
