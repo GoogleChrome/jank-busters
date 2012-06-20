@@ -286,7 +286,7 @@ Authors:  Nat Duca <nduca@google.com>
         </ul>
       </p>
     </article>
-  </slide>  
+  </slide>
 
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
@@ -298,23 +298,51 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Slow Scrolls</h2>
+      <h2>Why Paint?</h2>
+      <h3>Basic Rendering Questions</h3>
     </hgroup>
     <article>
-      <p>Even if you're not animating anything, your page can scroll slowly.</p>
-      <p>Timeline in frame view can show you what's happening during a scroll. Odds are, you'll see long paint events.</p>
-      <p>What's going on? A brief aside on browser rendering...</p>
+      <p>Sometimes you get stuck with long paint times in Timeline.</p>
+      <p>What's going on? Three questions:
+        <ul>
+          <li><i>What</i> was painted?</li>
+          <li><i>Why</i> was it painted?</li>
+          <li><i>What made it take long</i> to paint?</li>
+        </ul>
+      </p>
+      <p>Common scenarios:
+        <ul>
+          <li>Scrolling</li>
+          <li>Animating</li>
+        </ul>
+      </p>
     </article>
-  </slide>  
+  </slide>
 
   <slide>
     <hgroup>
-      <h2>Painting</h2>
+      <h2>Diagnosing Long Paint Times</h2>
+      <h3>A Strategy</h3>
     </hgroup>
     <article>
-      <p>The DOM is our model of the page. Every time it changes, we repaint.</p>
-      <p>Often when the viewport changes (e.g. you scroll) we need to repaint, too.</p>
-      <p><a href="examples/css-filters">Example time.</a></p>
+      <ul>
+        <li>
+          <p>Find the slow element:</p>
+          <ul>
+            <li>Set a chunk of the DOM tree to display: none</li>
+            <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
+          </ul>
+        </li>
+        <li><p>Do you need to paint this element at this time?</p>
+        </li>
+        <li><p>If yes, find the slow style:</p>
+          <ul>
+            <li>Turn off a CSS style in the Inspector</li>
+            <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
+          </ul>
+        </li>
+      </ul>
+      <p>It isn't always one slow thing, but often can be. <a href="examples/css-filters">Example time.</a></p>
     </article>
   </slide>
 
