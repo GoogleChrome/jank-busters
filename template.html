@@ -172,7 +172,7 @@ Authors:  Nat Duca <nduca@google.com>
         <ul>
           <li><i>What</i> was painted? [parts of the DOM]</li>
           <li><i>Why</i> was it painted? [dirtying the DOM]</li>
-          <li><i>What made it take long</i> to paint? [CSS styles]</li>
+          <li><i>What made it take a long time</i> to paint? [CSS styles]</li>
         </ul>
       </p>
       <p>Common scenarios:
@@ -198,13 +198,16 @@ Authors:  Nat Duca <nduca@google.com>
             <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
           </ul>
         </li>
-        <li><p>Do you need to paint this element at this time?</p>
-        </li>
-        <li><p>If no, try to avoid invalidation</p></li>
-        <li><p>If yes, find the slow style:</p>
+        <li>
+          <p>Do you need to paint this element at this time?</p>
           <ul>
-            <li>Turn off a CSS style in the Inspector</li>
-            <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
+            <li><p>If no, try to avoid invalidation</p></li>
+            <li><p>If yes, find the slow style:</p>
+              <ul>
+                <li>Turn off a CSS style in the Inspector</li>
+                <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
@@ -227,7 +230,7 @@ Authors:  Nat Duca <nduca@google.com>
       </p>
       <p>Then find why its slow to paint:
         <ul>
-          <li>Unnecessarily painting large areas</li>
+          <li>Unnecessarily painting large area (parts of the DOM)</li>
           <li>Bisect heavy styles</li>
       </p>
     </article>
