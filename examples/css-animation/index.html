@@ -13,29 +13,31 @@
                 ;
               }
             }
+          }
+        function start() {
+          var el = document.querySelector('img');
+          el.style.webkitAnimationName = 'swipy';
         }
         $(document).ready(function() {
-            var el = document.querySelector('img');
-            el.style.webkitAnimationName = 'rotation';
+          
         });
     </script>
     <style>
         img {
-            -webkit-animation-duration: 20s;
-            /*-webkit-animation-name: rotation; */
+            -webkit-animation-duration: 5s;
         }
-        @-webkit-keyframes rotation {
+        @-webkit-keyframes swipy {
             from {
-                -webkit-transform: rotate(0deg);
+                -webkit-transform: translateX(-250px);
             }
             to {
-                -webkit-transform: rotate(1024deg);
+                -webkit-transform: translateX(0px);
             }
         }
     </style>
     </head>
   <body style="-webkit-transform:translateZ(0)">
-    <img id="foo" src="chrome-logo.png" width="250">
+    <img id="foo" src="chrome-logo.png" width="250" onload="start()">
     <p>Loading...</p>
     <input type="button" onclick="churn()" value="churn">
 </body>
