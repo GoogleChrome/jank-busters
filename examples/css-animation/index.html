@@ -14,14 +14,15 @@
             }
           }
 
-        window.setInterval(churn, 200);
+        window.setInterval(churn, 400);
 
-        // initiate the animation
+        // initiate the animation via CSS
         function startCSS() {
           var el = document.querySelector('img');
           el.style.webkitAnimationName = 'swipy';
         }
 
+        // initiate the animation via rAF
         function startRAF() {
           // animation duration in ms
           var duration = 5*1000;

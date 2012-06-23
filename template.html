@@ -93,6 +93,15 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
+      <h2>setTimeout vs requestAnimationFrame</h2>
+    </hgroup>
+    <article>
+      <img src="images/vsync-timing.png" width="900" style="margin-top:-100px;" />
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Jank is the <u>lack of smoothness</u></h2>
     </hgroup>
     <article>
@@ -107,6 +116,21 @@ Authors:  Nat Duca <nduca@google.com>
     </hgroup>
     <article>
       <a href="examples/sluggish-scroll/sluggish-scroll.html">Link</a>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Other things to watch for</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Garbage collection</li>
+        <li>Heavy DOM manipulation</li>
+        <li>JS timers</li>
+        <li>XHR handlers</li>
+      </ul>
+      <p>Use DevTools' timeline to identify jank!</p>
     </article>
   </slide>
 
