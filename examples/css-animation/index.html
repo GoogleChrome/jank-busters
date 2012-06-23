@@ -2,19 +2,19 @@
 <html>
   <head>
     <title>smooth loader</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>
         // perform our complicated JS while we load
         function churn() {
-            for(var i=0; i<10; i++) {
-              // burn some CPU time
-              console.log('flail!');
-              var start = new Date().getTime();
-              while(new Date().getTime() - start < 200) {
-                ;
-              }
+          // burn some CPU time
+          console.log('flail!');
+          var start = new Date().getTime();
+          // hitch for 100ms
+          while(new Date().getTime() - start < 100) {
+            ;
             }
           }
+
+        window.setInterval(churn, 200);
 
         // initiate the animation
         function startCSS() {
@@ -26,50 +26,45 @@
           // animation duration in ms
           var duration = 5*1000;
           // translateX offset in px
-          var offset = 250;
+          var offset = 100;
           var startTime = null;
           // make sure we start at the offset
-          var el = document.querySelector('img');
-//          el.style.webkitTransform = "translateX(-" + offset + "px)";
           function update(timestamp) {
             if(!startTime)
               startTime = timestamp;
             var new_x = offset - (((timestamp - startTime) / duration) * offset);
-            //if(new_x >= offset) {
-            //  console.log('done');
-            //}
-            //else {
-              el.style.webkitTransform = "translateX(-" + new_x + "px)";
+            var el = document.querySelector('img');
+            el.style.webkitTransform = "translateX(-" + new_x + "%)";
+            if(new_x > 0) {
               window.webkitRequestAnimationFrame(update);
-            //}
+            }
           }
           window.webkitRequestAnimationFrame(update);
         }
-
-
-        $(document).ready(function() {
-        });
-
     </script>
     <style>
         img {
           -webkit-animation-duration: 5s;
           -webkit-animation-fill-mode: forwards;
-          -webkit-transform: translateX(-250px);
+          -webkit-transform: translateX(-100%);
           -webkit-animation-timing-function: linear;
+          width: 100%;
         }
         @-webkit-keyframes swipy {
             from {
-                -webkit-transform: translateX(-250px);
+                -webkit-transform: translateX(-100%);
             }
             to {
-                -webkit-transform: translateX(0px);
+                -webkit-transform: translateX(0%);
             }
+          }
+        input {
+          width: 80%;
         }
     </style>
     </head>
   <body style="-webkit-transform:translateZ(0)">
-    <img id="foo" src="chrome-logo.png" width="250" onload="startCSS()">
+    <img id="foo" src="chrome-logo.png" onload="startCSS()">
     <p>Loading...</p>
     <input type="button" onclick="churn()" value="churn">
 </body>
