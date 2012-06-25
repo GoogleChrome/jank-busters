@@ -14,15 +14,19 @@
             }
           }
 
+        // Churn baby churn!
         window.setInterval(churn, 400);
 
-        // initiate the animation via CSS
+        // Run the animation via CSS
         function startCSS() {
           var el = document.querySelector('img');
+          el.addEventListener('webkitAnimationEnd', function() {
+            el.style.webkitTransform = "translateX(0%)";
+          });
           el.style.webkitAnimationName = 'swipy';
         }
 
-        // initiate the animation via rAF
+        // Alternatively, run the animation via rAF
         function startRAF() {
           // animation duration in ms
           var duration = 5*1000;
@@ -58,14 +62,10 @@
                 -webkit-transform: translateX(0%);
             }
           }
-        input {
-          width: 80%;
-        }
     </style>
     </head>
   <body style="-webkit-transform:translateZ(0)">
     <img id="foo" src="chrome-logo.png" onload="startCSS()">
     <p>Loading...</p>
-    <input type="button" onclick="churn()" value="churn">
 </body>
 </html>
