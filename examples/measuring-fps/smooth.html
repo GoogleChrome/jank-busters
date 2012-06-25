@@ -1,31 +1,173 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Measuring FPS</title>
+    <title>Measuring smoothness</title>
     <style>
-      .fps {
-        font-family: sans-serif;
-        font-size: 150%;
+  * {
+    font-family: sans-serif;
+  }
+      img {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+      }
+      #item1 > * {
+        vertical-align: middle;
       }
 
-      #fps {
-        width: 400px;
+      #item2 {
+        position: fixed;
+        left: 250px;
+        top: 70px;
+      }
+
+      button {
+        font-size: 130%;
       }
     </style>
   </head>
   <body style="-webkit-transform:translateZ(0)">
     <img id="foo" src="chrome-logo.png" width="250">
+    <div id="item2">
+      <div style="width: 400px">
+      Intervals between frames, using requestAnimationFrame and window.performance.webkitNow():
+      </div>
+      <canvas id="canvas" width="400px" height="120px"></canvas>
+      <div>
+        <button id="jank3">Big jank</button>
+        <button id="jank1">8ms, early</button>
+        <button id="jank2">8ms, late</button>
+      </div>
+    </div>
     <script>
       el = document.querySelector("img");
       var rotation = 0;
-      var rotating = false;
+      var running = false;
 
       function rotate() {
         rotation += 180;
         el.style.webkitTransform = "rotate(" + rotation + "deg)";
       }
       el.addEventListener("webkitTransitionEnd", function() {
+        if (running)
+          rotate();
+      });
+
+      var intervals = [];
+      for (var i = 0; i < 180; i++) {
+        intervals.push(0);
+      }
+
+      function redraw(canvas, intervals) {
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0,400,120);
+        ctx.beginPath();
+        var i33 = 1000 / 15.0;
+
+        var h = canvas.height;
+        ctx.strokeStyle = 'black';
+        ctx.beginPath();
+
+        var y = h - ((intervals[0] - 0) / i33) * h;
+        ctx.moveTo(0, y);
+        for (var i = 1; i < intervals.length; i++) {
+          if (!intervals[i])
+            continue;
+          var y = h - ((intervals[i] - 0) / i33) * h;
+          ctx.lineTo(2*i, y);
+        }
+        ctx.stroke();
+
+        var y16 = h - (((1000 / 60) - 0) / i33) * h;
+        ctx.strokeStyle = 'blue';
+        ctx.beginPath();
+        ctx.moveTo(0,y16);
+        ctx.lineTo(400,y16);
+        ctx.stroke();
+
+
+        var y30 = h - (((1000 / 30) - 0) / i33) * h;
+        ctx.strokeStyle = 'red';
+        ctx.beginPath();
+        ctx.moveTo(0,y30);
+        ctx.lineTo(400,y30);
+        ctx.stroke();
+
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText('16.6ms', 400, y16);
+        ctx.fillText('33.3ms', 400, y30);
+
+      }
+      var numFrames = 0;
+      var lastTimestamp;
+      function tick() {
+        var now;
+        if (window.performance.webkitNow)
+          now = window.performance.webkitNow();
+        else
+          now = Date.now();
+
+        if (lastTimestamp) {
+          var i = (numFrames++) % intervals.length;
+          intervals[i] = now - lastTimestamp;
+
+          var canvas2 = document.querySelector('#canvas');
+          redraw(canvas2, intervals);
+        }
+
+        lastTimestamp = now;
+        if (running)
+          webkitRequestAnimationFrame(tick, document.querySelector('img'));
+      }
+
+      function start() {
+        if (running)
+          return;
+        running = true;
         rotate();
+        webkitRequestAnimationFrame(tick, document.querySelector('img'));
+      }
+
+      document.querySelector('img').addEventListener('click', function() {
+        setTimeout(function() { running = false; }, 30000);
+        start();
+      });
+
+      function sleep(ms) {
+        var start = Date.now();
+        while(Date.now() < start + ms);
+      }
+
+      document.querySelector('#jank1').addEventListener('click', function() {
+        // Use rAF to kick off the jank at a known time. This is intentional,
+        // as our desire is to not interfere with a frame.
+        webkitRequestAnimationFrame(function() {
+          setTimeout(function() {
+            // This assumes we're on a 60hz screen. This will fire +0ms into the frame.
+            // The sleep will run for 8ms but the next frame will still run safely.
+            sleep(8);
+          }, 0);
+        });
+      });
+
+      document.querySelector('#jank2').addEventListener('click', function() {
+        // Use rAF to kick off the jank at a known time. This is intentional,
+        // as our desire is to precisely interfere with the next frame.
+        webkitRequestAnimationFrame(function() {
+          // This assumes we're on a 60hz screen. This will fire +4ms into the frame.
+          // The sleep will then prevent the next frame from happening.
+          setTimeout(function() {
+            sleep(8);
+          }, 12);
+        });
+      });
+
+      document.querySelector('#jank3').addEventListener('click', function() {
+        setTimeout(function() {
+          sleep(100);
+        }, 0);
       });
 
       // start rotating
