@@ -26,26 +26,6 @@
           el.style.webkitAnimationName = 'swipy';
         }
 
-        // Alternatively, run the animation via rAF
-        function startRAF() {
-          // animation duration in ms
-          var duration = 5*1000;
-          // translateX offset in px
-          var offset = 100;
-          var startTime = null;
-          // make sure we start at the offset
-          function update(timestamp) {
-            if(!startTime)
-              startTime = timestamp;
-            var new_x = offset - (((timestamp - startTime) / duration) * offset);
-            var el = document.querySelector('img');
-            el.style.webkitTransform = "translateX(-" + new_x + "%)";
-            if(new_x > 0) {
-              window.webkitRequestAnimationFrame(update);
-            }
-          }
-          window.webkitRequestAnimationFrame(update);
-        }
     </script>
     <style>
         img {

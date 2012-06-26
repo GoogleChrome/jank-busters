@@ -97,7 +97,7 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>setTimeout vs requestAnimationFrame</h3>
     </hgroup>
     <article>
-      <iframe src="examples/measuring-fps/raf_motivation.html" style="height: 450px"></iframe>
+      <iframe src="examples/measuring-fps/raf_motivation.html" style="height: 460px"></iframe>
     </article>
   </slide>
 
@@ -121,7 +121,7 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Other things to watch for</h2>
+      <h2>Other Things to Watch For</h2>
     </hgroup>
     <article>
       <ul>
@@ -130,7 +130,7 @@ Authors:  Nat Duca <nduca@google.com>
         <li>JS timers</li>
         <li>XHR handlers</li>
       </ul>
-      <p>Use DevTools' timeline to identify jank!</p>
+      <p>Use DevTools' Timeline to identify jank!</p>
     </article>
   </slide>
 
@@ -148,9 +148,10 @@ Authors:  Nat Duca <nduca@google.com>
     </hgroup>
     <article>
       <p>Most of what happens in a tab happens on <b>one thread</b>.</p>
-      <p>We're teaching the browser to run things on its own, even when JS is running.</p>
-      <p>One of the first is CSS animation.</p>
-      <p>This is on Chrome for Android first, everywhere else soon. Let's look at a mobile example.</p>
+      <p>But it can run <i>some things</i> even when JS is busy. Like CSS animation!</p>
+      <br />
+      <p>This is on Chrome for Android first, everywhere else soon.</p>
+      <p><a href="examples/css-animation/index-bad.html">requestAnimationFrame example</a>, <a href="examples/css-animation/index.html">CSS example</a></p>
     </article>
   </slide>
 
@@ -159,11 +160,10 @@ Authors:  Nat Duca <nduca@google.com>
       <h2>Smooth Animation</h2>
     </hgroup>
     <article>
-      <p>When you can, use CSS animation to let the browser do the right thing:
+      <p>Use CSS animation to let the browser do the right thing
         <ul>
           <li>CSS transitions</li>
           <li>CSS keyframe animations</li>
-          <li>etc.</li>
         </ul>
       </p>
       <p>
@@ -191,8 +191,8 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>Basic Rendering Questions</h3>
     </hgroup>
     <article>
-      <p>Sometimes you get stuck with long paint times in Timeline.</p>
-      <p>What's going on? Three questions:
+      <p>Long paint times in Timeline are opaque.</p>
+      <p>Investigate with three questions:
         <ul>
           <li><i>What</i> was painted? [parts of the DOM]</li>
           <li><i>Why</i> was it painted? [dirtying the DOM]</li>
@@ -235,41 +235,20 @@ Authors:  Nat Duca <nduca@google.com>
           </ul>
         </li>
       </ul>
-      <p>It isn't always one slow thing, but often can be. <a href="examples/css-filters">Example time.</a></p>
+      <p>It isn't always one slow thing, but often can be. <a href="examples/css-filters/css-filters.html">Example time.</a></p>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Painting Takeaways</h2>
-    </hgroup>
-    <article>
-      <p>When you see a long paint time, first find what painted:
-        <ul>
-          <li>Highlight the paint event in Timeline</li>
-          <li>Match paint sizes to regions of the page</li>
-          <li>Try the Dev Tools 'Show paint rectangles' tool</li>
-          <li>Worst case, bisect: remove elements until the problem goes away</li>
-        </ul>
-      </p>
-      <p>Then find why its slow to paint:
-        <ul>
-          <li>Unnecessarily painting large area (parts of the DOM)</li>
-          <li>Bisect heavy styles</li>
-      </p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>These are Technique, Not Recipes</h2>
+      <h2>These are Techniques, Not Recipes</h2>
       <h3>An Important Last Point</h3>
     </hgroup>
     <article>
-      <p>We've highlighted a few current sources of jank, but browsers are <b>evolving fast</b>.</p>
+      <p>We've highlighted a few current sources of jank, but browsers <b>evolve fast</b>.</p>
       <p>The <b>architectural best practices</b> are here to stay.</p>
-      <p>But, don't rely on the <b>specifics of what's currently slow</b> being true six months from now.</p>
-      <p>Rather, <b>use the tools</b> to hunt down jank when it appears.</p>
+      <p>But the <b>specifics of what's slow</b> might not be true six months from now.</p>
+      <p><b>Use the tools</b> to hunt down jank when it appears.</p>
     </article>
   </slide>
 
@@ -287,10 +266,10 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>For when you get really desparate</h3>
     </hgroup>
     <article>
-      <p>Sometimes when diagnosing performance you just can't figure out where the time is going.</p>
-      <p>When you get really desperate, you can turn to <a href="about:tracing">about:tracing</a>. This is what we use to debug Chrome performance.</p>
-      <p><a href="http://www.chromium.org/developers/how-tos/trace-event-profiling-tool">Documentation is here</a></p>
-
+      <p>Sometimes you just can't figure out where the time is going.</p>
+      <p>When you get really desperate, you can turn to <a href="about:tracing">about:tracing</a>.</p>
+      <br />
+      <p><a href="http://www.chromium.org/developers/how-tos/trace-event-profiling-tool">Documentation is on dev.chromium.org</a></p>
       <p>If you suspect Chrome has a bug, <a href="new.crbug.com">new.crbug.com</a></p>
     </article>
   </slide>  
@@ -311,7 +290,6 @@ Authors:  Nat Duca <nduca@google.com>
           <ul>
             <li>Use requestAnimFrame</li>
             <li>Use CSS animations</li>
-            <li>Keep your input handlers light; remember frame budgets</li>
           </ul>
         </li>
         <li>Tools for fighting jank when it appears
@@ -327,6 +305,7 @@ Authors:  Nat Duca <nduca@google.com>
     <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>Thanks!</h2>
+      <h3>Questions?</h3>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
