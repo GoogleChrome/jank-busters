@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>unsmooth loader</title>
+    <script>
+        // perform our complicated JS while we load
+        function churn() {
+          // burn some CPU time
+          console.log('flail!');
+          var start = new Date().getTime();
+          // hitch for 100ms
+          while(new Date().getTime() - start < 100) {
+            ;
+            }
+          }
+
+        // Churn baby churn!
+        window.setInterval(churn, 400);
+
+        // Alternatively, run the animation via rAF
+        function startRAF() {
+          // animation duration in ms
+          var duration = 5*1000;
+          // translateX offset in px
+          var offset = 100;
+          var startTime = null;
+          // make sure we start at the offset
+          function update(timestamp) {
+            if(!startTime)
+              startTime = timestamp;
+            var new_x = offset - (((timestamp - startTime) / duration) * offset);
+            var el = document.querySelector('img');
+            el.style.webkitTransform = "translateX(-" + new_x + "%)";
+            if(new_x > 0) {
+              window.webkitRequestAnimationFrame(update);
+            }
+          }
+          window.webkitRequestAnimationFrame(update);
+        }
+    </script>
+    <style>
+        img {
+          -webkit-animation-duration: 5s;
+          -webkit-transform: translateX(-100%);
+          -webkit-animation-timing-function: linear;
+          width: 100%;
+        }
+        @-webkit-keyframes swipy {
+            from {
+                -webkit-transform: translateX(-100%);
+            }
+            to {
+                -webkit-transform: translateX(0%);
+            }
+          }
+    </style>
+    </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="chrome-logo.png" onload="startRAF()">
+    <p>Loading...</p>
+</body>
+</html>
