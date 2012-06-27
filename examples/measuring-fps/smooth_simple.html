@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Measuring smoothness</title>
+    <title>A (mostly) smooth page</title>
     <style>
       body {
         margin-top: 50px;
@@ -36,7 +36,7 @@
       CSS transition animations chained together via transitionEnd events.
       </div>
       <div>
-        <button id="jank3">sleep(60ms)</button>
+        <button id="jank3">sleep(180ms)</button>
       </div>
     </div>
     <script>
@@ -72,7 +72,7 @@
 
       document.querySelector('#jank3').addEventListener('click', function() {
         setTimeout(function() {
-          sleep(60);
+          sleep(180);
         }, 0);
       });
 
