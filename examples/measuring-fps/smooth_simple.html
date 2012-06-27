@@ -3,6 +3,9 @@
   <head>
     <title>Measuring smoothness</title>
     <style>
+      body {
+        margin-top: 50px;
+      }
       * {
         font-family: 'Open Sans', Arial, sans-serif;
         font-size: 18pt;
@@ -69,7 +72,7 @@
 
       document.querySelector('#jank3').addEventListener('click', function() {
         setTimeout(function() {
-          sleep(100);
+          sleep(60);
         }, 0);
       });
 
