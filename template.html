@@ -43,7 +43,7 @@ Authors:  Nat Duca <nduca@google.com>
     <hgroup class="auto-fadein">
       <h2>A Jank Spotting</h2>
       <h3>What's wrong with this picture?</h3>
-      <p><a href="examples/css-filters/css-filters.html">Bad Example</a> <a href="examples/css-filters/css-filters-fixes.html">Good Example</a></p>
+      <p><a href="examples/css-filters-bad/css-filters-bad.html">Bad Example</a> <a href="examples/css-filters-fixes/css-filters-fixes.html">Good Example</a></p>
     </hgroup>
   </slide>
 
@@ -187,55 +187,39 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Why Paint?</h2>
-      <h3>Basic Rendering Questions</h3>
+      <h2>Back to that Jank Spotting</h2>
     </hgroup>
     <article>
-      <p>Long paint times in Timeline are opaque.</p>
-      <p>Investigate with three questions:
-        <ul>
-          <li><i>What</i> was painted? [parts of the DOM]</li>
-          <li><i>Why</i> was it painted? [dirtying the DOM]</li>
-          <li><i>What made it take a long time</i> to paint? [CSS styles]</li>
-        </ul>
-      </p>
-      <p>Common scenarios:
-        <ul>
-          <li>Scrolling</li>
-          <li>Animating</li>
-        </ul>
-      </p>
+        <p><a href="examples/css-filters-bad/css-filters-bad.html">Example</a></p>
     </article>
-  </slide>
+  </slide>  
 
   <slide>
     <hgroup>
-      <h2>Diagnosing Long Paint Times</h2>
-      <h3>A Strategy</h3>
+      <h2>Diagnosing Long Paints</h2>
+      <h3>Basic Rendering Questions</h3>
     </hgroup>
     <article>
-      <ul>
-        <li>
-          <p>Find the slow element:</p>
-          <ul>
-            <li>Set a chunk of the DOM tree to display: none</li>
-            <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
-          </ul>
-        </li>
-        <li>
-          <p>Do you need to paint this element at this time?</p>
-          <ul>
-            <li><p>If no, try to avoid invalidation</p></li>
-            <li><p>If yes, find the slow style:</p>
-              <ul>
-                <li>Turn off a CSS style in the Inspector</li>
-                <li>Take a Timeline recording with any interaction; <i>note paint times</i></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <p>It isn't always one slow thing, but often can be. <a href="examples/css-filters/css-filters.html">Example time.</a></p>
+        <ul>
+          <li><i>What</i> was painted?
+            <ul>
+              <li>Set parts of the DOM to display:none</li>
+              <li>Take a Timeline recording, <i>note paint times</i></li>
+            </ul>
+          </li>
+          <li><i>Why</i> was it painted?
+            <ul>
+              <li>Scroll? Dirtied the DOM?</li>
+              <li>Can you avoid the invalidation?</li>
+            </ul>
+          </li>
+          <li><i>What took so long</i> to paint?
+            <ul>
+              <li>Disable CSS styles, note paint time changes</li>
+            </ul>
+          </li>
+        </ul>
+        <p><a href="examples/css-filters-fixes/css-filters-fixes.html">Fixed up example</a></p>
     </article>
   </slide>
 

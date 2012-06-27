@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/ -->
+<html lang="en" dir="ltr" itemscope="" itemtype="http://schema.org/Article" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./css-filters_files/cb=gapi.loaded_3" async=""></script>
+  <meta charset="utf-8">
+  <!-- Copyright (c) 2012 Google Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *     http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *
+   * Author:   - 
+   *
+   * 
+   *
+  -->
+  <meta name="description" content="A resource for developers looking to put HTML5 to use today, including information on specific features and when to use them in your apps.">
+  <meta name="keywords" content="html5,html 5,html5 demos,html5 examples,javascript,css3,notifications,geolocation,web workers,apppcache,file api,filereader,indexeddb,offline,audio,video,drag and drop,chrome,sse,mobile">
+  <meta itemprop="name" content="HTML5 Rocks">
+  <meta itemprop="description" content="">
+  <meta itemprop="image" content="/static/images/identity/HTML5_Badge_64.png">
+  <title> - HTML5 Rocks</title>
+  <link rel="shortcut icon" href="http://master.html5rocks.appspot.com/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="HTML5 Rocks RSS" href="http://feeds.feedburner.com/html5rocks">
+
+  <link rel="stylesheet" media="all" href="css-filters_files/base-fixes.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,800" rel="stylesheet">
+
+  <script type="text/javascript" src="./css-filters_files/count.js"></script><script type="text/javascript" src="./css-filters_files/embed.js"></script><script src="./css-filters_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./css-filters_files/ga.js"></script><script src="./css-filters_files/modernizr.custom.73722.js"></script>
+
+  <!-- Try to load remote jquery, load local version of jQuery on fail -->
+  <script src="./css-filters_files/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/static/js/jquery-1.7.1.min.js">\x3C/script>')</script>
+  <script defer="" src="./css-filters_files/jquery.scrollTo-min.js"></script>
+
+  <link rel="stylesheet" media="only screen and (max-width: 800px)" href="http://master.html5rocks.appspot.com/static/css/mobile.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- iOS: run in full-screen mode and display upper status bar as translucent -->
+  <!--<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">-->
+
+  <link rel="apple-touch-icon" href="http://master.html5rocks.appspot.com/static/images/identity/HTML5_Badge_64.png">
+  <link rel="apple-touch-icon-precomposed" href="http://master.html5rocks.appspot.com/static/images/identity/HTML5_Badge_64.png">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+  <![endif]-->
+
+  <link href="https://plus.google.com/111395306401981598462" rel="publisher">
+
+  
+<style>
+	.perf {
+		margin-left:4px;
+		margin-right:4px;
+	}
+	dt {
+		font-weight:bold;
+	}
+</style>
+
+<script type="text/javascript" async="" src="./css-filters_files/count(1).js"></script></head>
+<body data-href="tutorials-filters-understanding-css" onload="" class="pattern-bg" data-twttr-rendered="true">
+
+  
+
+  <header class="main">
+    <a id="home_horns" href="http://master.html5rocks.appspot.com/en/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAyCAYAAABGQBuoAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEU2NTFGRTQwNjE0MTFFMTg0RjdERTE0MzFDQTlGQjQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEU2NTFGRTUwNjE0MTFFMTg0RjdERTE0MzFDQTlGQjQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4MUQyMTY2QjA2MTMxMUUxODRGN0RFMTQzMUNBOUZCNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4MUQyMTY2QzA2MTMxMUUxODRGN0RFMTQzMUNBOUZCNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgNr19cAAAJFSURBVHja7FfrUcMwDE56/U/YIGxQJsBMQJmg6QTQCRomKBukGzBCywTpBikTpEwQJE4CxbFTOzF3cIfudM7Jsb5I1itRJKhpmhlw1XzTDjiJQhAqAq6JM+CcQUIBzEmhErJPkFAAHWUIpoOe0aFIT85nplEgQrfCUgjRGmTLIBbQ/X0FBTE+N5NABsxofYrj+ISMzygIBWClXwOwpvyo6K7QxwXLcN920DWK8JK3wCkpewBOSIaUeecBPKb0la2SIWSP+lktSVUrKiUA1aSaDpViTUyh2yebGCzBkMP6cwS+gpC7hnVJoZiFuGRWfgvKcY1gRV+fyO+DAS5oZeUnzapkVB2Rfjb0CC7j/ndAQixSB8uXcz9o7bnSlJQfe5SjRfewdxjinSklz7JHOdJ+bKm40eRzWleGTF1oFZQznQOkc8GcmZklADjRCq7xIgml7MVYGSgyShuIKGwVvZfbZIYPK6WSss8Sz7BXer0KCkJ66s5MFQLEVG37QPKByguXKU/2AuXg88oUTeeAJKGCVNtPheLKZLVLy3wGfgO+s+xjlr9iSfceM33vwfT+j48tsenCRIkepxzo7092LlG050HWgXY+harx+YWinGiR1w8IvL/RmoyklW3qcAEwdS6dkjGXzIffab2Mu7S3WTfkH63WKwIijHERTxlbw9aCppJB7U6SEvJMvLvjKBPNvxVFPonGc9MGaz41dOXtYIsFuRhF5OiCTWneZ4EXgEdz8gbgyXvD7ZMyNxM/g0aA/3J9lj4EGABt/PzEJtkxBQAAAABJRU5ErkJggg==" alt="HTML5 Rocks"></a>
+    <h1 id="title">
+      <a href="http://master.html5rocks.appspot.com/en/" title="HTML5 Rocks">HTML5 Rocks</a>
+    </h1>
+    <nav>
+      <ul>
+        <li><a class="home" href="http://master.html5rocks.appspot.com/en/" rel="home">Home</a></li>
+        <li><a href="http://master.html5rocks.appspot.com/en/tutorials/" class="tutorials">Posts &amp; Tutorials</a></li>
+        <li id="features_show"><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#features">HTML5 Features</a></li>
+        <li><a href="http://master.html5rocks.appspot.com/en/slides" class="slides">Slides</a></li>
+        <li><a href="http://master.html5rocks.appspot.com/en/resources" class="resources">Resources</a></li>
+        <li><a class="why" href="http://master.html5rocks.appspot.com/en/why">Why HTML5?</a></li>
+        <li><a href="http://master.html5rocks.appspot.com/en/profiles" class="profiles" }="">Who We Are</a></li>
+        <li><a href="http://code.google.com/p/html5rocks/wiki/ContributorsGuide" target="_blank">Contribute</a></li>
+        <li id="search_show">
+          <a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#search_form">
+            Search
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjM0OTMyOUNEN0FEMTFFMEJDMEZDMjAwMjNDNjc0MDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjM0OTMyOUREN0FEMTFFMEJDMEZDMjAwMjNDNjc0MDciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFNzMzOTM2MUQ3OTkxMUUwQkMwRkMyMDAyM0M2NzQwNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFNzMzOTM2MkQ3OTkxMUUwQkMwRkMyMDAyM0M2NzQwNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pj/umaQAAACdSURBVHjanFLbDQMhDAtMwAiM0lFuBEa4DW4ERmk7ASPQDRghTSSfRKvAPSz5J45D5ODJADM/hE/+RRUuNIKKaGzCDUNSNyhbpgixCIOhZ+jrSIiTjfTl5v/qang55z40xlsYvCEEugqEcbSqplutcBrCiZNw0ugU+zm0cQWreY7OVHC7DDN39WVmCmcDyZdNMBbzGx3AiYnu4CvAALKABcbyDrXxAAAAAElFTkSuQmCC" width="14" height="14" alt="">
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="subheader search" style="display: none;" id="search_form">
+      <div class="search">
+        <form action="http://master.html5rocks.appspot.com/en/search" id="cse-search-box" role="search">
+          <!--<input type="hidden" name="cx" value="007435387813601113811:ef_kuvvx6a8">
+          <input type="hidden" name="cof" value="FORID:9">
+          <input type="hidden" name="ie" value="UTF-8">
+          <input type="hidden" name="hl" value="en">-->
+          <img id="search_hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjM0OTMyQTREN0FEMTFFMEJDMEZDMjAwMjNDNjc0MDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjM0OTMyQTVEN0FEMTFFMEJDMEZDMjAwMjNDNjc0MDciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMzQ5MzJBMkQ3QUQxMUUwQkMwRkMyMDAyM0M2NzQwNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGMzQ5MzJBM0Q3QUQxMUUwQkMwRkMyMDAyM0M2NzQwNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps3igWgAAAFzSURBVHjazJfPSsNAEMZ3EygoBAoepD0VBA+Cp76AvoCvkWfK0+gLeBI8FISc2lMhsFBBCPGbMKGrZP/qNh342LKdzI/Z7OxOpPCwruvmGEgX0OWIywH6hBopZeOKJx2wJYYraCb87QvaA74NggJG2dwEwsbgH4AfnFAAKbOV+D+rAd4boQmAo+BMAxaJgGQrjn+EYiJPCNTBuZ7ptWXTrKHCM3DB/mM2Y46QTL+HcoPzM7SDSkg5gBW0gB4NPi30lnHR55ZgJQeqLBnrwNISizjzAWqzjQP8G7hxxOuhPu/LBA4F9s9kjqW1gZcRwH6JaSOtA7f+rZatCgT+PBxOaVlkllRCTzxWPB8EbSOAtKRbHkPBbeYoeBNweEZFgBVBm0igiAQ3kxyDUmtLFgbHB+jV8zUMB/6L4f8dtTFSu9ru/tie+LQv74D2G0nQD7rdE5dnzZxjnWJCJQTXHP9MGrPJWtDJmu3knxUIePJb5luAAQDWPZwf40bkcAAAAABJRU5ErkJggg==" width="29" height="29" alt="">
+          <label><span>Search:</span><input type="search" name="q" id="q" autocomplete="off" placeholder="HTML5 Rocks"></label>
+        </form>
+      </div>
+    </div>
+    <div class="subheader features" style="display: none;" id="features" tabindex="0">
+      <div class="features">
+        <img id="features_hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjM0OTMyQTREN0FEMTFFMEJDMEZDMjAwMjNDNjc0MDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjM0OTMyQTVEN0FEMTFFMEJDMEZDMjAwMjNDNjc0MDciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMzQ5MzJBMkQ3QUQxMUUwQkMwRkMyMDAyM0M2NzQwNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGMzQ5MzJBM0Q3QUQxMUUwQkMwRkMyMDAyM0M2NzQwNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps3igWgAAAFzSURBVHjazJfPSsNAEMZ3EygoBAoepD0VBA+Cp76AvoCvkWfK0+gLeBI8FISc2lMhsFBBCPGbMKGrZP/qNh342LKdzI/Z7OxOpPCwruvmGEgX0OWIywH6hBopZeOKJx2wJYYraCb87QvaA74NggJG2dwEwsbgH4AfnFAAKbOV+D+rAd4boQmAo+BMAxaJgGQrjn+EYiJPCNTBuZ7ptWXTrKHCM3DB/mM2Y46QTL+HcoPzM7SDSkg5gBW0gB4NPi30lnHR55ZgJQeqLBnrwNISizjzAWqzjQP8G7hxxOuhPu/LBA4F9s9kjqW1gZcRwH6JaSOtA7f+rZatCgT+PBxOaVlkllRCTzxWPB8EbSOAtKRbHkPBbeYoeBNweEZFgBVBm0igiAQ3kxyDUmtLFgbHB+jV8zUMB/6L4f8dtTFSu9ru/tie+LQv74D2G0nQD7rdE5dnzZxjnWJCJQTXHP9MGrPJWtDJmu3knxUIePJb5luAAQDWPZwf40bkcAAAAABJRU5ErkJggg==" width="29" height="29" alt="">
+        <h2>Features</h2>
+        <ul>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/offline" class="offline">
+              <h3>Offline</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/storage" class="storage">
+              <h3>Storage</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/connectivity" class="connectivity">
+              <h3>Connectivity</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/file_access" class="file_access">
+              <h3>File Access</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/semantics" class="semantics">
+              <h3>Semantics</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/multimedia" class="multimedia">
+              <h3>Audio/Video</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/graphics" class="graphics">
+              <h3>3D/Graphics</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/presentation" class="presentation">
+              <h3>Presentation</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/performance" class="performance">
+              <h3>Performance</h3>
+            </a>
+          </li>
+          <li>
+            <a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts" class="nuts_and_bolts">
+              <h3>Nuts &amp; Bolts</h3>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <a class="watermark" href="http://master.html5rocks.appspot.com/"></a>
+
+  <nav class="paginator home">
+    <ul class="home">
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/mobile">Mobile</a></li>
+    </ul>
+    <ul class="mobile">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/">Home</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/gaming">Gaming</a></li>
+    </ul>
+    <ul class="gaming">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/mobile">Mobile</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/business">Business</a></li>
+    </ul>
+    <ul class="business">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/gaming">Gaming</a></li>
+    </ul>
+  </nav>
+
+
+  <nav class="paginator features">
+    <ul class="offline">
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/storage">Storage</a></li>
+    </ul>
+    <ul class="storage">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/offline">Offline</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/connectivity">Connectivity</a></li>
+    </ul>
+    <ul class="connectivity">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/storage">Storage</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/file_access">File Access</a></li>
+    </ul>
+    <ul class="file_access">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/connectivity">Connectivity</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/semantics">Semantics</a></li>
+    </ul>
+    <ul class="semantics">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/file_access">File Access</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/multimedia">Audio/Video</a></li>
+    </ul>
+    <ul class="multimedia">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/semantics">Semantics</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/graphics">3D/Graphics</a></li>
+    </ul>
+    <ul class="graphics">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/multimedia">Audio/Video</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/presentation">Presentation</a></li>
+    </ul>
+    <ul class="presentation">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/graphics">3D/Graphics</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/performance">Performance</a></li>
+    </ul>
+    <ul class="performance">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/presentation">Presentation</a></li>
+      <li><a class="next" href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts">Nuts &amp; Bolts</a></li>
+    </ul>
+    <ul class="nuts_and_bolts">
+      <li><a class="previous" href="http://master.html5rocks.appspot.com/en/features/performance">Performance</a></li>
+    </ul>
+  </nav>
+
+  <div class="outline_nav_toggle deactivated">
+    <img class="show" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAeCAYAAADU8sWcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTAyRDZFQUJFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTAyRDZFQUNFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDJENkVBOUU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDJENkVBQUU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pprl4SwAAAIcSURBVHjazFfNasJAEI6ptiIGBCUQbfAWxWu96EUfwAY8tg+gD1A8F+99gfoA9ijoA9he9GKvIt5EMRJyEFKKDQidlaSIyW5iYkgHhiyZzX4zk/nbEOWAJpNJGh4V4DudGYttn8Bz4EGxWJw7OTfkALQBXKPOIwTeASXeXYEDcEMH9kLIG21QYu0IHECRS1+BBeoypAI3rX4F7TMwpcdHF86uEsF9AD6mZ1BAsHQ7CJ7g8WB3wmazia1Wq7imaWHjXSaTUbPZrOpAAQn4EX6B+geuR3Wf9NVisWBGo9HtdruNWckjkci+UCjI5XJ5baMAyoLOMfgLPKq43cPhkJ/NZqwT3yYSie96vT6PRqN7QgCKyHpat/ps4FwuR7VaLdN+5JleryfsdrsrQgDWjICrkFzt1OJTBcbjcZqw5d4ArxIKDec2tJHSoMQ1RiygtKZxqYU+lGWZ8ZJb0+k0RRALNKZJUMvlkvGa2JIkxUngYWxNVNUbYy2KokmeSqUObCWDlKQURbGtfDQVIGEtZxjmx1j3++b6g1ItmUxaypw2HFpPehPxPK96tYzjuC9Sz6f1xm9VqTSWZT0pAOVWsQPHThtQAiW3wPl8XkYG4IAP5RUWH7gDUKdCh5wLjOp7qVQiNZhB4I3FAEdVrhtISw10mDhSoOvjGGUaJE8rXBOXeheg9ukEG+jo/L8uDRe8Lr0B6MD1Xc3vi+KvAAMAMUEG36eXLzcAAAAASUVORK5CYII=" alt="">
+    <img class="hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAeCAYAAADU8sWcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTAyRDZFQUZFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTAyRDZFQjBFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDJENkVBREU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDJENkVBRUU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlXiDkoAAAIdSURBVHjaxFfNasJAEN6sSkUIBOLBFktF0Junek+96wOU3tt76716tw/Q3msfQO8a8GhP3iKIpdJ6MBAIiEWE7shaos1m18SfD4ZFd2a/mc3szqyEBNHtdq/IAJKlsgmDSjufz7dF1pQESG/JcE1ERuL4JtIgTrz4IiekEN0TkVPkH+BEhTjx7jaJGcQlMtQDEiNq/0zX40dOFR/R7lElO9Bgku+ReIWyMxklB/EZGV55iTWbzUL9fl+xbftk9Z8syz+ZTMaKRqMLDrlN5IY48AU/wo6Jey9iINV1/XwwGKhu851OB6XTaVPTtE8PJ2TKU/6LnER9CYnBIh6Px7Fms5mdz+ch3r5GIpFFsVg0EonE1EPtDk7AKttLuyAGgB7og52HWsl51DSWVqvVuhAldjoAdh4qSz5Mt9z1W/d6PdWyrJiftAY7sGd9e+DFjHt6ieFwqAQ5Vxz7LPbK8NFoFIicYy+HRRaJx+NIVVVhUtM00WQy4ephdEQIRQ5RiESyLTC98lyRTCatIItz7G1Muw9XpFKpQOQcewPTQu8afS6XMxVFmfohBjuwZ0XtvF511iKFQuED7uttiEEf7DxUdGe2N1haUCCgUIg6IFhY6pv1vEa7U18lFSBQUhHtbstHbyYkl968tsd7Za2PW7vhaH9VPQQxs2/fQyP5j5j3aIA6X9nBo+GBEBtBnkulLZ2AxHrz/Vw6xEPxV4ABAB9p/+75XTbuAAAAAElFTkSuQmCC" alt="">
+
+    <nav class="outline features">
+      <h3>HTML5 Features</h3>
+      <ul>
+        <li class="offline">
+          <a href="http://master.html5rocks.appspot.com/en/features/offline" class="section_title offline">Offline</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/offline#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/offline#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/offline#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/offline#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/offline#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/offline#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="storage">
+          <a href="http://master.html5rocks.appspot.com/en/features/storage" class="section_title storage">Storage</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/storage#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/storage#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/storage#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/storage#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/storage#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/storage#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="connectivity">
+          <a href="http://master.html5rocks.appspot.com/en/features/connectivity" class="section_title connectivity">Connectivity</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/connectivity#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/connectivity#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/connectivity#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/connectivity#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/connectivity#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/connectivity#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="file_access">
+          <a href="http://master.html5rocks.appspot.com/en/features/file_access" class="section_title file_access">File Access</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/file_access#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/file_access#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/file_access#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/file_access#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/file_access#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/file_access#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="semantics">
+          <a href="http://master.html5rocks.appspot.com/en/features/semantics" class="section_title semantics">Semantics</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/semantics#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/semantics#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/semantics#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/semantics#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/semantics#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/semantics#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="multimedia">
+          <a href="http://master.html5rocks.appspot.com/en/features/multimedia" class="section_title multimedia">Audio/Video</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/multimedia#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/multimedia#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/multimedia#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/multimedia#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/multimedia#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/multimedia#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="graphics">
+          <a href="http://master.html5rocks.appspot.com/en/features/graphics" class="section_title graphics">3D/Graphics</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/graphics#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/graphics#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/graphics#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/graphics#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/graphics#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/graphics#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="presentation">
+          <a href="http://master.html5rocks.appspot.com/en/features/presentation" class="section_title presentation">Presentation</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/presentation#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/presentation#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/presentation#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/presentation#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/presentation#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/presentation#resources">Resources</a></li>
+          </ul>
+        </li>
+        <li class="performance">
+          <a href="http://master.html5rocks.appspot.com/en/features/performance" class="section_title performance">Performance</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/performance#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/performance#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/performance#themes">Themes</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/performance#technologies">Technologies</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/performance#techniques">Techniques</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/performance#tools">Tools</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/performance#further_reading">Further Reading</a></li>
+          </ul>
+        </li>
+        <li class="nuts_and_bolts">
+          <a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts" class="section_title nuts_and_bolts">Nuts &amp; Bolts</a>
+          <ul>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts#intro">Intro</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts#support">Browser Support</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts#updates">What’s New</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts#demos">Demos</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts#in_the_wild">In the Wild</a></li>
+            <li><a href="http://master.html5rocks.appspot.com/en/features/nuts_and_bolts#resources">Resources</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="page current loaded" id="tutorials-filters-understanding-css">
+    
+  <header class="tutorial clearfix pattern-bg-lighter">
+    
+    <hgroup>
+      <h1>HTML5 Rocks</h1>
+      <h2><a href="http://master.html5rocks.appspot.com/en/tutorials/">Tutorials</a></h2>
+    </hgroup>
+    
+
+    <section>
+      <h1>UNDERSTANDING CSS FILTER EFFECTS</h1>
+
+      <section class="byline">
+        <a href="http://master.html5rocks.appspot.com/profiles/#"><img src="./css-filters_files/75.png" itemprop="photo" alt=" " title=" "></a>
+        <hgroup>
+          <h2>
+            By <strong><a href="http://master.html5rocks.appspot.com/profiles/#"> </a></strong>
+            
+          </h2>
+        </hgroup>
+        <div class="date">
+          <time pubdate="">Published <strong></strong></time>
+          
+        </div>
+      </section>
+
+      
+      <aside id="html5badge">
+        <a href="http://www.w3.org/html/logo/">
+        
+<img src="./css-filters_files/html5-badge-h-css3-graphics.png" width="165" height="64" alt="This article is powered by HTML5 CSS3 / Styling, and Graphics Effects" title="This article is powered by HTML5 CSS3 / Styling, and Graphics Effects">
+
+        </a>
+      </aside>
+      
+
+      <section class="browser_support">
+          <h2>Supported browsers:</h2>
+          <span class="browsers">
+            <span class="browser opera ">
+              <span class="browser_name">Opera</span>
+              <span class="support">
+                
+                  unsupported
+                
+              </span>
+            </span>
+            <span class="browser ie ">
+              <span class="browser_name">Internet Explorer</span>
+              <span class="support">
+                
+                  unsupported
+                
+              </span>
+            </span>
+            <span class="browser safari ">
+              <span class="browser_name">Safari</span>
+              <span class="support">
+                
+                  unsupported
+                
+              </span>
+            </span>
+            <span class="browser ff ">
+              <span class="browser_name">Firefox</span>
+              <span class="support">
+                
+                  unsupported
+                
+              </span>
+            </span>
+            <span class="browser chrome ">
+              <span class="browser_name">Chrome</span>
+              <span class="support">
+                
+                  unsupported
+                
+              </span>
+            </span>
+          </span>
+
+          <div class="compatible-block">
+            <p id="notcompatible" class="hidden">
+              
+              Your browser may not support all of the functionality in this article.
+              
+            </p>
+            <p id="compatible" class="hidden">
+              
+              Your browser appears to support all of the functionality in this article.
+              
+            </p>
+          </div>
+      </section>
+
+      
+      <a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#disqus_thread" data-disqus-identifier="http://master.html5rocks.appspot.com/tutorials/filters/understanding-css/" class="disqus_comments">0 Comments and 0 Reactions</a>
+    </section>
+
+    <span class="share" style="display: block; ">
+      <ul>
+        <li class="googleplus"><div id="___plusone_0" style="height: 20px; width: 90px; display: inline-block; text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; "><iframe allowtransparency="true" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; height: 20px; left: 0px; visibility: visible; " tabindex="0" vspace="0" width="100%" id="I0_1338249261439" name="I0_1338249261439" src="./css-filters_files/fastbutton.html" title="+1"></iframe></div></li>
+        <li class="facebook" data-url="http://master.html5rocks.appspot.com/tutorials/filters/understanding-css/"><iframe src="./css-filters_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true"></iframe></li>
+        <li class="twitter"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="./css-filters_files/tweet_button.1337330192.html" class="twitter-share-button twitter-count-horizontal" style="width: 107px; height: 20px; " title="Twitter Tweet Button"></iframe></li>
+      </ul>
+    </span>
+    
+  </header>
+
+  
+
+  <article class="tutorial pattern-bg-lighter">
+    <div class="outline_nav_toggle">
+      <img class="show" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAeCAYAAADU8sWcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTAyRDZFQUJFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTAyRDZFQUNFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDJENkVBOUU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDJENkVBQUU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pprl4SwAAAIcSURBVHjazFfNasJAEI6ptiIGBCUQbfAWxWu96EUfwAY8tg+gD1A8F+99gfoA9ijoA9he9GKvIt5EMRJyEFKKDQidlaSIyW5iYkgHhiyZzX4zk/nbEOWAJpNJGh4V4DudGYttn8Bz4EGxWJw7OTfkALQBXKPOIwTeASXeXYEDcEMH9kLIG21QYu0IHECRS1+BBeoypAI3rX4F7TMwpcdHF86uEsF9AD6mZ1BAsHQ7CJ7g8WB3wmazia1Wq7imaWHjXSaTUbPZrOpAAQn4EX6B+geuR3Wf9NVisWBGo9HtdruNWckjkci+UCjI5XJ5baMAyoLOMfgLPKq43cPhkJ/NZqwT3yYSie96vT6PRqN7QgCKyHpat/ps4FwuR7VaLdN+5JleryfsdrsrQgDWjICrkFzt1OJTBcbjcZqw5d4ArxIKDec2tJHSoMQ1RiygtKZxqYU+lGWZ8ZJb0+k0RRALNKZJUMvlkvGa2JIkxUngYWxNVNUbYy2KokmeSqUObCWDlKQURbGtfDQVIGEtZxjmx1j3++b6g1ItmUxaypw2HFpPehPxPK96tYzjuC9Sz6f1xm9VqTSWZT0pAOVWsQPHThtQAiW3wPl8XkYG4IAP5RUWH7gDUKdCh5wLjOp7qVQiNZhB4I3FAEdVrhtISw10mDhSoOvjGGUaJE8rXBOXeheg9ukEG+jo/L8uDRe8Lr0B6MD1Xc3vi+KvAAMAMUEG36eXLzcAAAAASUVORK5CYII=">
+      <img class="hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAeCAYAAADU8sWcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTAyRDZFQUZFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTAyRDZFQjBFOEVFMTFFMDg2NkJGNDlCNjE5NENEMzIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDJENkVBREU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDJENkVBRUU4RUUxMUUwODY2QkY0OUI2MTk0Q0QzMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlXiDkoAAAIdSURBVHjaxFfNasJAEN6sSkUIBOLBFktF0Junek+96wOU3tt76716tw/Q3msfQO8a8GhP3iKIpdJ6MBAIiEWE7shaos1m18SfD4ZFd2a/mc3szqyEBNHtdq/IAJKlsgmDSjufz7dF1pQESG/JcE1ERuL4JtIgTrz4IiekEN0TkVPkH+BEhTjx7jaJGcQlMtQDEiNq/0zX40dOFR/R7lElO9Bgku+ReIWyMxklB/EZGV55iTWbzUL9fl+xbftk9Z8syz+ZTMaKRqMLDrlN5IY48AU/wo6Jey9iINV1/XwwGKhu851OB6XTaVPTtE8PJ2TKU/6LnER9CYnBIh6Px7Fms5mdz+ch3r5GIpFFsVg0EonE1EPtDk7AKttLuyAGgB7og52HWsl51DSWVqvVuhAldjoAdh4qSz5Mt9z1W/d6PdWyrJiftAY7sGd9e+DFjHt6ieFwqAQ5Vxz7LPbK8NFoFIicYy+HRRaJx+NIVVVhUtM00WQy4ephdEQIRQ5RiESyLTC98lyRTCatIItz7G1Muw9XpFKpQOQcewPTQu8afS6XMxVFmfohBjuwZ0XtvF511iKFQuED7uttiEEf7DxUdGe2N1haUCCgUIg6IFhY6pv1vEa7U18lFSBQUhHtbstHbyYkl968tsd7Za2PW7vhaH9VPQQxs2/fQyP5j5j3aIA6X9nBo+GBEBtBnkulLZ2AxHrz/Vw6xEPxV4ABAB9p/+75XTbuAAAAAElFTkSuQmCC">
+
+      <nav class="outline toc pattern-bg-lighter">
+        <h3>Table of Contents</h3>
+
+        <ul><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-introduction" onclick="$.scrollTo(&quot;#toc-introduction&quot;, 800, {offset: {top: -35}})">Introduction</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-history" onclick="$.scrollTo(&quot;#toc-history&quot;, 800, {offset: {top: -35}})">The past, present and future of filter effects</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-newlife" onclick="$.scrollTo(&quot;#toc-newlife&quot;, 800, {offset: {top: -35}})">A new life for the ‘filter’ CSS property</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-how" onclick="$.scrollTo(&quot;#toc-how&quot;, 800, {offset: {top: -35}})">How filters work</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-svgandcss" onclick="$.scrollTo(&quot;#toc-svgandcss&quot;, 800, {offset: {top: -35}})">Filters defined using SVG and CSS</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-howto" onclick="$.scrollTo(&quot;#toc-howto&quot;, 800, {offset: {top: -35}})">How to apply a CSS filter</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-what" onclick="$.scrollTo(&quot;#toc-what&quot;, 800, {offset: {top: -35}})">What filters effects are available using CSS</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-performance" onclick="$.scrollTo(&quot;#toc-performance&quot;, 800, {offset: {top: -35}})">Performance considerations</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-availability" onclick="$.scrollTo(&quot;#toc-availability&quot;, 800, {offset: {top: -35}})">Availability in modern browsers</a></li><li><a href="http://master.html5rocks.appspot.com/en/tutorials/filters/understanding-css/#toc-otherresources" onclick="$.scrollTo(&quot;#toc-otherresources&quot;, 800, {offset: {top: -35}})">Other good resources</a></li></ul>
+        
+      </nav>
+    </div>
+    <section>
+    
+  <p class="notice" style="text-align:center">
+<strong>Caution:</strong> This article discusses APIs that are not yet fully standardized
+and still in flux. Be cautious when using experimental APIs in your own projects.
+</p>
+
+
+  <div><figure><img src="./css-filters_files/lens.jpg"></figure></div>
+  <h2 id="toc-introduction">Introduction</h2>
+  <p>Filters are a powerful tool that web authors can use to achieve interesting visual effects. In this article we’ll cover the history of filter effects, what they do and how to use them. We’ll cover examples of all the predefined filters defined for CSS with some examples. We’ll also cover performance considerations for using them on desktop and mobile devices since knowing the speed impact of filters is important for a good user experience. Finally we’ll review the current state of implementation in modern browsers.
+  </p>
+<h2 id="toc-history">The past, present and future of filter effects</h2>
+<p>
+Filter effects originated as part of the Scalable Vector Graphics (SVG) specification. They were created to apply a number of different pixel based image effects to a vector drawing. Over time as browser vendors included SVG capabilities into their browsers, the usefulness of filters became evident. Robert O’Callahan from Mozilla came up with
+<a href="http://robert.ocallahan.org/2008/06/applying-svg-effects-to-html-content_04.html">the idea</a> of using SVG filters through application of CSS onto ‘normal’ HTML content. This was a brilliant idea and he prototyped an early version that showed how powerful the combination of filters and CSS styling could be. The CSS and SVG working groups in the W3C decided to harmonize the use of filters for both HTML and SVG via CSS styling and thus the ‘filter’ property for CSS was born. Right now there is a ton of work being done to make filters universally useful by a joint task force of people working on CSS and SVG. You can find the current specification for all this stuff
+<a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">here</a>.
+</p>
+<h2 id="toc-newlife">A new life for the ‘filter’ CSS property</h2>
+<p>
+Deja Vu sometimes strikes a web developer when seeing ‘filter’ in CSS styles. This is due to the fact that old versions of Internet Explorer had a ‘filter’ property exposed via CSS to perform some platform specific functionality. This has been <a href="http://www.fred.net/dhark/demos/css/css_filter_examples.html">deprecated</a>
+ in favor of the standard ‘filter’ property which is now part of CSS3. So when you see ‘filter’ out in the wild on some old web pages, there’s no need to be confused. The new ‘filter’ property is where all the action is, and new versions of IE are implementing it just the same as all modern browsers.
+
+</p><h2 id="toc-how">How filters work</h2>
+<p>
+So what does a filter do exactly? The easiest way to think of a filter is as a post processing step that does something magical after all your page content has been laid out and drawn.
+</p>
+<p>
+When a browser loads a web page it needs to apply styles, perform layout and then render the page so there’s something to look at. Filters kick in after all those steps and just before the page is copied to the screen. What they do is take a snapshot of the rendered page as a bitmap image, then perform some graphics magic on the pixels in the snapshot and then draw the result over the top of the original page image. One way to think of them is like a filter placed on the front of a camera lens. What you’re seeing through the lens is the outside world modified by the effect of the filter.
+</p>
+<p>
+This of course means that there’s time consumed when drawing a page with filters on it, but using them properly will have minimal impact on the speed of your site.
+</p>
+<p>
+Also, just as you can screw a number of filters in front of each other on your camera lens, you can apply an arbitrary number of filters one after the other to achieve all sorts of effects.
+</p>
+<h2 id="toc-svgandcss">Filters defined using SVG and CSS</h2>
+<p>
+Since filters originally came from SVG there are different ways to define and use them. SVG itself has a <filter> element that wraps up definitions of various filter effects using XML syntax. The set of filters defined by CSS take advantage of the same graphics model, but they are much simpler definitions that are easy to use in a style sheet.
+</filter></p>
+<p>
+Most of the CSS filters can be expressed in terms of SVG filters, and CSS also allows you to reference a filter specified in SVG if you want. The CSS filter designers have taken great pains to make the application of a filter easier for web authors, and so this article will just cover the filters available directly from CSS, ignoring the SVG definitions for the time being.
+</p>
+<h2 id="toc-howto">How to apply a CSS filter</h2>
+<div class="notice">
+  <p>
+Note: The description and examples below use the official W3C syntax that will be available in all modern browsers eventually. To use filters now, you need to use the vendor prefixed version of the ‘filter’ property. But don’t worry there’s an easy way to handle that at the end of this article.
+  </p>
+</div>
+<p>
+Using filters from CSS is done by using the ‘filter’ property applied to any visible element on your web page. For a very simple example you could write something like
+</p>
+<pre class="prettyprint"><span class="pln">	</span><code><span class="pln">div </span><span class="pun">{</span><span class="pln"> </span><a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#including_a_mixin" id="tooltip3.9" target="_blank" data-tooltip="/*Vendor prefixes required. Try Compass/SASS.*/
+-webkit-filter: ...
+   -moz-filter: ...
+    -ms-filter: ...
+     -o-filter: ...
+        filter: ..." role="tooltip" aria-describedby="tooltip3.9" class="noexternal tooltip"><span class="pun">+</span><span class="property"><span class="pln">filter</span><span class="pun">:</span></span><span class="pln"> grayscale</span><span class="pun">(</span><span class="lit">100</span><span class="pun">%);</span></a><span class="pln"> </span><span class="pun">}</span></code>
+</pre>
+<p>
+and that would make the content inside all &lt;div&gt; elements on the page turn gray. Great for making your page look like a TV image from the 1940s.
+</p>
+<p>
+	</p><figure style="display:inline-block">
+	  <img src="./css-filters_files/pencil.jpg">
+	  <figcaption>Original image.</figcaption>
+	</figure>
+	<figure style="display:inline-block">
+	  <img src="./css-filters_files/gray.jpg">
+	  <figcaption>Grayscale filtered image.</figcaption>
+	</figure>
+<p></p>
+<p>
+Most filters take some form of parameter to control how much filtering is done. So for example if you wanted to style your content to be half way between the original color and a grayscale version you’d do it like this:
+</p>
+<pre class="prettyprint"><span class="pln">	</span><code><span class="pln">div </span><span class="pun">{</span><span class="pln"> </span><a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#including_a_mixin" id="tooltip3.9" target="_blank" data-tooltip="/*Vendor prefixes required. Try Compass/SASS.*/
+-webkit-filter: ...
+   -moz-filter: ...
+    -ms-filter: ...
+     -o-filter: ...
+        filter: ..." role="tooltip" aria-describedby="tooltip3.9" class="noexternal tooltip"><span class="pun">+</span><span class="property"><span class="pln">filter</span><span class="pun">:</span></span><span class="pln"> grayscale</span><span class="pun">(</span><span class="lit">50</span><span class="pun">%);</span></a><span class="pln"> </span><span class="pun">}</span></code>
+</pre>
+<p>
+	</p><figure>
+	  <img src="./css-filters_files/gray50.jpg">
+	  <figcaption>Original image above but 50% gray filtered.</figcaption>
+	</figure>
+<p>
+If you want to apply a number of different filters one after another, it’s easy - just place them in order in your CSS like so:
+</p>
+<pre class="prettyprint"><span class="pln">	</span><code><span class="pln">div </span><span class="pun">{</span><span class="pln"> </span><a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#including_a_mixin" id="tooltip3.9" target="_blank" data-tooltip="/*Vendor prefixes required. Try Compass/SASS.*/
+-webkit-filter: ...
+   -moz-filter: ...
+    -ms-filter: ...
+     -o-filter: ...
+        filter: ..." role="tooltip" aria-describedby="tooltip3.9" class="noexternal tooltip"><span class="pun">+</span><span class="property"><span class="pln">filter</span><span class="pun">:</span></span><span class="pln"> grayscale</span><span class="pun">(</span><span class="lit">100</span><span class="pun">%)</span><span class="pln"> sepia</span><span class="pun">(</span><span class="lit">100</span><span class="pun">%);</span></a><span class="pln"> </span><span class="pun">}</span></code>
+</pre>
+<p>
+That example will first make all the original color grayscale and then apply a sepia effect, and would end up looking like:</p>
+<p></p>
+<p>
+	  </p><figure><img src="./css-filters_files/graysepia.jpg"></figure>
+<p></p>
+<p>
+With the flexibility available for applying filters one after the other, all sorts of effects can be achieved - it’s totally up to your imagination to experiment with creating amazing results.
+</p>
+<h2 id="toc-what">What filters effects are available using CSS</h2>
+<p>
+So the original SVG filter mechanism is both powerful but at the same time can be daunting to use. Because of that, CSS introduces a bunch of standard filter effects that make using them really easy.
+</p>
+<p>
+Let’s take a look at each of them and see what they do.
+</p>
+<dl>
+  <dt>grayscale(amount)</dt>
+	<dd>
+		<p>
+		This converts color in our input image to a shade of gray. The ‘amount’ applied controls how much gray conversion is applied. If it’s 100% then everything will be a shade of gray, if it’s 0% the colors are unchanged. You can use a floating point number here if you prefer it over percentages, i.e. 0 works the same as 0% whilst 1.0 works the same as 100%.
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/boatonlake.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/boatonlakegray.jpg">
+			  <figcaption>grayscale(100%)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+  <dt>sepia(amount)</dt>
+	<dd>
+		<p>
+		This gives the colors passed in a sepia tinge like in old photographs. The ‘amount’ applied works in the same way as for the ‘grayscale’ filter - namely 100% makes all the colors completely sepia toned and smaller values allow the effect to be applied in smaller proportions.
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/lenna.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/lennasepia.jpg">
+			  <figcaption>sepia(100%)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>saturate(amount)</dt>
+	<dd>
+		<p>
+		This applies a color saturation effect to the colors which makes them look more vivid. It’s a cool effect that can make photos look like posters or cartoons.This effect also allows you to use a value greater than 100% to really emphasize the saturation. Definitely an effect that can make things look pretty funky!
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/tiffany.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/tiffanysaturate.jpg">
+			  <figcaption>saturate(10)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>hue-rotate(angle)</dt>
+	<dd>
+		<p>
+		This one is a bit of a color geek effect that can be used for interesting results. What it does is shift the colors around to make an input image look completely different. If you can imagine a color spectrum going from red to violet wrapped around a tube, then this effect takes the original color on the tube as input and rotates it by the ‘angle’ parameter and chooses the color on the tube where it rotated to as the output color value. So all the colors in the image are shifted by the same amount on this imaginary tube. This is of course a real simplification of what it does, but hopefully close enough that it makes sense.
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/mandrill.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/mandrillhue-rotate.jpg">
+			  <figcaption>hue-rotate(90deg)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>invert(amount)</dt>
+	<dd>
+		<p>
+		This effect flips the colors - so that if the ‘amount’ applied is 100% the output looks like a photo negative back from the old film days of cameras! Just like before, using values smaller than 100% will progressively apply the invert effect.
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/peppers.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/peppersinvert.jpg">
+			  <figcaption>invert(100%)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>opacity(amount)</dt>
+	<dd>
+		<p>
+		If you want the content being filtered to look semi-transparent, this is the one for you. The ‘amount’ value defines how opaque the output will be. So a value of 100% is completely opaque so the output will be exactly the same as the input. As the value drops below 100% the output image will become less opaque (more transparent) and you’ll see less and less of it. This of course means if it overlaps something else on the page, the stuff underneath will start to become visible. An ‘amount’ of 0% means it will completely disappear - but note, you can still get events like mouse clicks etc. to happen on completely transparent objects so this is handy if you want to create clickable areas without displaying anything.
+		</p>
+		<p>
+		This works the same as the ‘opacity’ property you already know. In general the CSS ‘opacity’ property isn’t hardware accelerated, but some browsers that implement filters using hardware acceleration will accelerate the filter version of opacity for much better performance.
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/splash.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/splashopacity50.jpg">
+			  <figcaption>opacity(50%)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>brightness(amount)</dt>
+	<dd>
+		<p>
+		This is just like the brightness control on your TV. It adjusts the colors between completely black and the original color in proportion to the ‘amount’ parameter. If you set this one to 0% you’ll see nothing but black, but as the value goes up towards 100% you see more and more of the original image brightening up, until you hit 100% where it’s the same as the input image. Of course you can just keep going - so setting something like 200% will make the image twice as bright as the original - great for adjusting those low light shots!
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/boatonlake.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/boatonlakebright.jpg">
+			  <figcaption>brightness(140%)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>contrast(amount)</dt>
+	<dd>
+		<p>
+		More controls from your TV set! This will adjust the difference between the darkest and lightest parts of the input image. If you use 0% you end up with black just like with ‘brightness’, so not too interesting. However if you change the value up towards 100% the difference in darkness changes up to when you hit 100% and it’s the original image again. You can also go beyond 100% for this effect too, which increases the difference between light and dark colors even more.
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/jellybeans.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/jellybeancontrast.jpg">
+			  <figcaption>contrast(200%)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>blur(radius)</dt>
+	<dd>
+		<p>
+		If you want a soft edge for your content, you can add a blur. This one looks like the classic Vaseline on a sheet of glass look that used to be a popular movie making technique. It smudges all the colors together and spreads their effect out - kind of like when your eyes are out of focus. The ‘radius’ parameter affects how many pixels on the screen blend into each other, so a larger value will create more blur. 0 of course leaves the image unchanged.
+		</p>
+		<p>
+			</p><figure style="display:inline-block">
+			  <img src="./css-filters_files/peppers.jpg">
+			  <figcaption>Original</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/peppersblur.jpg">
+			  <figcaption>blur(10px)</figcaption>
+			</figure>
+		<p></p>
+	</dd>
+
+	<dt>drop-shadow(shadow)</dt>
+	<dd>
+		<p>
+		It’s so nice to be able to make your content look like it’s outside in the sun with a nice shadow on the ground behind it, and that of course is what ‘drop-shadow’  does. It takes a snapshot of the image, makes it a single color, blurs it, then offsets the result a bit so it looks like a shadow of the original content. The ‘shadow’ parameter passed in is a bit more complicated than just a single value. It is a series of values separated by a space - and some values are optional too! The ‘shadow’ values control where the shadow is placed, how much blur is applied, the color of the shadow, etc. You can also control if the shadow is ‘inset’ into the original, as shown in the example below. For full details of what the ‘shadow’ values do, the <a href="http://www.w3.org/TR/css3-background/#the-box-shadow">CSS3 Backgrounds</a> specification defines ‘box-shadow’ in great detail. A few examples below should give you a decent idea of what the various possibilities are.
+		</p>
+		<p>
+			</p><figure>
+			  <img width="500" src="./css-filters_files/inset.jpg">
+			  <figcaption>filter: drop-shadow(inset 0 0 2rm blue);</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/mandrilldrop1.jpg">
+			  <figcaption>drop-shadow(16px 16px 20px black)</figcaption>
+			</figure>
+			<figure style="display:inline-block">
+			  <img src="./css-filters_files/mandrillshadow2.jpg">
+			  <figcaption>drop-shadow(10px -16px 30px purple)</figcaption>
+			</figure>
+		<p></p>
+		<p>
+			This is another filter operation that is similar to existing CSS functionality available via the ‘box-shadow’ property. Using the filter approach means that it may get hardware accelerated by some browsers as we described for the ‘opacity’ operation above.
+		</p>
+	</dd>
+
+	<dt>url referencing SVG filters</dt>
+	<dd>
+		<p>
+		Since filters originated as part of SVG, it’s only logical that you should be able to style your content using an SVG filter. This is easy with the current ‘filter’ property proposal. All filters in SVG are defined with an ‘id’ attribute that can be used to reference the filter effect. So, to use any SVG filter from CSS all you need to do is reference it using the ‘url’ syntax.
+		</p>
+
+		<p>
+	For example, the SVG markup for a filter could be something like:
+		</p>
+
+	<pre class="prettyprint"><span class="pln">	</span><code><span class="tag">&lt;filter</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">”foo”</span><span class="tag">&gt;</span><span class="pln">...</span><span class="tag">&lt;/filter&gt;</span></code></pre>
+
+	then from CSS you could do something as simple as:
+
+	<pre class="prettyprint"><span class="pln">	</span><code><span class="pln">div </span><span class="pun">{</span><span class="pln"> </span><a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#including_a_mixin" id="tooltip3.9" target="_blank" data-tooltip="/*Vendor prefixes required. Try Compass/SASS.*/
+-webkit-filter: ...
+   -moz-filter: ...
+    -ms-filter: ...
+     -o-filter: ...
+        filter: ..." role="tooltip" aria-describedby="tooltip3.9" class="noexternal tooltip"><span class="pun">+</span><span class="property"><span class="pln">filter</span><span class="pun">:</span></span><span class="pln"> url</span><span class="pun">(</span><span class="com">#foo);</span></a><span class="com"> }</span></code></pre>
+	<p>
+	and voila! All the &lt;div&gt;s in your document will be styled with the SVG filter definitions.
+	</p>
+	</dd>
+
+	<dt>custom (coming soon)</dt>
+	<dd>
+		<p>
+		Coming soon on the horizon are custom filters. These tap into the power of your graphics GPU to use a <a href="http://www.adobe.com/devnet/html5/articles/css-shaders.html">special shading</a> language to perform amazing effects bounded only by your own imagination. This part of the ‘filter’ specification is still under discussion and in flux, but as soon as this starts to come to a browser near you, we’ll be sure to write more about what is possible.
+		</p>
+	</dd>
+
+</dl>
+
+<h2 id="toc-performance">Performance considerations</h2>
+<p>
+One thing that every web developer cares about is performance of their web page or application. CSS filters are both powerful as a tool for visual effects but at the same time might have impact on the performance of your site.
+</p>
+<p>
+Understanding what they do and how this affects performance matters, especially if you want your site to work well on mobile devices if they support CSS filters.
+</p>
+<p>
+Firstly, not all filters are created equal! In fact, most filters will run really quickly on any platform and have very minor performance impact. However, filters that do any kind of blurring tend to be slower than the others. This of course means ‘blur’ and ‘drop-shadow’. This doesn’t mean you shouldn’t use them but understanding how they work might help.
+</p>
+<p>
+
+When you do a ‘blur’, it mixes the colors from pixels all around the output pixel to generate a blurred result. So, say if your ‘radius’ parameter is 2, then the filter needs to look at 2 pixels in every direction around each output pixel to generate the mixed color. This happens for each output pixel, so that means a lot of calculations that just get bigger when you increase the ‘radius’. Since ‘blur’ looks in every direction, doubling the ‘radius’ means you need to look at 4 times as many pixels so in fact it’s 4 times slower for each doubling of the ‘radius’. The ‘drop-shadow’ filter contains a ‘blur’ as part of its effect, so it too behaves just like ‘blur’ when you change the ‘radius’ and ‘spread’ parts of the ‘shadow’ parameter.
+</p>
+<p>
+
+All is not lost with ‘blur’ since on some platforms it’s possible to use the GPU to accelerate it, but that’s not necessarily going to be available in every browser. When in doubt the best thing is to experiment with the ‘radius’ that gives you the effect you want, then try to reduce it as much as possible while still maintaining an acceptable visual effect. Tuning this way will make your users happier especially if they use your site from a phone.
+</p>
+<p>
+
+If you’re using ‘url’ based filters that reference SVG filters, they can contain any arbitrary filter effect so be aware that they too could be slow, so try to make sure you know what the filter effect does and experiment on a mobile device to make sure the performance is OK.
+</p>
+
+<h2 id="toc-availability">Availability in modern browsers</h2>
+<p>
+Right now a number of the CSS ‘filter’ effects are being made available in WebKit based browsers and Mozilla. We expect to see them soon in Opera as well as IE10. As the specification is still under development, some browser vendors have implemented this stuff using vendor prefixes. So in WebKit you need to use ‘-webkit-filter’, in Mozilla you need to use ‘filter’ and keep your eye out for other browser implementations as they appear.
+</p>
+<p>
+
+Right now not all browsers support all filter effects so your mileage will vary.
+</p>
+<p>
+
+We’ve summarized the CSS filter effects available in the various browsers below with rough performance indicators for when they’re implemented in software. Note, that a number of modern browsers are beginning to implement these in hardware (GPU accelerated). When these are built with GPU support, performance will be greatly improved for the slower effects. As usual, testing on different browsers is the best way to evaluate the performance.
+</p>
+<table border="1px">
+<tbody><tr><th>Filter effect</th><th>Browser support</th><th>Performance</th></tr>
+<tr><td><div class="perf">grayscale</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">very fast</div></td></tr>
+<tr><td><div class="perf">sepia</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">very fast</div></td></tr>
+<tr><td><div class="perf">saturate</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">very fast</div></td></tr>
+<tr><td><div class="perf">hue-rotate</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">fast</div></td></tr>
+<tr><td><div class="perf">invert</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">very fast</div></td></tr>
+<tr><td><div class="perf">opacity</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">can be slow</div></td></tr>
+<tr><td><div class="perf">brightness</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">fast</div></td></tr>
+<tr><td><div class="perf">contrast</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">fast</div></td></tr>
+<tr><td><div class="perf">blur</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">slow unless accelerated</div></td></tr>
+<tr><td><div class="perf">drop-shadow</div></td><td><div class="perf">Chrome</div></td><td><div class="perf">can be slow</div></td></tr>
+<tr><td><div class="perf">url()</div></td><td><div class="perf">Mozilla</div></td><td><div class="perf">Varies, fast to slow</div></td></tr>
+</tbody></table>
+
+<h2 id="toc-otherresources">Other good resources</h2>
+
+<p>An awesome <a href="http://cssfilters.appspot.com/">interactive abstract painting with filters</a> application which lets you experiment and share your artwork</p>
+<p>Be sure to check out Eric Bidelman’s excellent <a href="http://html5-demos.appspot.com/static/css/filters/index.html">interactive filter</a> page</p>
+<p>A great <a href="http://net.tutsplus.com/tutorials/html-css-techniques/say-hello-to-css3-filters/">tutorial about filters</a> with examples</p>
+<p>The official W3C Filter Effects 1.0 draft specification <a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html</a></p>
+<p>Example <a href="http://lab.simurai.com/stars/#bruno">UI created using filters</a></p>
+
+
+    </section>
+  </article>
+  
+
+<section class="cc pattern-bg-lighter">
+  <p>
+  
+    Except as otherwise <a href="http://code.google.com/policies.html#restrictions">noted</a>, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  
+  </p>
+</section>
+
+
+<section class="disqus pattern-bg-lighter">
+  <div id="disqus_thread"></div>
+  <noscript>
+    &lt;p class="center"&gt;
+      &lt;strong&gt;
+        &lt;a href="http://disqus.com/?ref_noscript"&gt;Please enable JavaScript to view the comments powered by Disqus.&lt;/a&gt;
+      &lt;/strong&gt;
+    &lt;/p&gt;
+  </noscript>
+
+  <script async="" src="./css-filters_files/plusone.js" gapi_processed="true"></script>
+  <script async="" src="./css-filters_files/prettify.min.js" onload="prettyPrint()"></script>
+  <script async="" src="./css-filters_files/widgets.js"></script>
+  <script>
+    var disqus_shortname = 'html5rocks';
+    var disqus_identifier = 'http://master.html5rocks.appspot.com/tutorials/filters/understanding-css/';
+    var disqus_url = 'http://master.html5rocks.appspot.com/tutorials/filters/understanding-css/';
+    var disqus_developer = 0;
+
+    var disqus_config = function () {
+      var funky_language_code_mapping = {
+        'de': 'de_inf',
+        'es': 'es_ES',
+        'pt': 'pt_EU',
+        'sr': 'sr_CYRL',
+        'sv': 'sv_SE',
+        'zh': 'zh_HANT'
+      };
+      this.language = funky_language_code_mapping['en'] ||
+                      'en';
+    };
+
+    window.addEventListener('load', function(e) {
+
+      var c = document.createElement('script'); c.type = 'text/javascript';
+      c.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+
+      var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+      sp.insertBefore(c, s); sp.insertBefore(dsq, s);
+
+    }, false);
+  </script>
+</section>
+
+
+
+
+  </div>
+
+<!--
+  <footer>
+    <span>
+      <a href="http://www.w3.org/html/logo/">
+        <img src="/static/images/identity/HTML5_Badge_64.png" align="left" title="HTML5 Logo" alt="HTML5 Logo" class="footer-badge"/>
+      </a>
+    </span>
+    <span>
+      <a href="/en/tos.html" >Terms</a> -
+      <a href="/en/privacy.html" >Privacy</a> -
+      <a href="http://code.google.com/p/html5rocks/issues/entry">Report bug or request a feature</a> -
+      <a href="http://twitter.com/ChromiumDev">Follow us on Twitter</a> -
+      <a href="/en/profiles" >About Authors</a>
+    </span>
+    <span class="madeby">Made by Google| <img src="/static/images/google_logo_small.png" width="50" height="20" alt=""></span>
+    <p>This site contains information on APIs that are not part of the W3C HTML5 specification.</p>
+  </footer>
+-->
+
+  <script>
+
+  (function() {
+    
+
+    $('#features_show a').click(function() {
+      $('#search_hide').click(); // Hide search panel if it's out.
+
+      if ($(this).hasClass('current')) {
+        $('.subheader.features').hide();
+        $(this).removeClass('current');
+        $('.watermark').css('top', '30px');
+        $('#features_show a').focus();
+      } else {
+        $('.main nav .current').removeClass('current');
+        $(this).addClass('current');
+        $('.subheader.features').show();
+        $('.watermark').css('top', '100px');
+        $('#features').focus();
+      }
+      // don't apply hash
+      if (/#features$/.test(this.href)) return false;
+    });
+
+    $('#features_hide').click(function() {
+      $('#features_show').removeClass('current');
+      $('.subheader.features').hide();
+      $('.watermark').css('top', '30px');
+      $('#features_show a').focus();
+    });
+
+    // Check if new appcache is available.
+    if (window.applicationCache) {
+      window.applicationCache.addEventListener('updateready', function(e) {
+        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+          window.applicationCache.swapCache();
+          if (confirm('A new version of this site is available. Load it?')) {
+            window.location.reload();
+          }
+        }
+      }, false);
+    }
+
+    window.isCompatible = function() {
+      
+  return Modernizr.prefixed('filter') !== undefined;
+
+    };
+
+    if (isCompatible() === false) {
+      document.getElementById('notcompatible').className = '';
+    } else if (isCompatible() === true) {
+      document.getElementById('compatible').className = '';
+    }
+
+    // Kill feedburner and marketing tracking arguments cuz they're ugly.
+    if (/^\?utm_/.test(document.location.search) &&
+        window.history.replaceState) {
+      window.history.replaceState(
+          {}, '', document.location.href.replace(/\?utm_.*/, ''));
+    }
+
+    if ($(window).width() < '1200' && $(window).width() > '1000' && $('.toc').length) {
+      // Fix the TOC if our scroll position is below the top of the page.
+      var top = $('.toc').offset().top - 50;
+
+      $(window).scroll(function (event) {
+        // Get the position of the vertical scroll.
+        var y = $(this).scrollTop();
+
+        if (y >= top) {
+          $('.toc').addClass('fixed').removeClass('bottom');
+        } else {
+          $('.toc').removeClass('fixed').removeClass('bottom');
+        }
+      });
+    }
+  })();
+  </script>
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15028909-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  <!-- defer is unreliable in ie <= 9, but o well -->
+  <script defer="" src="./css-filters_files/app.min.js"></script>
+
+  <script defer="" src="./css-filters_files/search.min.js"></script>
+  <script defer="" src="./css-filters_files/3rdpartyinit.min.js"></script>
+
+
+</body></html>
