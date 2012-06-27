@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Measuring smoothness</title>
+    <style>
+      * {
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 18pt;
+        color: #797979;
+      }
+      img {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+      }
+      #item1 > * {
+        vertical-align: middle;
+      }
+      #item2 {
+        position: fixed;
+        left: 250px;
+        top: 70px;
+      }
+      button {
+        font-size: 130%;
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="chrome-logo.png" width="250">
+    <div id="item2">
+      <div style="width: 400px">
+      Intervals between frames, using requestAnimationFrame and window.performance.webkitNow():
+      </div>
+      <div>
+        <button id="jank3">Sleep for 100ms</button>
+      </div>
+    </div>
+    <script>
+      el = document.querySelector("img");
+      var rotation = 0;
+      var running = false;
+
+      function rotate() {
+        rotation += 180;
+        el.style.webkitTransform = "rotate(" + rotation + "deg)";
+      }
+      el.addEventListener("webkitTransitionEnd", function() {
+        if (running)
+          rotate();
+      });
+
+      function start() {
+        if (running)
+          return;
+        running = true;
+        rotate();
+      }
+
+      document.querySelector('img').addEventListener('click', function() {
+        setTimeout(function() { running = false; }, 30000);
+        start();
+      });
+
+      function sleep(ms) {
+        var start = Date.now();
+        while(Date.now() < start + ms);
+      }
+
+      document.querySelector('#jank3').addEventListener('click', function() {
+        setTimeout(function() {
+          sleep(100);
+        }, 0);
+      });
+
+      // start rotating
+      el.style.webkitTransition = "all 2s linear";
+      el.style.webkitTransform = "rotate(180deg)";
+      rotate();
+    </script>
+  </body>
+</html>
