@@ -33,10 +33,10 @@
     <img id="foo" src="chrome-logo.png" width="250">
     <div id="item2">
       <div style="width: 400px">
-      Intervals between frames, using requestAnimationFrame and window.performance.webkitNow():
+      CSS transition animations chained together via transitionEnd events.
       </div>
       <div>
-        <button id="jank3">Sleep for 60ms</button>
+        <button id="jank3">sleep(60ms)</button>
       </div>
     </div>
     <script>
@@ -61,7 +61,7 @@
       }
 
       document.querySelector('img').addEventListener('click', function() {
-        setTimeout(function() { running = false; }, 30000);
+        setTimeout(function() { running = false; }, 60000);
         start();
       });
 
@@ -77,9 +77,12 @@
       });
 
       // start rotating
-      el.style.webkitTransition = "all 2s linear";
-      el.style.webkitTransform = "rotate(180deg)";
-      rotate();
+      el.addEventListener('load', function() {
+        el.style.webkitTransition = "all 2s linear";
+        el.style.webkitTransform = "rotate(180deg)";
+        rotate();
+      });
+
     </script>
   </body>
 </html>
