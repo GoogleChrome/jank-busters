@@ -44,15 +44,6 @@
       var rotation = 0;
       var running = false;
 
-      function rotate() {
-        rotation += 180;
-        el.style.webkitTransform = "rotate(" + rotation + "deg)";
-      }
-      el.addEventListener("webkitTransitionEnd", function() {
-        if (running)
-          rotate();
-      });
-
       var intervals = [];
       for (var i = 0; i < 180; i++) {
         intervals.push(0);
@@ -102,12 +93,20 @@
       }
       var numFrames = 0;
       var lastTimestamp;
+      if (window.performance.webkitNow)
+        animStart = window.performance.webkitNow();
+      else
+        animStart = Date.now();
       function tick() {
         var now;
         if (window.performance.webkitNow)
           now = window.performance.webkitNow();
         else
           now = Date.now();
+
+        var amt = ((now - animStart) / 4000) % 4000;
+        var rotation = 360 * amt;
+        el.style.webkitTransform = "rotate(" + rotation + "deg)";
 
         if (lastTimestamp) {
           var i = (numFrames++) % intervals.length;
@@ -126,7 +125,6 @@
         if (running)
           return;
         running = true;
-        rotate();
         webkitRequestAnimationFrame(tick, document.querySelector('img'));
       }
 
@@ -169,11 +167,6 @@
           sleep(100);
         }, 0);
       });
-
-      // start rotating
-      el.style.webkitTransition = "all 2s linear";
-      el.style.webkitTransform = "rotate(180deg)";
-      rotate();
     </script>
   </body>
 </html>
