@@ -33,15 +33,11 @@
       <canvas id="canvas0" width="5000" height="40"></canvas>
     </div>
 
-    <div id="b" style="display:block">
+    <div id="c" style="display:block">
       <div class="label">
-        <label for="interval">setTimeout interval:</label>
-        <input id="interval" type="range" min="6" max="20" value="16" step="1"></input>
-        (<span id="cur-interval">xxx</span> ms)
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
+        <label>requestAnimationFrame:</label>
       </div>
-      <canvas id="canvas1" width="5000" height="60"></canvas>
+      <canvas id="canvas2" width="5000" height="60"></canvas>
     </div>
 
 <!--
@@ -99,12 +95,12 @@
         ctx0.clearRect(0, 0, w, h0);
 
 
-        var canvas1 = document.querySelector('#canvas1');
-        if (canvas1.width != canvas0.width)
-          canvas1.width = canvas0.width;
-        var h = canvas1.height;
-        var ctx = canvas1.getContext('2d');
-        ctx.clearRect(0, 0, w, h);
+        var canvas2 = document.querySelector('#canvas2');
+        if (canvas2.width != canvas0.width)
+          canvas2.width = canvas0.width;
+        var ctx2 = canvas2.getContext('2d');
+        var h = canvas2.height;
+        ctx2.clearRect(0, 0, w, h);
 
 
         var px_per_ms = 60 / (1000 / 60);
@@ -113,63 +109,28 @@
         var vsync_width = (1000 / cur_vsync) * px_per_ms;
 
         var N = Math.ceil(w / vsync_width);
-        var current_interval = document.querySelector('#interval').value;
-        document.querySelector('#cur-interval').textContent = current_interval;
-
-        var cur_interval_width = current_interval * px_per_ms;
-        var M = Math.ceil(w / cur_interval_width);
-
         for (var i = 0; i < N; i++)
           line(ctx0, i*vsync_width, 0, i*vsync_width, h, 'rgba(0,0,255,1.0)');
 
         for (var i = 0; i < N; i++)
-          line(ctx, i*vsync_width, 0, i*vsync_width, h, 'rgba(0,0,255,1.0)');
+          line(ctx2, i*vsync_width, 0, i*vsync_width, h, 'rgba(0,0,255,1.0)');
 
-        ctx.stroke();
-        ctx.fillStyle = 'rgba(0,0,0,1)';
-        ctx.textBaseline = 'top';
-        if (current_interval < 14)
-          ctx.font = '10px sans-serif';
-        else
-          ctx.font = '16px sans-serif';
-        //ctx.fillText('display refreshes', 0, 0);
-
-        //arrow(ctx,50,20, vsync_width * 1, 30, 'rgba(0,0,255,0.75)');
-        //arrow(ctx,50,20, vsync_width * 2, 30, 'rgba(0,0,255,0.75)');
-        //arrow(ctx,50,20, vsync_width * 5, 30, 'rgba(0,0,255,0.75)');
-
-        for (var i = 0; i < M; i++) {
-          var doneAt = (i+1)*cur_interval_width - 4;
+        for (var i = 0; i < N; i++) {
+          var doneAt = (i+1)*vsync_width - 4;
           var nearestVSync = Math.ceil(doneAt / vsync_width) * vsync_width;
 
-          var nextDoneAt = (i+2)*cur_interval_width - 4;
+          var nextDoneAt = (i+2)*vsync_width - 4;
           var nextNearestVSync = Math.ceil(nextDoneAt / vsync_width) * vsync_width;
 
-          var c;
-          if (nearestVSync == nextNearestVSync)
-            c = 'rgba(255, 0, 0, 0.75)';
-          else
-            c = 'rgba(0, 0, 0, 0.75)';
 
-          if (current_interval < 10.5)
-            suffix = ''
-          else
-            suffix = 'ms';
-          niceRect(ctx, i*cur_interval_width, 10, cur_interval_width - 3, 30, current_interval + suffix);
-          arrow(ctx, doneAt, 40, nearestVSync, 59, c);
-
-          if (nearestVSync == nextNearestVSync) {
-            ctx.lineWidth = 3;
-            line(ctx, i*cur_interval_width, 15, i*cur_interval_width + cur_interval_width - 4, 45, 'rgba(255, 0, 0, 0.75)');
-            line(ctx, i*cur_interval_width, 45, i*cur_interval_width + cur_interval_width - 4, 15, 'rgba(255, 0, 0, 0.75)');
-            ctx.lineWidth = 1;
-          }
+          niceRect(ctx2, i*vsync_width + 2, 10, vsync_width - 6, 30, 'raf');
+          arrow(ctx2, doneAt, 40, nearestVSync, 59, 'rgba(0,0,0,1)');
         }
+
       }
 
       redraw();
       document.querySelector('#display-refresh').addEventListener('change', redraw);
-      document.querySelector('#interval').addEventListener('change', redraw);
     </script>
   </body>
 </html>
