@@ -69,7 +69,8 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Frame Budget</h2>
+      <h2>Care and Feeding of Monitor</h2>
+      <h3>Keeping within your frame budget</h3>
     </hgroup>
     <article>
       <p>Your animation rate should match the refresh rate of your device:</p>
@@ -93,11 +94,27 @@ Authors:  Nat Duca <nduca@google.com>
 
   <slide>
     <hgroup>
-      <h2>Staying on Time, Every Time</h2>
-      <h3>setTimeout vs requestAnimationFrame</h3>
+      <h2>Do not use setTimeout</h2>
+      <h3>It will never be smooth</h3>
     </hgroup>
     <article>
-      <iframe src="examples/measuring-fps/raf_motivation.html" style="height: 460px"></iframe>
+      <iframe src="examples/measuring-fps/raf_motivation.html" style="height: 400px"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Staying on Time, Every Time</h2>
+      <h3>Use requestAnimationFrame</h3>
+    </hgroup>
+    <article>
+      <iframe src="examples/measuring-fps/raf.html" style="height: 250px"></iframe>
+      <pre class="prettyprint" data-lang="javascript">
+&lt;script type='text/javascript'&gt;
+  function animate(time) { }
+  requestAnimationFrame(animate);
+&lt;/script&gt;
+</pre>
     </article>
   </slide>
 
@@ -160,8 +177,7 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>Example Time!</h3>
     </hgroup>
     <article>
-      <iframe src="examples/measuring-fps/smooth_simple.html" style="height:300px;">
-      </iframe>
+      <a href="examples/measuring-fps/smooth_simple.html">Link</a>
     </article>
   </slide>
 
@@ -217,27 +233,36 @@ Authors:  Nat Duca <nduca@google.com>
     </hgroup>
     <article>
         <ul>
-          <li><i>What</i> was painted?
+          <li>What <i>element</i> is slow?
             <ul>
               <li>Set parts of the DOM to display:none</li>
               <li>Take a Timeline recording, <i>note paint times</i></li>
             </ul>
           </li>
-          <li><i>Why</i> was it painted?
+          <li>What <i>style</i> is slow?
             <ul>
-              <li>Scroll? Dirtied the DOM?</li>
-              <li>Can you avoid the invalidation?</li>
-            </ul>
-          </li>
-          <li><i>What took so long</i> to paint?
-            <ul>
-              <li>Disable CSS styles, note paint time changes</li>
+              <li>Pick an element, starting with big ones</li>
+              <li>Disable CSS styles, <i>note paint times</i></li>
             </ul>
           </li>
         </ul>
+        <br />
         <p><a href="examples/css-filters-fixes/css-filters-fixes.html">Fixed up example</a></p>
     </article>
   </slide>
+
+  <slide>
+    <hgroup>
+      <h2>about:tracing</h2>
+      <h3>Optimizing to the Metal</h3>
+    </hgroup>
+    <article>
+      <p>Sometimes you want to go further or you get stuck.</p>
+      <p>Turn to <a href="about:tracing">about:tracing</a>.</p>
+      <br />
+      <p><a href="http://www.chromium.org/developers/how-tos/trace-event-profiling-tool">Documentation is on dev.chromium.org</a></p>
+    </article>
+  </slide>  
 
   <slide>
     <hgroup>
@@ -247,32 +272,18 @@ Authors:  Nat Duca <nduca@google.com>
     <article>
       <p>We've highlighted a few current sources of jank, but browsers <b>evolve fast</b>.</p>
       <p>The <b>architectural best practices</b> are here to stay.</p>
+      <ul>
+        <li>requestAnimationFrame</li>
+        <li>CSS animations</li>
+      </ul>
       <p>But the <b>specifics of what's slow</b> might not be true six months from now.</p>
       <p><b>Use the tools</b> to hunt down jank when it appears.</p>
+      <ul>
+        <li>The Dev Tools Timeline</li>
+        <li>Bisecting slow CSS styles &amp; elements</li>
+      </ul>
     </article>
   </slide>
-
-  <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>about:tracing</h2>
-      <h3>Down the Rabbit Hole</h3>
-    </hgroup>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>about:tracing</h2>
-      <h3>For when you get really desparate</h3>
-    </hgroup>
-    <article>
-      <p>Sometimes you just can't figure out where the time is going.</p>
-      <p>When you get really desperate, you can turn to <a href="about:tracing">about:tracing</a>.</p>
-      <br />
-      <p><a href="http://www.chromium.org/developers/how-tos/trace-event-profiling-tool">Documentation is on dev.chromium.org</a></p>
-      <p>If you suspect Chrome has a bug, <a href="new.crbug.com">new.crbug.com</a></p>
-    </article>
-  </slide>  
 
   <slide>
     <hgroup>
