@@ -148,10 +148,20 @@ Authors:  Nat Duca <nduca@google.com>
     </hgroup>
     <article>
       <p>Most of what happens in a tab happens on <b>one thread</b>.</p>
-      <p>But it can run <i>some things</i> even when JS is busy. Like CSS animation!</p>
+      <p>But we can run <i>some things</i> even when JS is busy. Like CSS animation!</p>
       <br />
       <p>This is on Chrome for Android first, everywhere else soon.</p>
-      <p><a href="examples/css-animation/index-bad.html">requestAnimationFrame example</a>, <a href="examples/css-animation/index.html">CSS example</a></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Smooth Animation</h2>
+      <h3>Example Time!</h3>
+    </hgroup>
+    <article>
+      <iframe src="examples/measuring-fps/smooth_simple.html" style="height:300px;">
+      </iframe>
     </article>
   </slide>
 
@@ -172,6 +182,12 @@ Authors:  Nat Duca <nduca@google.com>
           <li>Better-timed, smoother-looking animations</li>
           <li>Better battery life</li>
           <li>More graceful degredation</li>
+        </ul>
+      </p>
+      <p>Great for:
+        <ul>
+          <li>UI substitution effects</li>
+          <li>Continuous animations</li>
         </ul>
       </p>
     </article>

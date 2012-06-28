@@ -3,66 +3,55 @@
   <head>
     <title>A (mostly) smooth page</title>
     <style>
-      body {
-        margin-top: 50px;
-      }
       * {
         font-family: 'Open Sans', Arial, sans-serif;
         font-size: 18pt;
         color: #797979;
       }
-      img {
-        position: fixed;
-        left: 0px;
-        top: 0px;
-      }
-      #item1 > * {
-        vertical-align: middle;
-      }
       #item2 {
         position: fixed;
-        left: 250px;
+        left: 280px;
         top: 70px;
       }
       button {
         font-size: 130%;
+      }
+      #foo {
+        -webkit-animation-duration: 3s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+      }
+
+      @-webkit-keyframes rotate {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
       }
     </style>
   </head>
   <body style="-webkit-transform:translateZ(0)">
     <img id="foo" src="chrome-logo.png" width="250">
     <div id="item2">
-      <div style="width: 400px">
-      CSS transition animations chained together via transitionEnd events.
+      <div style="width: 500px">
+        Rotation via CSS keyframe animation
       </div>
       <div>
         <button id="jank3">sleep(180ms)</button>
       </div>
     </div>
     <script>
-      el = document.querySelector("img");
-      var rotation = 0;
-      var running = false;
-
-      function rotate() {
-        rotation += 180;
-        el.style.webkitTransform = "rotate(" + rotation + "deg)";
-      }
-      el.addEventListener("webkitTransitionEnd", function() {
-        if (running)
-          rotate();
-      });
-
-      function start() {
-        if (running)
-          return;
-        running = true;
-        rotate();
-      }
-
+      
+      var rotating = false;
       document.querySelector('img').addEventListener('click', function() {
-        setTimeout(function() { running = false; }, 60000);
-        start();
+        var el = document.querySelector("img");
+        if(rotating) 
+          el.style.webkitAnimationName = "";
+        else
+          el.style.webkitAnimationName = "rotate";
+        rotating = !rotating;
       });
 
       function sleep(ms) {
@@ -74,13 +63,6 @@
         setTimeout(function() {
           sleep(180);
         }, 0);
-      });
-
-      // start rotating
-      el.addEventListener('load', function() {
-        el.style.webkitTransition = "all 2s linear";
-        el.style.webkitTransform = "rotate(180deg)";
-        rotate();
       });
 
     </script>
