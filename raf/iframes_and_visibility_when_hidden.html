@@ -23,8 +23,8 @@
       .bad {
         color: red;
       }
-      .meh {
-        color: rgb(64,64,64);
+      .dunno {
+        color: orange;
       }
       .pre {
         font-family: monospace;
@@ -45,32 +45,66 @@
           return w.msRequestAnimationFrame;
         return undefined;
       }
+      function getVisibilityState(d) {
+        d = d || window;
+        if (d.visibilityState)
+          return d.visibilityState;
+        if (d.webkitVisibilityState)
+          return d.webkitVisibilityState;
+        if (d.mozVisibilityState)
+          return d.mozVisibilityState;
+        if (d.oVisibilityState)
+          return d.oVisibilityState;
+        if (d.msVisibilityState)
+          return d.msVisibilityState;
+        return undefined;
+      }
 
       function onLoad() {
         var iframe = document.querySelector('iframe');
-        var iframeStatus = document.querySelector('#iframe-status');
-        var mainframeStatus = document.querySelector('#mainframe-status');
+
+        var iframeTickingStatus = document.querySelector('#iframe-ticking-status');
+        var mainframeTickingStatus = document.querySelector('#mainframe-ticking-status');
+
+        var iframeVisibilityStatus = document.querySelector('#iframe-visibility-status');
+        var mainframeVisibilityStatus = document.querySelector('#mainframe-visibility-status');
 
         if(!getRAF(window)) {
-          iframeStatus.textContent = 'requestAnimationFrame not supported';
-          iframeStatus.className = 'meh';
-          mainframeStatus.textContent = 'requestAnimationFrame not supported';
-          mainframeStatus.className = 'meh';
+          iframeTickingStatus.textContent = 'requestAnimationFrame not supported';
+          iframeTickingStatus.className = 'bad';
+          mainframeTickingStatus.textContent = 'requestAnimationFrame not supported';
+          mainframeTickingStatus.className = 'bad';
           return;
-        }
-        iframeStatus.textContent = 'idle';
-        iframeStatus.className = 'good';
-        mainframeStatus.textContent = 'idle';
-        mainframeStatus.className = 'bad';
+        }iframe
+        iframeTickingStatus.textContent = 'idle';
+        iframeTickingStatus.className = 'dunno';
+        mainframeTickingStatus.textContent = 'idle';
+        mainframeTickingStatus.className = 'bad';
 
-        getRAF(iframe.contentWindow)(function() {
-          iframeStatus.textContent = 'iframe is ticking';
-          iframeStatus.className = 'bad';
-        });
+        if (getVisibilityState(document)) {
+          mainframeVisibilityStatus.textContent = getVisibilityState(document);
+          mainframeVisibilityStatus.className = 'good';
+        } else {
+          mainframeVisibilityStatus.textContent = '<visibility api not supported>';
+          mainframeVisibilityStatus.className = 'bad';
+        }
 
         getRAF(window)(function() {
-          mainframeStatus.textContent = 'main frame is ticking';
-          mainframeStatus.className = 'good';
+          mainframeTickingStatus.textContent = 'rAF ticking';
+          mainframeTickingStatus.className = 'good';
+        });
+
+        if (getVisibilityState(iframe.contentDocument)) {
+          iframeVisibilityStatus.textContent = getVisibilityState(iframe.contentDocument);
+          iframeVisibilityStatus.className = 'dunno';
+        } else {
+          iframeVisibilityStatus.textContent = '<visibility api not supported>';
+          iframeVisibilityStatus.className = 'bad';
+        }
+
+        getRAF(iframe.contentWindow)(function() {
+          iframeTickingStatus.textContent = 'rAF ticking';
+          iframeTickingStatus.className = 'dunno';
         });
       }
       document.addEventListener('DOMContentLoaded', onLoad);
@@ -85,8 +119,8 @@
     It is unclear what the iframe's requestAnimationFrame behavior should be.
 
     <div id="status">
-    IFrame status: <span id="iframe-status">... loading...</span></p>
-    Main frame status: <span id="mainframe-status">... loading...</span>
+    IFrame status: <span id="iframe-ticking-status">... loading...</span> and <span id="iframe-visibility-status">... loading...</span></p>
+    Main frame status: <span id="mainframe-ticking-status">... loading...</span> and <span id="mainframe-visibility-status">... loading...</span>
   </div>
     <iframe style="display:none"></iframe>
   </body>
