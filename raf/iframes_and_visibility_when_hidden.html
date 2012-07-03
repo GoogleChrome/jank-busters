@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: sans-serif;
+        width: 600px;
+        margin-left: 80px;
+        margin-top: 80px;
+      }
+      h1 {
+        font-size: 200%;
+      }
+      #status {
+        border: 1px solid black;
+        margin: 20px;
+        padding: 10px;
+        width: 600px;
+      }
+      .good {
+        color: green;
+      }
+      .bad {
+        color: red;
+      }
+      .meh {
+        color: rgb(64,64,64);
+      }
+      .pre {
+        font-family: monospace;
+      }
+    </style>
+    <script>
+      function getRAF(w) {
+        w = w || window;
+        if (w.requestAnimationFrame)
+          return w.requestAnimationFrame;
+        if (w.webkitRequestAnimationFrame)
+          return w.webkitRequestAnimationFrame;
+        if (w.mozRequestAnimationFrame)
+          return w.mozRequestAnimationFrame;
+        if (w.oRequestAnimationFrame)
+          return w.oRequestAnimationFrame;
+        if (w.msRequestAnimationFrame)
+          return w.msRequestAnimationFrame;
+        return undefined;
+      }
+
+      function onLoad() {
+        var iframe = document.querySelector('iframe');
+        var iframeStatus = document.querySelector('#iframe-status');
+        var mainframeStatus = document.querySelector('#mainframe-status');
+
+        if(!getRAF(window)) {
+          iframeStatus.textContent = 'requestAnimationFrame not supported';
+          iframeStatus.className = 'meh';
+          mainframeStatus.textContent = 'requestAnimationFrame not supported';
+          mainframeStatus.className = 'meh';
+          return;
+        }
+        iframeStatus.textContent = 'idle';
+        iframeStatus.className = 'good';
+        mainframeStatus.textContent = 'idle';
+        mainframeStatus.className = 'bad';
+
+        getRAF(iframe.contentWindow)(function() {
+          iframeStatus.textContent = 'iframe is ticking';
+          iframeStatus.className = 'bad';
+        });
+
+        getRAF(window)(function() {
+          mainframeStatus.textContent = 'main frame is ticking';
+          mainframeStatus.className = 'good';
+        });
+      }
+      document.addEventListener('DOMContentLoaded', onLoad);
+    </script>
+  </head>
+  <body>
+    <h1>requestAnimationFrame, on <span class="pre">iframe</span> with <span class="pre">display:none</span></h1>
+
+    This document contains an iframe with display:none set on it. It requests an animation frame
+    on both the iframe's contentWindow and the main window. The main frame should tick.</p>
+
+    It is unclear what the iframe's requestAnimationFrame behavior should be.
+
+    <div id="status">
+    IFrame status: <span id="iframe-status">... loading...</span></p>
+    Main frame status: <span id="mainframe-status">... loading...</span>
+  </div>
+    <iframe style="display:none"></iframe>
+  </body>
+</html>
