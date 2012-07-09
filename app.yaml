@@ -6,8 +6,8 @@ threadsafe: yes
 
 handlers:
 - url: /
-  static_files: template.html
-  upload: template\.html
+  static_files: index.html
+  upload: index\.html
 
 - url: /jank-busters-io
   static_dir: jank-busters-io
