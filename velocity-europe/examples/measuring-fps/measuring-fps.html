@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Measuring Frame Budget</title>
+    <style>
+      .result {
+        font-family: sans-serif;
+        font-size: 150%;
+      }
+
+      #result {
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <div class="result">Approximately <span id="result"></span> ms</div>
+    <img id="foo" src="chrome-logo.png" width="250">
+    <script>
+      el = document.querySelector("img");
+      var rotation = 0;
+      var rotating = false;
+
+      function rotate() {
+        rotation += 180;
+        el.style.webkitTransform = "rotate(" + rotation + "deg)";
+      }
+      el.addEventListener("webkitTransitionEnd", function() {
+        rotate();
+      });
+
+      // start rotating
+      el.style.webkitTransition = "all 2s linear";
+      el.style.webkitTransform = "rotate(180deg)";
+      rotate();
+
+      // guess interval
+      var lastFrameTime = 0;
+      var intervalRounded = 0;
+      var intervalFiltered = 0;
+      function raf() {
+        if (lastFrameTime) {
+          var elapsed = window.performance.webkitNow() - lastFrameTime;
+          var interval = elapsed;
+          if (!intervalFiltered)
+             intervalFiltered = interval;
+          else
+             intervalFiltered = 0.985 * intervalFiltered + 0.015 * interval;
+        }
+        lastFrameTime = window.performance.webkitNow();
+        webkitRequestAnimationFrame(raf, el);
+      }
+      webkitRequestAnimationFrame(raf, el);
+      setInterval(function() {
+        var r = Math.floor(intervalFiltered * 100) / 100;
+        document.querySelector('#result').textContent = r;
+      }, 150);
+    </script>
+  </body>
+</html>

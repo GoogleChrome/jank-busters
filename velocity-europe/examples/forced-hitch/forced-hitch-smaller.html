@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this animation stutters</title>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="chrome-logo.png" width="250">
+    <script>
+      el = document.querySelector("img");
+      var rotation = 0;
+      var rotating = false;
+
+      function rotate() {
+        rotation += 180;
+        el.style.webkitTransform = "rotate(" + rotation + "deg)";
+      }
+
+      // clicking the image starts and stops the animation
+      el.onclick = function() {
+        console.log ('boo');
+        if(rotating) {
+          rotating = false;
+          el.style.webkitTransition = "";
+          }
+        else {
+          rotating = true;
+          rotate();
+          el.style.webkitTransition = "all 2s linear";
+          }
+        };
+      
+      // each time the rotation finishes, keep it going
+      el.addEventListener("webkitTransitionEnd", function() {
+        rotate();
+      });
+      // start rotating
+      rotation += 180;
+      el.style.webkitTransform = "rotate(180deg)";
+
+      // hitch once a second
+      window.setInterval(function() {
+        // fake sleeping for 300ms
+        var start = new Date().getTime();
+        if(rotating) {
+          while(new Date().getTime() - start < 30) {
+            ;
+            }
+            }
+        }, 120);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>smooth loader</title>
+    <script>
+        // perform our complicated JS while we load
+        var k = 0;
+        var j = 1;
+        function churn() {
+          // burn some CPU time
+          var start = new Date().getTime();
+          // compute numbers for 100 ms
+          while(new Date().getTime() - start < 100) {
+            var old_j = j;
+            j = j + k;
+            k = j;
+            }
+          // in 100ms start doing this again
+          window.setTimeout(churn, 100);
+          }
+        churn();
+
+        function updateChurn() {
+          window.webkitRequestAnimationFrame(function() {
+            var el = document.getElementById('bar')
+            el.innerHTML = j;
+          });
+        }
+
+        // Churn baby churn!
+        window.setInterval(updateChurn, 500);
+
+        // Run the animation via CSS
+        function startCSS() {
+          var el = document.querySelector('img');
+          el.addEventListener('webkitAnimationEnd', function() {
+            el.style.webkitTransform = "translateX(0%)";
+          });
+          el.style.webkitAnimationName = 'swipy';
+        }
+
+    </script>
+    <style>
+        img {
+          -webkit-animation-duration: 5s;
+          -webkit-transform: translateX(-100%);
+          -webkit-animation-timing-function: linear;
+          width: 100%;
+        }
+        @-webkit-keyframes swipy {
+            from {
+                -webkit-transform: translateX(-100%);
+            }
+            to {
+                -webkit-transform: translateX(0%);
+            }
+          }
+    </style>
+    </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="chrome-logo.png" onload="startCSS()">
+    <p id="bar">Loading...</p>
+</body>
+</html>

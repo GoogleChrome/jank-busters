@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this div scrolls slowly</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      body {
+        height: 5000px;
+      }
+
+      #controls {
+        padding: 10px;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background-color: rgba(255,255,255,0.75);
+        border: 1px solid black;
+        z-index: 1;
+      }
+      #controls > * {
+        font-size: 150%;
+        vertical-align: middle;
+      }
+
+      .mover {
+        position: fixed;
+        width: 256px;
+      }
+
+      .heavy-painting {
+        background-image: -webkit-linear-gradient(45deg,rgba(0, 0, 0, 0.05) 25%,transparent 25%,transparent),-webkit-linear-gradient(-45deg,rgba(0, 0, 0, 0.05) 25%,transparent 25%,transparent),-webkit-linear-gradient(45deg,transparent 75%,rgba(0, 0, 0, 0.05) 75%),-webkit-linear-gradient(-45deg,transparent 75%,rgba(0, 0, 0, 0.05) 75%);
+        background-size: 3px 3px;
+        box-shadow: 15px 15px 15px;
+        -webkit-box-shadow: 15px 15px 15px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="controls">
+        <input id="heavy-scroll" type="checkbox" checked="true"><label for="heavy-scroll">Heavy onScroll</label>
+        <input id="heavy-paint" type="checkbox" checked="true"><label for="heavy-paint">Costly effects</label>
+      </div>
+    </div>
+    <script>
+     function updatePositions() {
+        var heavyScroll = !!document.querySelector('#heavy-scroll').checked;
+        var items = document.querySelectorAll('.mover');
+
+        var cachedScrollTop = document.body.scrollTop;
+        for (var i = 0; i < items.length; i++) {
+          var phase;
+          if (heavyScroll)
+             phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+          else
+             phase = Math.sin((cachedScrollTop / 1250) + (i % 5));
+
+	  items[i].style.left = items[i].basicLeft + 100*phase + 'px';
+        }
+      }
+      function updatePaintClasses() {
+        var heavyPaint = !!document.querySelector('#heavy-paint').checked;
+        var items = document.querySelectorAll('.mover');
+        for (var i = 0; i < items.length; i++) {
+          if (heavyPaint)
+            items[i].classList.add('heavy-painting');
+            else
+              items[i].classList.remove('heavy-painting');
+        }
+      }
+
+      document.querySelector('#heavy-paint').addEventListener('click', updatePaintClasses);
+      window.addEventListener('scroll', updatePositions);
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var cols = 8;
+        var s = 256;
+        for (var i = 0; i < 200; i++) {
+          var el = document.createElement('img');
+          el.className = 'mover';
+          el.src="chrome-logo.png";
+          el.basicLeft = (i % cols) * s;
+          el.style.top = (Math.floor(i / cols) * s) + 'px';
+          document.body.appendChild(el);
+        }
+
+        updatePaintClasses();
+        updatePositions();
+      });
+    </script>
+  </body>
+</html>
