@@ -51,15 +51,6 @@ Authors:  Nat Duca <nduca@google.com>
     </article>
   </slide>
 
-  <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Jank Spotting</h2>
-      <h3>What's wrong with this picture?</h3>
-      <p><a href="examples/css-filters-bad/css-filters-bad.html">Bad Example</a> <a href="examples/css-filters-fixes/css-filters-fixes.html">Good Example</a></p>
-    </hgroup>
-  </slide>
-
   <slide class="title-slide segue nobackground">
     <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
@@ -82,6 +73,16 @@ Authors:  Nat Duca <nduca@google.com>
         </ul>
       </section>
     </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Jank Spotting</h2>
+      <h3>What's wrong with this picture?</h3>
+    </hgroup>
+    <article>
+      <iframe src="examples/too-much-layout/too-much-layout-toggle.html" style="height: 400px"></iframe>
+    </article>
   </slide>
 
   <slide>
@@ -134,7 +135,6 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>Just Say No to setTimeout!</h3>
     </hgroup>
     <article>
-      <!--TODO frowny face-->
       <iframe src="examples/measuring-fps/raf_motivation.html" style="height: 400px"></iframe>
     </article>
   </slide>
@@ -145,7 +145,6 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>Use requestAnimationFrame instead!</h3>
     </hgroup>
     <article>
-      <!--TODO smiley face-->
       <iframe src="examples/measuring-fps/raf.html" style="height: 250px"></iframe>
       <br /><br />
       <pre class="prettyprint" data-lang="javascript">
@@ -176,14 +175,16 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>Menagerie of Crap</h3>
     </hgroup>
     <article>
-      <!-- TODO beautify, add an image! -->
       <p>What causes you to blow budget?</p>
       <ul>
-        <li>DOM manipulation -> lots of layout, lots of painting</li>
-        <li>Lots of JS -> garbage collection</li>
+        <li>DOM manipulation → lots of layout, lots of painting</li>
+        <li>Lots of JS → garbage collection</li>
         <li><a href="examples/too-much-layout/too-much-layout.html">For example</a> (<a href="examples/too-much-layout/too-much-layout-fixed.html">better</a>)</li>
       </ul>
       <p>Dev Tools' Timeline View is your friend!</p>
+      <div style="text-align:center">
+        <img src="images/dev-tools-timeline.png">
+      </div>
     </article>
   </slide>
 
@@ -193,7 +194,6 @@ Authors:  Nat Duca <nduca@google.com>
       <h3>Menagerie of Crap</h3>
     </hgroup>
     <article>
-      <!-- TODO beautify, add an image! -->
       <p>Remember, JavaScript is <b>single threaded</b>. If:</p>
       <ul>
         <li>Timers are firing</li>
@@ -201,7 +201,7 @@ Authors:  Nat Duca <nduca@google.com>
         <li>XHRs are being processed</li>
       </ul>
       <p>your requestAnimationFrame callback won't run!</p>
-      <p><a href="examples/measuring-fps/smooth_simple.html">TODO fixed this example to use rAF &amp; XHRs</a></p>
+      <p><a href="examples/measuring-fps/smooth_simple.html">For example</a></p>
     </article>
   </slide>
 
@@ -230,6 +230,21 @@ Authors:  Nat Duca <nduca@google.com>
       <p><a href="examples/measuring-fps/smooth_simple.html">CSS animation runs on its own.</a></p>
       <br />
       <p>This is on Chrome for Android first, everywhere else soon.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>CSS Animation</h2>
+      <h3>A (lame) example</h3>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <video width="432" height="320" controls="controls">
+          <source src="images/smooth_simple.mov">
+        Your browser does not support the video tag.
+        </video>
+      </div>
     </article>
   </slide>
 
@@ -320,7 +335,6 @@ Authors:  Nat Duca <nduca@google.com>
       <h2>These are Techniques, Not Recipes</h2>
     </hgroup>
     <article>
-      <!-- TODO add an image -->
       <p>Browsers <b>evolve fast</b>.</p>
       <p><b>Architectural best practices</b> are here to stay:</p>
         <ul>
