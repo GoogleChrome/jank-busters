@@ -1,0 +1,35 @@
+<html>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			appendImages(10);
+		});
+
+		function appendImages(count) {
+			var request = 'http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=bb962ee3ecbe7d27e28fa116a641c245&user_id=29096781@N02&format=json&per_page=500&jsoncallback=?';
+			$.ajax({
+			    url: request,
+			    type: "GET",
+			    dataType: 'jsonp',
+			    success: function(data) {
+			    	console.log(data);
+			    	data.photos.photo.map(function(photo) {
+						var photo_url = 'http://farm' + photo.farm +
+										'.staticflickr.com/' + photo.server +
+										'/' + photo.id +
+										'_' + photo.secret +
+										'_m.jpg';
+						console.log(photo_url);
+						var img = new Image();
+						
+			    	})
+			    }
+			});
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
