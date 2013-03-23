@@ -5,18 +5,52 @@
 		html, body {
 			height: 100%;
 			width: 100%;
-			overflow: hidden;
 			background-color: #f5f5f5;
 			font-family: Georgia, serif;
 			font-style: italic;
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Header and controls */
+		#topbar {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			opacity: .9;
+			background-color: white;
+			padding-left: 15px;
+			padding-bottom: 15px;
+			z-index: 3;
+		}
+
+		body.transformed #topbar {
+			-webkit-transform: translateZ(0);
+		}
+
+		/* side bar controls */
+		#sidebar {
+			position: fixed;
+			top: 200px;
+			right: 50px;
+			width: 200px;
+			z-index: 2;
+		}
+
+		body.transformed #sidebar {
+			-webkit-transform: translateZ(0);
+		}
+
+		#sidebar ul {
+			list-style: none;
 		}
 
 		/* Scrolling container that moves with the body */
 		#container {
 			margin-top: 150px;
-			margin-left: 100px;
-			margin-right: 15px;
-			border: 1px solid black;
+			margin-left: auto;
+			margin-right: auto;
+			width: 800px;
 		}
 
 		/* Promote container and its children to own layer */
@@ -29,10 +63,9 @@
 
 		/* Images are in little containers with slow-to-paint effects */
 		div.imgcontainer {
-			height: 240px;
-			width: 240px;
+			background: gray;
+			width: 640px;
 			margin: 15px;
-			display: inline-block;
 			border: 1px solid gray;
 			border-radius: 2px;
 			box-shadow: 5px 5px 5px #888;
@@ -45,10 +78,9 @@
 		}
 		div.imgcontainer img {
 			display: block;
-		}
-		#container.resized img {
-			max-width: 240px;
-			max-height: 240px;
+			margin: auto;
+			margin-bottom: 40px;
+			-webkit-transition: -webkit-filter 1s;
 		}
 
 		/* Hover effects */
@@ -83,7 +115,7 @@
 										'/' + photo.id +
 										'_' + photo.secret;
 						if(document.getElementById('resized').checked) {
-							photo_url += '_b';
+							photo_url += '_m';
 						} else {
 							photo_url += '_m';
 						}
@@ -101,7 +133,8 @@
 						// set up container
 						var imgcontainer = document.createElement('div');
 						imgcontainer.classList.add('imgcontainer');
-						imgcontainer.appendChild(img);
+						metadata.appendChild(img);
+						imgcontainer.appendChild(metadata);
 
 						imageFragment.appendChild(imgcontainer);
 			    	});
@@ -114,14 +147,23 @@
 </head>
 <body>
 	
-	<div id="controls">
+	<div id="topbar">
 		<h2>stuffstuffstuff</h2>
-		<input type="checkbox" id="transformed" onchange="document.getElementById('container').classList.toggle('transformed')">
-		<label for="transformed">Overflow:scroll children in layer</label>
-		<input type="checkbox" id="resized">
-		<label for="resized">Images that need resizing</label>
-		<input type="checkbox" id="hoverable" onchange="document.getElementById('container').classList.toggle('hoverable')">
-		<label for="hoverable">Hover effects during scroll</label>
+	</div>
+	<div id="sidebar">
+		<ul>
+			<li>
+				<input type="checkbox" id="transformed" onchange="document.body.classList.toggle('transformed')">
+				<label for="transformed">position:fixed in layer</label>
+			</li>
+			<li>
+				<input type="checkbox" id="resized">
+				<label for="resized">Images that need resizing</label>
+			</li>
+			<li>
+				<input type="checkbox" id="hoverable" onchange="document.getElementById('container').classList.toggle('hoverable')">
+				<label for="hoverable">Hover effects during scroll</label>
+			</li>
 	</div>
 	<div id="container" class="resized">
 		<div id="subcontainer">
