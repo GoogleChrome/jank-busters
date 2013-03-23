@@ -36,11 +36,6 @@
 			max-height: 240px;
 		}
 
-		/* Hover effects */
-		#container.hoverable div.imgcontainer img:hover {
-			-webkit-filter: brightness(180%);
-		}
-
 		/* Scrolling container with overflow:scroll */
 		#container {
 			top: 150px;
@@ -137,14 +132,12 @@
 	</script>
 </head>
 <body>
-	<h2>photo browser</h2>
+	<h2>grids</h2>
 	<div id="controls">
 		<input type="checkbox" id="transformed" onchange="document.getElementById('container').classList.toggle('transformed')">
 		<label for="transformed">Overflow:scroll children in layer</label>
 		<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
 		<label for="resized">Images that need resizing</label>
-		<input type="checkbox" id="hoverable" onchange="document.getElementById('container').classList.toggle('hoverable')">
-		<label for="hoverable">Hover effects during scroll</label>
 		
 		<div id="explainer">
 			<label>Explainer</label>	

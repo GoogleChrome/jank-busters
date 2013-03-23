@@ -80,7 +80,9 @@
 			display: block;
 			margin: auto;
 			margin-bottom: 40px;
-			-webkit-transition: -webkit-filter 1s;
+		}
+		#container.resized img {
+			max-width: 640px;
 		}
 
 		/* Hover effects */
@@ -88,9 +90,6 @@
 			-webkit-filter: brightness(180%);
 		}
 
-		#container.hoverable {
-
-		}
 	</style>
 	<script>
 		$(document).ready(function() {
@@ -99,6 +98,25 @@
 			});
 			loadImages();
 		});
+
+		var timer = null;
+		function toggleScrollHandler() {
+			if(window.onscroll) {
+				// turn off the scroll handling
+				window.onscroll = null;
+				container.classList.add('hoverable');
+			} else {
+				// turn on the scroll handling
+				window.onscroll = function() {
+					container.classList.remove('hoverable');
+					window.clearTimeout(timer);
+					timer = window.setTimeout(function() {
+						// only set the hoverable class 200ms after the last scroll
+						document.getElementById('container').classList.add('hoverable');
+					}, 200);
+				}	
+			}
+		}
 
 		function loadImages() {
 			var request = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&license=2&group_id=34427469792%40N01&api_key=bb962ee3ecbe7d27e28fa116a641c245&format=json&per_page=100&license=2&jsoncallback=?';
@@ -115,9 +133,9 @@
 										'/' + photo.id +
 										'_' + photo.secret;
 						if(document.getElementById('resized').checked) {
-							photo_url += '_m';
+							photo_url += '_b';
 						} else {
-							photo_url += '_m';
+							photo_url += '_z';
 						}
 						photo_url += '.jpg';
 						console.log(photo_url);
@@ -148,7 +166,7 @@
 <body>
 	
 	<div id="topbar">
-		<h2>stuffstuffstuff</h2>
+		<h2>hover</h2>
 	</div>
 	<div id="sidebar">
 		<ul>
@@ -157,15 +175,15 @@
 				<label for="transformed">position:fixed in layer</label>
 			</li>
 			<li>
-				<input type="checkbox" id="resized">
+				<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
 				<label for="resized">Images that need resizing</label>
 			</li>
 			<li>
-				<input type="checkbox" id="hoverable" onchange="document.getElementById('container').classList.toggle('hoverable')">
+				<input type="checkbox" id="hoverable" onchange="toggleScrollHandler()" checked="checked">
 				<label for="hoverable">Hover effects during scroll</label>
 			</li>
 	</div>
-	<div id="container" class="resized">
+	<div id="container" class="hoverable">
 		<div id="subcontainer">
 		</div>
 	</div>
