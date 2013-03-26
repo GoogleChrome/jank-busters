@@ -37,25 +37,13 @@
 			max-height: 240px;
 		}
 
-		/* Scrolling container with overflow:scroll */
+		/* Scrolling container with the body */
 		#viewport {
-			height: 100%;
-			width: 100%;
-			background-color: lightgray;
 		}
 		#container {
-			position: relative;
-			top: 10%;
-			left: 10%;
-			overflow-y: scroll;
-			height: 80%;
-			width: 80%;
-			padding: 10%;
-			background-color: white;
-			box-sizing: border-box;
+			padding: 150px;
 		}
 		#subcontainer {
-			/*padding-top: 200px;*/
 		}
 
 		/* Optionally promote container and its children to own layer */
@@ -66,16 +54,46 @@
 			-webkit-transform: translateZ(0);
 		}
 
-		#controls {
-			position: absolute;
-			top: 0;
+		.bar {
+			background-color: lightgray;
+		}
+		
+		.horizontal {
+			position: fixed;
+			width: 100%;
 			height: 10%;
+		}
+
+		.vertical {
+			position: fixed;
+			width: 10%;
+			height: 100%;
+		}
+
+		#top {
+			top: 0;
+			z-index: 5;
+		}
+
+		#right {
+			right: 0;
+		}
+
+		#bottom {
+			bottom: 0;
+		}
+		#left {
+			left: 0;
+		}
+
+		::-webkit-scrollbar {
+			display: none;
 		}
 
 	</style>
 	<script>
 		$(document).ready(function() {
-			//loadImages();
+			loadImages();
 		});
 
 		function loadImages() {
@@ -124,12 +142,17 @@
 	</script>
 </head>
 <body>
-	<div id="controls">
-		<input type="checkbox" id="transformed" onchange="document.getElementById('container').classList.toggle('transformed')">
-		<label for="transformed">Overflow:scroll children in layer</label>
+	<div id="top" class="bar horizontal">
+		<input type="checkbox" id="transformed" checked="checked" onchange="document.getElementById('container').classList.toggle('transformed')">
+		<label for="transformed">position: fixed elements promoted to layers</label>
 		<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
 		<label for="resized">Images that need resizing</label>
 	</div>
+	<div id="left" class="bar vertical">
+	</div>
+	<div id="right" class="bar vertical">
+	</div>
+	<div id="bottom" class="bar horizontal"></div>
 	<div id="viewport">
 		<div id="container">
 			<div id="subcontainer">
@@ -221,94 +244,7 @@
 				fstuffstuffstuffstuffstuffstuf
 				fstuffstuffstuffstuffstuffstuffst
 				uffstuffstuffstuffstuff
-				stuffstuffstuffstuffstu
 
-				ffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffs
-
-
-
-				stuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
-
-				stuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuffst
-				uffstuffstuffstuffstuff
-				stuffstuffstuffstuffstu
-
-				ffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffs
-
-
-
-				stuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
-
-				stuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuffst
-				uffstuffstuffstuffstuff
-				stuffstuffstuffstuffstu
-
-				ffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffs
-
-
-
-				stuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
-
-				stuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuffst
-				uffstuffstuffstuffstuff
-				stuffstuffstuffstuffstu
-
-				ffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffs
-
-
-
-				stuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuff
-				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstu
-				ffstuffstuffstuffstuffstuffstuffs
-				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
-
-				stuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuf
-				fstuffstuffstuffstuffstuffstuffst
-				uffstuffstuffstuffstuff
 			</div>
 		</div>
 	</div>
