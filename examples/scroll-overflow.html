@@ -1,11 +1,10 @@
 <html>
 <head>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 	<style>
 		html, body {
 			height: 100%;
 			width: 100%;
-			overflow: hidden;
 			background-color: #f5f5f5;
 			font-family: Georgia, serif;
 			font-style: italic;
@@ -38,18 +37,13 @@
 			max-height: 240px;
 		}
 
-		/* Scrolling container with overflow:scroll */
+		/* Scrolling container with the body */
 		#viewport {
 		}
 		#container {
-			width: auto;
-			overflow-y: scroll;
-			position: absolute;
-			left: 200px;
-			height: 100%;
+			padding: 150px;
 		}
 		#subcontainer {
-			padding-top: 200px;
 		}
 
 		/* Optionally promote container and its children to own layer */
@@ -59,35 +53,43 @@
 		#container.transformed #subcontainer {
 			-webkit-transform: translateZ(0);
 		}
+
+		.bar {
+			background-color: lightgray;
+		}
 		
-		#controls {
-			position: absolute;
+		.horizontal {
+			position: fixed;
+			width: 100%;
+			height: 10%;
 		}
 
-		#explainer {
-			position: relative;
-			display: inline;
-			margin-left: 15px;
-			color: cornflowerblue;
-			text-decoration: underline;
-			
+		.vertical {
+			position: fixed;
+			width: 10%;
+			height: 100%;
 		}
-		#explainer div {
+
+		#top {
+			top: 0;
+			z-index: 5;
+		}
+
+		#right {
+			right: 0;
+		}
+
+		#bottom {
+			bottom: 0;
+		}
+		#left {
+			left: 0;
+		}
+
+		::-webkit-scrollbar {
 			display: none;
-			font-family: sans-serif;
-			font-style: normal;
 		}
-		#explainer:hover div {
-			display: block;
-			z-index: 10;
-			position: absolute;
-			padding: 10px;
-			top: 25px;
-			width: 300px;
-			border: 1px solid cornflowerblue;
-			background: rgba(255,255,255,.9);
-			color: black;
-		}
+
 	</style>
 	<script>
 		$(document).ready(function() {
@@ -140,25 +142,109 @@
 	</script>
 </head>
 <body>
-	<div id="controls">
+	<div id="top" class="bar horizontal">
 		<input type="checkbox" id="transformed" checked="checked" onchange="document.getElementById('container').classList.toggle('transformed')">
-		<label for="transformed">Overflow:scroll children in layer</label>
+		<label for="transformed">position: fixed elements promoted to layers</label>
 		<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
 		<label for="resized">Images that need resizing</label>
-		
-		<div id="explainer">
-			<label>Explainer</label>	
-			<div>
-				<p>Containers with overflow:scroll repaint themselves every frame during a scroll.</p>
-				<p>If the container's children are their own layer, we can avoid repainting them on repeated scrolls (but still paint the now-empty container layer -- compare Timeline recordings and look for image resize events).</p>
-				<p>Using large images necessitates image resizes, and causes long paint times.</p>
-				<p>This is going to get better: try 'accelerated overflow scroll' in about:flags!</p>
-			</div>
-		</div>
 	</div>
+	<div id="left" class="bar vertical">
+	</div>
+	<div id="right" class="bar vertical">
+	</div>
+	<div id="bottom" class="bar horizontal"></div>
 	<div id="viewport">
 		<div id="container">
 			<div id="subcontainer">
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+
 			</div>
 		</div>
 	</div>

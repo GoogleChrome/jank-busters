@@ -1,14 +1,15 @@
 <html>
 <head>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 	<style>
 		html, body {
 			height: 100%;
 			width: 100%;
-			overflow: hidden;
 			background-color: #f5f5f5;
 			font-family: Georgia, serif;
 			font-style: italic;
+			margin: 0;
+			padding: 0;
 		}
 
 		/* Images are in little containers with slow-to-paint effects */
@@ -37,15 +38,24 @@
 		}
 
 		/* Scrolling container with overflow:scroll */
+		#viewport {
+			height: 100%;
+			width: 100%;
+			background-color: lightgray;
+		}
 		#container {
-			top: 150px;
-			left: 100px;
-			margin-right: 15px;
-			position: absolute;
-			height: 600px;
-			width: auto;
-			border: 1px solid black;
+			position: relative;
+			top: 10%;
+			left: 10%;
 			overflow-y: scroll;
+			height: 80%;
+			width: 80%;
+			padding: 10%;
+			background-color: white;
+			box-sizing: border-box;
+		}
+		#subcontainer {
+			/*padding-top: 200px;*/
 		}
 
 		/* Optionally promote container and its children to own layer */
@@ -55,35 +65,17 @@
 		#container.transformed #subcontainer {
 			-webkit-transform: translateZ(0);
 		}
-		
-		#explainer {
-			position: relative;
-			display: inline;
-			margin-left: 15px;
-			color: cornflowerblue;
-			text-decoration: underline;
-			
-		}
-		#explainer div {
-			display: none;
-			font-family: sans-serif;
-			font-style: normal;
-		}
-		#explainer:hover div {
-			display: block;
-			z-index: 10;
+
+		#controls {
 			position: absolute;
-			padding: 10px;
-			top: 25px;
-			width: 300px;
-			border: 1px solid cornflowerblue;
-			background: rgba(255,255,255,.9);
-			color: black;
+			top: 0;
+			height: 10%;
 		}
+
 	</style>
 	<script>
 		$(document).ready(function() {
-			loadImages();
+			//loadImages();
 		});
 
 		function loadImages() {
@@ -132,25 +124,192 @@
 	</script>
 </head>
 <body>
-	<h2>grids</h2>
 	<div id="controls">
-		<input type="checkbox" id="transformed" checked="checked" onchange="document.getElementById('container').classList.toggle('transformed')">
+		<input type="checkbox" id="transformed" onchange="document.getElementById('container').classList.toggle('transformed')">
 		<label for="transformed">Overflow:scroll children in layer</label>
 		<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
 		<label for="resized">Images that need resizing</label>
-		
-		<div id="explainer">
-			<label>Explainer</label>	
-			<div>
-				<p>Containers with overflow:scroll repaint themselves every frame during a scroll.</p>
-				<p>If the container's children are their own layer, we can avoid repainting them on repeated scrolls (but still paint the now-empty container layer -- compare Timeline recordings and look for image resize events).</p>
-				<p>Using large images necessitates image resizes, and causes long paint times.</p>
-				<p>This is going to get better: try 'accelerated overflow scroll' in about:flags!</p>
-			</div>
-		</div>
 	</div>
-	<div id="container">
-		<div id="subcontainer">
+	<div id="viewport">
+		<div id="container">
+			<div id="subcontainer">
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+				stuffstuffstuffstuffstu
+
+				ffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffs
+
+
+
+				stuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuff
+				stuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstu
+				ffstuffstuffstuffstuffstuffstuffs
+				tuffstuffstuffstuffstuffstuffstuffstuffstuffstuffstuff
+
+				stuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuf
+				fstuffstuffstuffstuffstuffstuffst
+				uffstuffstuffstuffstuff
+			</div>
 		</div>
 	</div>
 </body>
