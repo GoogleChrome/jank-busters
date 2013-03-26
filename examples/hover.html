@@ -17,7 +17,6 @@
 			position: fixed;
 			top: 0;
 			width: 100%;
-			opacity: .9;
 			background-color: white;
 			padding-left: 15px;
 			padding-bottom: 15px;
@@ -35,6 +34,7 @@
 			right: 50px;
 			width: 200px;
 			z-index: 2;
+			background-color: #f5f5f5;
 		}
 
 		body.transformed #sidebar {
@@ -132,12 +132,7 @@
 										'.staticflickr.com/' + photo.server +
 										'/' + photo.id +
 										'_' + photo.secret;
-						if(document.getElementById('resized').checked) {
-							photo_url += '_b';
-						} else {
-							photo_url += '_z';
-						}
-						photo_url += '.jpg';
+						photo_url += '_z.jpg';
 						console.log(photo_url);
 						
 						// set up image
@@ -163,20 +158,15 @@
 		}
 	</script>
 </head>
-<body>
-	
+<body class="transformed">
 	<div id="topbar">
 		<h2>hover</h2>
 	</div>
 	<div id="sidebar">
 		<ul>
 			<li>
-				<input type="checkbox" id="transformed" onchange="document.body.classList.toggle('transformed')">
+				<input type="checkbox" id="transformed" checked="checked" onchange="document.body.classList.toggle('transformed')">
 				<label for="transformed">position:fixed in layer</label>
-			</li>
-			<li>
-				<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
-				<label for="resized">Images that need resizing</label>
 			</li>
 			<li>
 				<input type="checkbox" id="hoverable" onchange="toggleScrollHandler()" checked="checked">
