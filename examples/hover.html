@@ -87,9 +87,9 @@
 
 		/* Hover effects */
 		#container.hoverable div.imgcontainer img:hover {
-			-webkit-filter: brightness(180%);
+			/*-webkit-filter: brightness(180%);*/
+			opacity: .9;
 		}
-
 	</style>
 	<script>
 		$(document).ready(function() {
@@ -166,7 +166,7 @@
 		<ul>
 			<li>
 				<input type="checkbox" id="transformed" checked="checked" onchange="document.body.classList.toggle('transformed')">
-				<label for="transformed">position:fixed in layer</label>
+				<label for="transformed">position:fixed elements promoted to layers</label>
 			</li>
 			<li>
 				<input type="checkbox" id="hoverable" onchange="toggleScrollHandler()" checked="checked">
