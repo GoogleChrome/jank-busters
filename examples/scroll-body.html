@@ -56,6 +56,11 @@
 
 		.bar {
 			background-color: lightgray;
+			z-index: 5;
+		}
+
+		body.transformed > .bar {
+			-webkit-transform:translateZ(0);
 		}
 		
 		.horizontal {
@@ -72,7 +77,7 @@
 
 		#top {
 			top: 0;
-			z-index: 5;
+			z-index: 6;
 		}
 
 		#right {
@@ -143,7 +148,7 @@
 </head>
 <body>
 	<div id="top" class="bar horizontal">
-		<input type="checkbox" id="transformed" checked="checked" onchange="document.getElementById('container').classList.toggle('transformed')">
+		<input type="checkbox" id="transformed" onchange="document.body.classList.toggle('transformed')">
 		<label for="transformed">position: fixed elements promoted to layers</label>
 		<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
 		<label for="resized">Images that need resizing</label>
