@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<style>
+			body {
+				margin: 0;
+				background-color: lightgray;
+			}
+			#controls {
+				width: 200px;
+				float: left;
+				-webkit-transform: translateZ(0);
+			}
+			#textblock {
+				margin-left: 200px;
+				width: 800px;
+				padding-top: 100px;
+				padding-right: 0;
+				padding-left: 0;
+				padding-bottom: 0;
+				min-height: 100%;
+				box-sizing: border-box;
+				border-left: 1px solid black;
+				border-right: 1px solid black;
+			}
+			#textblock div.reflowed {
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				background-color: gray;
+				display: inline-block;
+			}
+			#textblock div.abspos {
+				width: 500px;
+				height: 100px;
+				background-color: gray;
+				position: absolute;
+			}
+			#textblock.padded {
+				padding-right: 10px;
+			}
+		</style>
+		<script>
+			var reflowed = null;
+
+			function addReflowedText() {
+				var textblock = document.getElementById('textblock');
+				if(reflowed == null || !reflowed ) {
+					textblock.innerHTML = '';
+					reflowed = true;
+				}
+				var div = document.createElement('div');
+				div.classList.add('reflowed');
+				textblock.appendChild(div);
+				console.log('added');
+			}
+
+			var currentHeight = null;
+			function addAbsText() {
+				var textblock = document.getElementById('textblock');
+				if(reflowed == null || reflowed) {
+					currentHeight = 100;
+					reflowed = false;
+				}
+				var div = document.createElement('div');
+				div.classList.add('abspos');
+				div.style.top = currentHeight + 'px';
+				currentHeight += 110;
+				textblock.appendChild(div);
+			}
+
+			function repeat(func, count) {
+				for(var i=0; i<count; i++) {
+					func();
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		
+		<div id="controls">
+			<h2>relayout</h2>
+			<input type="button" value="Toggle right padding"
+				onclick="document.getElementById('textblock').classList.toggle('padded');">
+			<input type="button" value="Add flowed elements" onclick="addReflowedText();">
+			<input type="button" value="Add flowed elements x1000" onclick="repeat(addReflowedText, 1000);">
+			<p>Add some elements, and notice that we relayout/paint only disturbed lines as we add. Notice we don't repaint anything once we're adding them off-screen.</p>
+			<p>Change the padding, and note that even thought there are <em>no pixel differences</em> in the output, we still need to relayout and repaint.</p>
+		</div>
+		<div id="textblock">
+			
+		</div>
+	</body>
+</html>
