@@ -43,11 +43,11 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
   </slide>
 
-  <slide class="fill nobackground" style="background-image: url(images/gallery-touch.jpg)">
+  <slide class="fill nobackground" style="background-image: url(images/pixel.jpg); background-size: 50%; background-position: 130% 80%; background-repeat: no-repeat;">
     <hgroup>
-      <h2 class="white">Basics: Frames</h2>
+      <h2>Basics: Frames</h2>
     </hgroup>
-    <article class="white">
+    <article>
       <p>Monitors are *usually* 50-60Hz...</p>
       <ul>
         <li>... don't assume 60Hz</li>
@@ -58,11 +58,11 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Gallery of Jank</h2>
+      <h2>Basics: Jank</h2>
       <h3>Hitches, Low Framerate, Variable Framerate</h3>
     </hgroup>
-    <article class="flexbox vcenter">
-      <p>TODO: pick one jank example (janky interactive drag?)</p>
+    <article>
+      <iframe src="../examples/slowscrolldiv.html" style="height: 400px"></iframe>
     </article>
   </slide>
 
@@ -79,35 +79,14 @@ URL: https://code.google.com/p/io-2012-slides
     <hgroup>
       <h2>A lot needs to fit in 16ms!</h2>
     </hgroup>
-    <article>
-      <ul>
-        <li>Style Recalc &amp; Layout</li>
-        <li>JavaScript</li>
-        <li>Painting &amp; Compositing</li>
-        <li>Misc other Chrome stuff</li>
-      </ul>
-      <img src="images/jank.png" alt="Description" title="Description">
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>A lot needs to fit in 16ms!</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Style Recalc &amp; Layout</li>
-        <li>JavaScript</li>
-        <li class="red">Painting &amp; Compositing</li>
-        <li>Misc other Chrome stuff</li>
-      </ul>
+    <article class="flexbox vcenter">
       <img src="images/jank.png" alt="Description" title="Description">
     </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image: url(images/shuttle.jpg)">
     <hgroup>
-      <h2 class="white">Staying Fast</h2>
+      <h2 class="white">Rendering Fast</h2>
     </hgroup>
     <article class="white">
       <ol>
@@ -132,17 +111,6 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Painting: Blinking Cursors</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <ol>
-        <li>Show paint area</li>
-      </ol>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Painting: Blinking Cursors</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
       <img src="images/google-home-cursor.png" alt="Description" title="Description">
     </article>
   </slide>
@@ -158,11 +126,21 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
+      <h2>Painting: Blinking Cursors</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <div style="position: absolute; border: 4px solid red; top: 200px; left: 180px; width: 720px; height: 280px;"></div>
+      <img src="images/google-home-cursor.png" alt="Description" title="Description">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Paint Speed Varies</h2>
     </hgroup>
     <article class="flexbox vcenter" style="background-image: url(images/google-home-cursor-red-two.png); background-repeat: no-repeat; background-position: center;">
       <p style="margin-right: 260px;">White pixels are cheap.</p>
-      <p style="margin-top: 280px;">...white pixels for background under grey button background rect with rounded corners and antialiased edges and a dark grey outline with rounded corners and antialiased edges and an antialiased text run on the other hand... DEMO</p>
+      <p style="margin-top: 280px;">...white pixels for background under grey button background rect with rounded corners and antialiased edges and a dark grey outline with rounded corners and antialiased edges and an antialiased text run on the other hand...</p>
     </article>
   </slide>
 
@@ -272,7 +250,7 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
-
+<!--
   <slide>
     <hgroup>
       <h2>Seeing inside the rendering system</h2>
@@ -281,7 +259,7 @@ URL: https://code.google.com/p/io-2012-slides
       <p>Demo</p>
     </article>
   </slide>
-
+-->
   <slide>
     <hgroup>
       <h2>Recap</h2>
