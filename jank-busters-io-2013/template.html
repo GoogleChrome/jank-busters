@@ -132,6 +132,17 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Painting: Blinking Cursors</h2>
     </hgroup>
     <article class="flexbox vcenter">
+      <ol>
+        <li>Show paint area</li>
+      </ol>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Painting: Blinking Cursors</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
       <img src="images/google-home-cursor.png" alt="Description" title="Description">
     </article>
   </slide>
@@ -157,11 +168,10 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide class="fill nobackground" style="background-image: url(images/paintspill.jpg)">
     <hgroup>
-      <h2 class="white">"Necessary" Painting</h2>
+      <h2 class="white">Not all Painting comes from visual change</h2>
     </hgroup>
     <article class="white" style="background-color:rgba(0,0,0,0.7); padding: 20px;">
-      <p>Paint what's "dirty"</p>
-      <p>Changing style or layout makes a lot dirty... even if the pixels don't change</p>
+      <p>Sometimes you get "dirty" rects when style changes, even if the pixels don't change</p>
       <p><a href="../examples/relayout.html">DEMO</a></p>
     </article>
     <footer class="source white">source http://www.flickr.com/photos/28481088@N00/3243418109/ cc-by</footer>
@@ -183,46 +193,11 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Layers</h2>
     </hgroup>
     <article>
+      Put layers picture in.
       <p style="margin-left: 15px;">Section of the page, subtree of the DOM</p>
       <p style="margin-left: 15px;">Layers paint independently, and get stuck on the GPU for final composition together</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>(Re)compositing</h2>
-    </hgroup>
-    <article>
       <p>Once a layer is painted, we can <u>stretch</u>, <u>move</u>, and <u>fade</u> without repainting.</p>
       <p><a href="../examples/drawer.html">Demo</a></p>
-    </article>
-  </slide>
-
-<slide>
-    <hgroup>
-      <h2>Compositor Thread</h2>
-    </hgroup>
-    <article>
-      <p>Remember, 16ms for everything!</p>
-      <div class="columns-2">
-        <ul>
-          <p>
-            <u>Main Thread</u>
-          </p>
-          <li>Layout</li>
-          <li>JavaScript</li>
-          <li>Painting-related</li>
-        </ul>
-        <ul>
-          <p>
-            <u>Compositor Thread</u>
-          </p>
-          <li>CSS animation</li>
-          <li>Scrolling (mostly)</li>
-          <li>Compositing</li>
-        </ul>
-      </div>
-      <p>Doing JS-based animation is all main thread, and really hard!</p>
     </article>
   </slide>
 
@@ -253,6 +228,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article >
       <img src="images/scrolling-fast.png" />
+      <p><a href="../examples/hover.html">DEMO</a></p>
     </article>
   </slide>
 
@@ -293,6 +269,16 @@ URL: https://code.google.com/p/io-2012-slides
           <li>Redundant large empty layers</li>
         </ul>
       </div>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Seeing inside the rendering system</h2>
+    </hgroup>
+    <article>
+      <p>Demo</p>
     </article>
   </slide>
 
