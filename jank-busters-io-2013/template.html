@@ -45,16 +45,9 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide class="fill nobackground" style="background-image: url(images/gallery-touch.jpg)">
     <hgroup>
-      <h2 class="white">Frames: 60Hz &amp; 16ms</h2>
+      <h2 class="white">Basics: Frames</h2>
     </hgroup>
-    <footer class="source white">source goes here</footer>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Frames</h2>
-    </hgroup>
-    <article>
+    <article class="white">
       <p>Monitors are *usually* 50-60Hz...</p>
       <ul>
         <li>... don't assume 60Hz</li>
@@ -66,44 +59,10 @@ URL: https://code.google.com/p/io-2012-slides
   <slide>
     <hgroup>
       <h2>Gallery of Jank</h2>
-      <h3>Hitch: occasional long frames</h3>
+      <h3>Hitches, Low Framerate, Variable Framerate</h3>
     </hgroup>
     <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Gallery of Jank</h2>
-      <h3>Low FPS: consistent long frames</h3>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Gallery of Jank</h2>
-      <h3>Variable FPS: uneven frame times</h3>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Gallery of Jank</h2>
-      <h3>Jank feels worst during interactions</h3>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+      <p>TODO: pick one jank example (janky interactive drag?)</p>
     </article>
   </slide>
 
@@ -203,7 +162,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="white" style="background-color:rgba(0,0,0,0.7); padding: 20px;">
       <p>Paint what's "dirty"</p>
       <p>Changing style or layout makes a lot dirty... even if the pixels don't change</p>
-      <p>DEMO</p>
+      <p><a href="../examples/relayout.html">DEMO</a></p>
     </article>
     <footer class="source white">source http://www.flickr.com/photos/28481088@N00/3243418109/ cc-by</footer>
   </slide>
@@ -235,7 +194,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <p>Once a layer is painted, we can <u>stretch</u>, <u>move</u>, and <u>fade</u> without repainting.</p>
-      <p>Demo</p>
+      <p><a href="../examples/drawer.html">Demo</a></p>
     </article>
   </slide>
 
@@ -305,11 +264,11 @@ URL: https://code.google.com/p/io-2012-slides
       <p>Remember, to improve performance:</p>
       <p>
         <ol>
-          <li>1. Paint as little as possible first</li>
+          <li>1. Paint (invalidate) as little as possible first</li>
           <li>2. Then make the paints you're left with fast</li>
         </ol>
       </p>
-      <p>DEMO</p>
+      <p><a href="../examples/hover.html">DEMO</a></p>
     </article>
   </slide>
 
