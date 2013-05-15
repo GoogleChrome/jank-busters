@@ -1,12 +1,83 @@
 <html>
 <body>
-	<div style="-webkit-perspective-origin: 50% 50%; -webkit-perspective: 1000px; -webkit-transform: scale(0.75);">
-		<div style="-webkit-transform: translateZ(-457px) rotate3d(-1, 1, 0, 0deg); -webkit-transform-style: preserve-3d; -webkit-transition: 1s linear all;" onclick="this.style.webkitTransform = 'translateZ(-457px) rotate3d(-1, 1, 0, -45deg)'">
-	        <img style="-webkit-transform: translateZ(-100px); position:absolute; top: 100px; left: 100px;" src="winimgs/win-layers/ie.png" class="ie">
-	        <img style="-webkit-transform: translateZ(100px); position:absolute;" src="winimgs/win-layers/control-panel.png" class="control-panel">
-	        <img style="-webkit-transform: translateZ(300px); position:absolute; top: 30px; left: 30px;" src="winimgs/win-layers/my-computer.png" class="my-computer">
-	      </div>
-	  </div>
-	</div>
+	<style>
+		#perspectiveContainer {
+			-webkit-perspective-origin: 50% 50%;
+			-webkit-perspective: 1000px;
+		}
+		#rotationContainer {
+			-webkit-transform: translateZ(-457px) rotate3d(-1, 1, 0, 0deg);
+			-webkit-transform-style: preserve-3d;
+			-webkit-transition: 1s linear all;
+		}
+		#rotationContainer img {
+			position: absolute;
+			-webkit-transition: inherit;
+			border: 1px solid lightgray;
+			-webkit-transform: translateZ(0);
+		}
+		#rotationContainer.rotated {
+			-webkit-transform: translateZ(-457px) rotate3d(-1, 1, 0, -45deg);
+		}
+		#gmailtop {
+			top:0;
+			left:0;
+			width: 600px;
+		}
+		#rotationContainer.rotated #gmailtop {
+			-webkit-transform: translateZ(25px);
+		}
+		#gmailside {
+			top: 84px;
+			left: 0;
+			width: 120px;
+		}
+		#rotationContainer.rotated #gmailside {
+			-webkit-transform: translateZ(75px);
+		}
+		#gmailmessages {
+			top: 84px;
+			left: 120px;	
+			width: 480px;
+		}
+		#rotationContainer.rotated #gmailmessages {
+			-webkit-transform: translateZ(-25px);
+			-webkit-animation-duration: 2s;
+			-webkit-animation-delay: 1s;
+			-webkit-animation-name: scroll;
+			-webkit-animation-iteration-count: 5;
+			-webkit-animation-direction: alternate;
+			-webkit-animation-timing-function: ease-in-out;
+		}
+		#viewport {
+			border: 2px solid blue;
+			-webkit-transition: inherit;
+			position: absolute;
+			width: 600px;
+			height: 300px;
+			z-index: 5;
+		}
+		#rotationContainer.rotated #viewport {
+			-webkit-transform: translate3d(0, 0, 100px);
+		}
+
+		@-webkit-keyframes scroll {
+			from {
+				-webkit-transform: translate3d(0, 0, -25px);	
+			}
+			to {
+				-webkit-transform: translate3d(0, -100px, -25px);
+			}
+		}
+	</style>
+	<button onclick="document.getElementById('rotationContainer').classList.toggle('rotated');">twist</button>
+	<div id="perspectiveContainer">
+		<div id="rotationContainer">
+			<div id="viewport"></div>
+	        <img id="gmailtop" src="../jank-busters-io-2013/images/gmail/topbar.png">
+	        <img id="gmailside" src="../jank-busters-io-2013/images/gmail/menu.png">
+	        <img id="gmailmessages" style="" src="../jank-busters-io-2013/images/gmail/messagelist.png">
+	    </div>
+    </div>
   </body>
   </html>
