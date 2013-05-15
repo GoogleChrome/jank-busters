@@ -138,9 +138,10 @@ URL: https://code.google.com/p/io-2012-slides
     <hgroup>
       <h2>Painting: Area x Complexity</h2>
     </hgroup>
-    <article class="flexbox vcenter" style="background-image: url(images/google-home-cursor-red-two.png); background-repeat: no-repeat; background-position: center;">
-      <p style="margin-right: 260px;">White pixels are cheap.</p>
-      <p style="margin-top: 280px;">...white pixels for background under grey button background rect with rounded corners and antialiased edges and a dark grey outline with rounded corners and antialiased edges and an antialiased text run on the other hand...</p>
+    <article class="flexbox vcenter" style="background-image: url(); background-repeat: no-repeat; background-position: center;">
+      <p style="position: absolute; top: 160px; left: 260px;">Not all paints are equal</p>
+      <p style="position: absolute; top: 500px; left: 100px">Continuous painting mode can help: <a href="http://goo.gl/Z3IXq">http://goo.gl/Z3IXq</a></p>
+      <img src="images/google-home-cursor-red-two.png">
     </article>
   </slide>
 
@@ -157,56 +158,27 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Best Case for Animation</h2>
+      <h2>Scrolling</h2>
     </hgroup>
     <article>
-      <p>*No layout* and *no painting*</p>
-      <p>How?</p>
-      <p>Enter the layer.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Layers</h2>
-    </hgroup>
-    <article>
-      <p>Section of the page, subtree of the DOM</p>
-      <p>Painted independently, composited together on GPU</p>
-      <p>Once a layer is painted, we can <u>stretch</u>, <u>move</u>, and <u>fade</u> without repainting.</p>
-      Layer picture
-      <img src=""/>
-      <p><a href="../examples/drawer.html">Demo</a></p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Scrolling</h2>
-      <h3>Just another layer!</h3>
-    </hgroup>
-    <article>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Scrolling</h2>
-      <h3>The Slow Way</h3>
-    </hgroup>
-    <article class="flexbox vleft">
-      <img style="margin-left: 50px;" src="images/scroll-slow.png" />
-      <p style="margin-left: 150px;">Eh, repaint everything</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Scrolling</h2>
-      <h3>With Layers!</h3>
-    </hgroup>
-    <article >
-      <img src="images/scrolling-fast.png" style="height: 400px" />
+      <p>Layer: section of the page, subtree of the DOM. Painted independently, composited on the GPU, and can <u>stretch</u>, <u>move</u>, and <u>fade</u> without repainting.</p>
+      <style>
+        #aero {
+          -webkit-transform: translateZ(-457px) rotate3d(-1, 1, 0, 0deg);
+        }
+        #aero.flipped {
+          -webkit-transform: translateZ(-457px) rotate3d(-1, 1, 0, -45deg);
+        }
+      </style>
+      <div style="-webkit-perspective-origin: 50% 50%; -webkit-perspective: 1000px; -webkit-transform: scale(0.75);">
+        <div id="aero" style="-webkit-transform-style: preserve-3d; -webkit-transition: 1s linear all;">
+              <img style="-webkit-transform: translateZ(-100px); position:absolute; top: 100px; left: 100px;" src="images/winimgs/win-layers/ie.png" class="ie">
+              <img style="-webkit-transform: translateZ(100px); position:absolute;" src="images/winimgs/win-layers/control-panel.png" class="control-panel">
+              <img style="-webkit-transform: translateZ(300px); position:absolute; top: 30px; left: 30px;" src="images/winimgs/win-layers/my-computer.png" class="my-computer">
+            </div>
+        </div>
+      </div>
+      <button onclick="document.getElementById('aero').classList.toggle('flipped');">Twist</button>
       <p style="margin-left: 80px;"><a href="../examples/hover.html">DEMO</a></p>
     </article>
   </slide>
@@ -223,7 +195,7 @@ URL: https://code.google.com/p/io-2012-slides
           <li>position:fixed</li>
           <li>overflow:scroll</li>
           <li>hover effects</li>
-          <li>scroll listeners</li>
+          <li>mousewheel or touch listeners</li>
         </ul>
         <p><u>Long</u> paints from:</p>
         <ul>
@@ -235,6 +207,15 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Layers: Great for Animation</h2>
+    </hgroup>
+    <article>
+      <p>Want to animate with *no layout* and *no painting*</p>
+      <p><a href="../examples/drawer.html">Demo</a></p>
+    </article>
+  </slide>
 
   <slide>
     <hgroup>
