@@ -99,12 +99,6 @@
 
 	</style>
 	<script>
-		$(document).ready(function() {
-			$('#controls input').bind('change', function() {
-				loadImages();
-			});
-			loadImages();
-		});
 
 		var timer = null;
 		function toggleScrollHandler() {
@@ -125,44 +119,6 @@
 			}
 		}
 
-		function loadImages() {
-			var request = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&license=2&group_id=34427469792%40N01&api_key=bb962ee3ecbe7d27e28fa116a641c245&format=json&per_page=100&license=2&jsoncallback=?';
-			$.ajax({
-			    url: request,
-			    type: "GET",
-			    dataType: 'jsonp',
-			    success: function(data) {
-			    	console.log(data);
-					var imageFragment = document.createDocumentFragment();
-			    	data.photos.photo.map(function(photo) {
-						var photo_url = 'http://farm' + photo.farm +
-										'.staticflickr.com/' + photo.server +
-										'/' + photo.id +
-										'_' + photo.secret;
-						photo_url += '_z.jpg';
-						console.log(photo_url);
-						
-						// set up image
-						var img = new Image();
-						img.src = photo_url;
-						
-						// set up link
-						var metadata = document.createElement('a');
-						metadata.href = 'http://www.flickr.com/people/' + photo.owner;
-
-						// set up container
-						var imgcontainer = document.createElement('div');
-						imgcontainer.classList.add('imgcontainer');
-						metadata.appendChild(img);
-						imgcontainer.appendChild(metadata);
-
-						imageFragment.appendChild(imgcontainer);
-			    	});
-			    	document.getElementById('subcontainer').innerHTML = '';
-			    	document.getElementById('subcontainer').appendChild(imageFragment);
-			    }
-			});
-		}
 	</script>
 </head>
 <body class="transformed">
@@ -182,6 +138,106 @@
 	</div>
 	<div id="container" class="hoverable">
 		<div id="subcontainer">
+<div class="imgcontainer"><img src="hover_img/8719572381_f50f72de46_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8728078959_f36a01681d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8728652089_9662f66402_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8728710673_9e64393b7f_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8728711377_c7daac73eb_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8728841777_834c1d72b0_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8728851935_460978658e_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8729201284_91fa2b63a4_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8729302651_a704cbbc1a_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8729456006_299c650271_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8729870013_a4106d733a_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730388123_1e111a9725_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730421763_4c72b417d4_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730464718_afdf4cb9e2_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730476495_f11151665b_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730515243_c7312643a5_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730614662_05ff0ccf70_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730684226_bba9a66f21_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730828682_896ff7db7b_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730908218_3629fd5c38_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8730927831_abb64d9f8c_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731053390_b1998f9b75_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731188621_6297182d4d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731192596_490f5e0667_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731198719_83c6fda2b7_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731409194_b3fe063575_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731432069_92d54d5ba9_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731513778_0ca54dc6a6_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731639755_24d28ecf12_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731828138_dcba4426ff_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731981308_c8ac157c16_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8731999670_e2b6f786ba_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732037593_cc1921ea44_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732291619_05d53cfb1d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732301828_dee3cacc1d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732456079_4369f24152_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732734492_97f06826ca_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732741453_ea50428e63_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732746400_a36c07092f_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8732818369_d1bb4d8758_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733134424_b56a8544d6_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733214039_410a3120fe_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733548919_0cd2083b5d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733584327_bfff5a5ef2_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733785087_5a6c66a9e9_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733795301_6ed67b7136_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733846852_c093f2ca89_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733914687_c5a4756144_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8733966967_b4587c6c7a_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734367861_3352d76231_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734645834_831c691e13_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734675391_4d6b2e8861_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734718952_bc590f4e3f_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734761105_89f7b937ce_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734782004_45c544d313_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734836268_14ecc9c416_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8734896471_0d06068bb0_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735155218_67bb62d5c1_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735292280_4872e216a4_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735371929_8b9d707be5_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735554047_d32dee6136_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735644504_de53e035ac_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735740675_9e66bb5bc0_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735741127_3f895121ab_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735747643_d2a1f832ab_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8735844281_44263ec15d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736001725_8af5b83756_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736090972_d11daa9cf8_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736102321_0a60c401a2_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736105193_ff3d1e6c56_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736295104_2f8ed8087a_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736646211_2233a312a9_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736694322_ee5c5b23c9_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736705905_4e2bf961e2_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736858422_0c85faa52c_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736874308_7743a0be98_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736916761_80f8286e93_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8736981951_0827c798f6_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737071965_9e2b3aa154_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737073581_f73a25c148_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737075060_72859f50c5_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737122211_58491d07de_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737337574_3e6054e5d3_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737642771_a37d63d5d8_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737684895_986b6e97fd_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737831630_8b1f2ce9e8_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8737941102_e50292c483_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8738264515_61356911b4_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8738350037_b97c2cc10b_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8738500307_d3bb4cda64_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8738550786_aeecdf541d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8738661809_64db509d3d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8738871618_16c8542613_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8739173930_4d1106db31_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8739348520_55e22925c3_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8739518406_182e4c379d_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8739519920_f367277c79_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8739739688_1d813006ee_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8739748278_e357f26ab9_z.jpg" /></div>
+<div class="imgcontainer"><img src="hover_img/8740031322_f3332eb3be_z.jpg" /></div>
 		</div>
 	</div>
 </body>
