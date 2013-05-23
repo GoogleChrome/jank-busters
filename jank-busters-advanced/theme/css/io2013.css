@@ -25,7 +25,6 @@ slides > slide {
 /* line 24, ../scss/io2013.scss */
 slides > slide.title-slide:after {
   content: '';
-  background: url(../../images/io2013/google-io-lockup-1.png) no-repeat 100% 50%;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;

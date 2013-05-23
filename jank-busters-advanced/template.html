@@ -33,7 +33,7 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
-  <slide class="title-slide segue nobackground">
+  <slide class="title-slide segue nobackground" style="background-image: none;">
     <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
@@ -141,7 +141,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="flexbox vcenter" style="background-image: url(); background-repeat: no-repeat; background-position: center;">
       <p style="position: absolute; top: 160px; left: 260px;">Not all paints are equal</p>
-      <p style="position: absolute; top: 500px; left: 100px">Continuous painting mode can help: <a href="http://goo.gl/Z3IXq">http://goo.gl/Z3IXq</a></p>
+      <p style="position: absolute; top: 500px; left: 100px">Continuous painting mode to the rescue. <a href="../examples/slowscrolldiv.html">DEMO</a></p>
       <img src="images/google-home-cursor-red-two.png">
     </article>
   </slide>
@@ -267,7 +267,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <p>Use the tools to find painful repaints &amp; hunt down their cause. Watch for:</p>
-      <div class="columns-2">
+      <div style="float:left">
         <p><u>Unnecessary</u> paints from:</p>
         <ul>
           <li>position:fixed</li>
@@ -275,6 +275,8 @@ URL: https://code.google.com/p/io-2012-slides
           <li>hover effects</li>
           <li>touch listeners</li>
         </ul>
+      </div>
+      <div style="float:right">
         <p><u>Long</u> paints from:</p>
         <ul>
           <li>Visually complex CSS</li>

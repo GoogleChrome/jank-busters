@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Jank Busters',
-    subtitle: 'Chrome Rendering Performance',
+    title: 'Jank Busting',
+    subtitle: 'in Chrome!',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
@@ -23,10 +23,10 @@ var SLIDE_CONFIG = {
   // Author information
   presenters: [{
     name: 'Nat Duca',
-    company: 'Rendering Geek, Google'
+    company: 'SWE, Chrome GPU'
   }, {
     name: 'Tom Wiltzius',
-    company: 'Graphics Cheerleader, Google'
+    company: 'PM, Chrome GPU'
   }]
 };
 
