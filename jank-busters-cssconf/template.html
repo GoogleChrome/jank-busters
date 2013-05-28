@@ -38,8 +38,10 @@ URL: https://code.google.com/p/io-2012-slides
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
-      <p data-config-presenter><!-- populated from slide_config.json --></p>
+      	<h2>Chrome Rendering Performance</h2>
+	<h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+
+	<p data-config-presenter><!-- populated from slide_config.json --></p>
     </hgroup>
   </slide>
 
@@ -86,13 +88,13 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide class="fill nobackground" style="background-image: url(images/shuttle.jpg)">
     <hgroup>
-      <h2 class="white">Rendering 101</h2>
+      <h2 class="white">Jank-busting 101</h2>
     </hgroup>
     <article class="white">
       <ol>
         <li>1. Paint fast</li>
-        <li>2. Avoid accidental paints</li>
-        <li>3. Don't paint at ALL!</li>
+        <li>2. Don't paint at ALL!</li>
+        <li>3. Avoid accidental paints</li>
       </ol>
     </article>
     <footer class="source white">source http://www.flickr.com/photos/jurvetson/3031088430/ cc-by</footer>
@@ -142,6 +144,17 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="flexbox vcenter" style="background-image: url(); background-repeat: no-repeat; background-position: center;">
       <p style="position: absolute; top: 160px; left: 260px;">Not all paints are equal</p>
       <img src="images/google-home-cursor-red-two.png">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Painting tl;dr</h2>
+    </hgroup>
+    <article>
+      <p>Painting is reallly really slow. Don't do it.</p>
+      &nbsp;</p>
+      <p>No really... don't.</p>
     </article>
   </slide>
 
@@ -287,17 +300,17 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Seeing Inside the Rendering System</h2>
+      <h2>Under the hood: Chrome Frame Viewer</h2>
     </hgroup>
     <article>
       <p><a href="../examples/drawer.html">Demo</a></p>
-      <p><a href="http://goo.gl/8A5FX">Docs for more</a></p>
+      <p><a href="http://goo.gl/8A5FX">http://goo.gl/8A5FX</a></p>
     </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image: url(images/paintspill.jpg)">
     <hgroup>
-      <h2 class="white">Painting: Not Just From Visual Changes</h2>
+      <h2 class="white">Painting by Accident</h2>
     </hgroup>
     <article class="white" style="background-color:rgba(0,0,0,0.7); padding: 20px;">
       <p>Sometimes you get "dirty" areas when style changes, even if the pixels don't change.</p>

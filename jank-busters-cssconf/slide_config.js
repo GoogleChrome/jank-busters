@@ -2,7 +2,7 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'Jank Busters',
-    subtitle: 'Chrome Rendering Performance',
+    subtitle: 'CSSConf, May 28th 2013',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
