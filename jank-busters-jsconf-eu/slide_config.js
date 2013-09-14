@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Peering inside Jank with chrome://tracing',
-    subtitle: 'JSConf EU 2013',
+    title: 'Advanced Jank Busting in Chrome',
+    subtitle: 'Digging deep with chrome://tracing',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
