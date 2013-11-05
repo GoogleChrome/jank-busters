@@ -7,7 +7,7 @@
 *.o
 *.so
 *.pyc
-#*.min.css
+*.min.css
 #*.min.js
 .sass-cache/*
 
@@ -35,6 +35,4 @@
 ehthumbs.db
 Icon?
 Thumbs.db
-*.sqp
 *~
-*.swp
