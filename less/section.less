@@ -34,6 +34,7 @@ section.videos ul li span img {
 }
 
 section.videos li.new:after {
+  display: none;
   content: 'New!';
   font-size: 14px;
   font-weight: bold;
@@ -84,6 +85,10 @@ section.videos li.new:after {
 
   section.videos ul li:nth-child(2n) {
     margin-right: 0;
+  }
+
+  section.videos li.new:after {
+    display: block;
   }
 }
 
