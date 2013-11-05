@@ -1,0 +1,144 @@
+section .container {
+  margin: 45px auto 0 auto;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+section .container section {
+  margin-bottom: 80px;
+}
+
+section:last-child .container {
+  border: none;
+}
+
+section .container p {
+  max-width: 450px;
+}
+
+section.videos {
+  clear: left;
+}
+
+section.videos ul li span {
+  display: block;
+}
+
+section.videos ul li span img {
+  display: none;
+  padding: 1%;
+  background: #F3ECDB;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  width: 98%;
+}
+
+@media (min-width: 450px) {
+
+  section.videos ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  section.videos ul li {
+    display: inline-block;
+    position: relative;
+    width: 48%;
+    margin-right: 2%;
+    min-height: 225px;
+  }
+
+  section.videos ul li a {
+    position: absolute;
+    top: 0;
+  }
+
+  section.videos ul li span {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  section.videos ul li span.title {
+    width: 90%;
+    margin: 5px auto;
+  }
+
+  section.videos ul li span img {
+    display: block;
+  }
+
+  section.videos ul li:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 600px) {
+  section.videos ul li {
+    min-height: 285px;
+  }
+}
+
+@media (min-width: 725px) {
+
+  .content section {
+    width: 47%;
+    margin-right: 5.5%;
+    float: left;
+  }
+
+  .content section:nth-child(2n) {
+    margin-right: 0;
+  }
+
+  .content section.full-width,
+  .content section.videos {
+    width: 100%;
+    margin-right: 0;
+    float: none;
+  }
+
+  section.videos ul li {
+    width: 31%;
+    margin-right: 2%;
+    position: relative;
+    min-height: 240px;
+  }
+
+  section.videos ul li:nth-child(2n) {
+    margin-right: 2%;
+  }
+
+  section.videos ul li:nth-child(3n) {
+    margin-right: 0;
+  }
+
+}
+
+@media (min-width: 925px) {
+
+  section.videos ul li {
+    width: 17%;
+    margin-right: 2%;
+    position: relative;
+    min-height: 240px;
+  }
+
+  section.videos ul li:nth-child(3n) {
+    margin-right: 2%;
+  }
+
+  section.videos ul li:nth-child(5n) {
+    margin-right: 0;
+  }
+
+  .intro {
+    float: left;
+    width: 33%;
+    margin-right: 6%;
+    font-size: 18px;
+  }
+
+  .content {
+    float: left;
+    width: 60%;
+  }
+}
