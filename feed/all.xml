@@ -19,7 +19,7 @@ layout: none
         </description>
         <pubDate>{{ post.date | date: "%a, %d %b %Y" }} {% if post.time %}{{ post.time}}{% else %}00:00:00 +0000{% endif %}</pubDate>
         <link>{{ site.url }}{{ post.url }}</link>
-        <guid isPermaLink="true">{{ post.url }}</guid>
+        <guid isPermaLink="true">{{ post.link }}</guid>
         {% for category in post.categories %}
         <category>{{ category | capitalize }}</category>
         {% endfor %}
