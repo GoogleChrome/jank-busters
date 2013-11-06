@@ -1,0 +1,29 @@
+---
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+
+    <title>{{ site.name }}</title>
+    <description>Let's make the web silky smooth!</description>
+    <lastBuildDate>{{ site.time }}</lastBuildDate>
+    <language>en</language>
+    <generator>{{ site.name }}</generator>
+    <atom:link href="{{ site.url }}/feed/" rel="self" type="application/rss+xml" />
+    {% for post in site.posts %}
+      <item>
+        <title>{{ post.title }}</title>
+        <description>
+          <![CDATA[{{ post.description }}]]>
+        </description>
+        <pubDate>{{ post.date | date: "%a, %d %b %Y" }} {% if post.time %}{{ post.time}}{% else %}00:00:00 +0000{% endif %}</pubDate>
+        <link>{{ site.url }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ post.url }}</guid>
+        {% for category in post.categories %}
+        <category>{{ category | capitalize }}</category>
+        {% endfor %}
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

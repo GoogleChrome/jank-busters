@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Precision</title>
+    <style>
+      .result {
+        font-family: sans-serif;
+        font-size: 150%;
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <div class="result"><span id="result"></span> ms precision.
+      At 60fps, that would be <span id="error"></span>% error!
+    </div>
+    <script>
+      function testIt() {
+        var el = document.querySelector("#result");
+        var errorEl = document.querySelector("#error");
+        var total = 0;
+        var n = 100;
+        for (var i = 0; i < n; i++) {
+           var start = window.performance.webkitNow();
+           while(true) {
+             var now = window.performance.webkitNow();
+             if (now == start)
+               continue;
+             total += now - start;
+             break;
+           }
+        }
+
+        var precision = total / n;
+        el.textContent = precision;
+        var error = (precision / (1000 / 60)) * 100;
+
+        errorEl.textContent = Math.floor(error * 10000) / 10000;
+      }
+      document.addEventListener('DOMContentLoaded', testIt);
+    </script>
+  </body>
+</html>

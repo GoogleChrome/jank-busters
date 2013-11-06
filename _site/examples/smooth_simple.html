@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A (mostly) smooth page</title>
+    <style>
+      * {
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 18pt;
+        color: #797979;
+      }
+      #item2 {
+        position: fixed;
+        left: 280px;
+        top: 70px;
+      }
+      button {
+        font-size: 130%;
+      }
+      #foo {
+        -webkit-animation-duration: 10s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+      }
+
+      @-webkit-keyframes rotate {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="images/chrome-logo.png" width="250">
+    <div id="item2">
+      <div style="width: 500px">
+        Rotation via CSS keyframe animation
+      </div>
+    </div>
+    <script>
+
+      var rotating = false;
+      function startAnimation() {
+        var el = document.querySelector("img");
+        if(rotating)
+          el.style.webkitAnimationName = "";
+        else
+          el.style.webkitAnimationName = "rotate";
+        rotating = !rotating;
+      };
+      startAnimation();
+      document.querySelector('img').addEventListener('click', startAnimation);
+
+      function sleep(ms) {
+        var start = Date.now();
+        while(Date.now() < start + ms);
+      }
+
+      function beMean() {
+        sleep(10+Math.random() * 40);
+        setTimeout(beMean, 10 + Math.random(10));
+      };
+      setTimeout(beMean, 0);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: sans-serif;
+        width: 600px;
+        margin-left: 80px;
+        margin-top: 80px;
+      }
+      h1 {
+        font-size: 200%;
+      }
+      #status {
+        border: 1px solid black;
+        margin: 20px;
+        padding: 10px;
+        width: 600px;
+      }
+      .good {
+        color: green;
+      }
+      .bad {
+        color: red;
+      }
+      .dunno {
+        color: orange;
+      }
+      .pre {
+        font-family: monospace;
+      }
+    </style>
+    <script>
+      function getRAF(w) {
+        w = w || window;
+        if (w.requestAnimationFrame)
+          return w.requestAnimationFrame;
+        if (w.webkitRequestAnimationFrame)
+          return w.webkitRequestAnimationFrame;
+        if (w.mozRequestAnimationFrame)
+          return w.mozRequestAnimationFrame;
+        if (w.oRequestAnimationFrame)
+          return w.oRequestAnimationFrame;
+        if (w.msRequestAnimationFrame)
+          return w.msRequestAnimationFrame;
+        return undefined;
+      }
+      function getVisibilityState(d) {
+        d = d || window;
+        if (d.visibilityState)
+          return d.visibilityState;
+        if (d.webkitVisibilityState)
+          return d.webkitVisibilityState;
+        if (d.mozVisibilityState)
+          return d.mozVisibilityState;
+        if (d.oVisibilityState)
+          return d.oVisibilityState;
+        if (d.msVisibilityState)
+          return d.msVisibilityState;
+        return undefined;
+      }
+
+      function onLoad() {
+        var iframe = document.querySelector('iframe');
+
+        var iframeTickingStatus = document.querySelector('#iframe-ticking-status');
+        var mainframeTickingStatus = document.querySelector('#mainframe-ticking-status');
+
+        var iframeVisibilityStatus = document.querySelector('#iframe-visibility-status');
+        var mainframeVisibilityStatus = document.querySelector('#mainframe-visibility-status');
+
+        if(!getRAF(window)) {
+          iframeTickingStatus.textContent = 'requestAnimationFrame not supported';
+          iframeTickingStatus.className = 'bad';
+          mainframeTickingStatus.textContent = 'requestAnimationFrame not supported';
+          mainframeTickingStatus.className = 'bad';
+          return;
+        }iframe
+        iframeTickingStatus.textContent = 'idle';
+        iframeTickingStatus.className = 'dunno';
+        mainframeTickingStatus.textContent = 'idle';
+        mainframeTickingStatus.className = 'bad';
+
+        if (getVisibilityState(document)) {
+          mainframeVisibilityStatus.textContent = getVisibilityState(document);
+          mainframeVisibilityStatus.className = 'good';
+        } else {
+          mainframeVisibilityStatus.textContent = '<visibility api not supported>';
+          mainframeVisibilityStatus.className = 'bad';
+        }
+
+        getRAF(window)(function() {
+          mainframeTickingStatus.textContent = 'rAF ticking';
+          mainframeTickingStatus.className = 'good';
+        });
+
+        if (getVisibilityState(iframe.contentDocument)) {
+          iframeVisibilityStatus.textContent = getVisibilityState(iframe.contentDocument);
+          iframeVisibilityStatus.className = 'dunno';
+        } else {
+          iframeVisibilityStatus.textContent = '<visibility api not supported>';
+          iframeVisibilityStatus.className = 'bad';
+        }
+
+        getRAF(iframe.contentWindow)(function() {
+          iframeTickingStatus.textContent = 'rAF ticking';
+          iframeTickingStatus.className = 'dunno';
+        });
+      }
+      document.addEventListener('DOMContentLoaded', onLoad);
+    </script>
+  </head>
+  <body>
+    <h1>requestAnimationFrame, on <span class="pre">iframe</span> with <span class="pre">display:none</span></h1>
+
+    This document contains an iframe with display:none set on it. It requests an animation frame
+    on both the iframe's contentWindow and the main window. The main frame should tick.</p>
+
+    It is unclear what the iframe's requestAnimationFrame behavior should be.
+
+    <div id="status">
+    IFrame status: <span id="iframe-ticking-status">... loading...</span> and <span id="iframe-visibility-status">... loading...</span></p>
+    Main frame status: <span id="mainframe-ticking-status">... loading...</span> and <span id="mainframe-visibility-status">... loading...</span>
+  </div>
+    <iframe style="display:none"></iframe>
+  </body>
+</html>

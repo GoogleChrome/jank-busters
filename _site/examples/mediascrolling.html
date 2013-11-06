@@ -1,0 +1,157 @@
+<html>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+		html, body {
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+			background-color: #f5f5f5;
+			font-family: Georgia, serif;
+			font-style: italic;
+		}
+
+		/* Images are in little containers with slow-to-paint effects */
+		div.imgcontainer {
+			height: 240px;
+			width: 240px;
+			margin: 15px;
+			display: inline-block;
+			border: 1px solid gray;
+			border-radius: 2px;
+			box-shadow: 5px 5px 5px #888;
+			overflow: hidden;
+			background-image: 	linear-gradient(45deg, #eee 25%, transparent 25%, transparent),
+								linear-gradient(-45deg, #eee 25%, transparent 25%, transparent),
+								linear-gradient(45deg, transparent 75%, #eee 75%),
+								linear-gradient(-45deg, transparent 75%, #eee 75%);
+			background-size: 3px 3px;
+		}
+		div.imgcontainer img {
+			display: block;
+		}
+
+		#container.resized img {
+			max-width: 240px;
+			max-height: 240px;
+		}
+
+		/* Scrolling container with overflow:scroll */
+		#container {
+			top: 150px;
+			left: 100px;
+			margin-right: 15px;
+			position: absolute;
+			height: 600px;
+			width: auto;
+			border: 1px solid black;
+			overflow-y: scroll;
+		}
+
+		/* Optionally promote container and its children to own layer */
+		#container.transformed {
+			-webkit-transform: translateZ(0);
+		}
+		#container.transformed #subcontainer {
+			-webkit-transform: translateZ(0);
+		}
+		
+		#explainer {
+			position: relative;
+			display: inline;
+			margin-left: 15px;
+			color: cornflowerblue;
+			text-decoration: underline;
+			
+		}
+		#explainer div {
+			display: none;
+			font-family: sans-serif;
+			font-style: normal;
+		}
+		#explainer:hover div {
+			display: block;
+			z-index: 10;
+			position: absolute;
+			padding: 10px;
+			top: 25px;
+			width: 300px;
+			border: 1px solid cornflowerblue;
+			background: rgba(255,255,255,.9);
+			color: black;
+		}
+	</style>
+	<script>
+		$(document).ready(function() {
+			loadImages();
+		});
+
+		function loadImages() {
+			var request = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&license=2&group_id=34427469792%40N01&api_key=bb962ee3ecbe7d27e28fa116a641c245&format=json&per_page=100&license=2&jsoncallback=?';
+			$.ajax({
+			    url: request,
+			    type: "GET",
+			    dataType: 'jsonp',
+			    success: function(data) {
+			    	console.log(data);
+					var imageFragment = document.createDocumentFragment();
+			    	data.photos.photo.map(function(photo) {
+						var photo_url = 'http://farm' + photo.farm +
+										'.staticflickr.com/' + photo.server +
+										'/' + photo.id +
+										'_' + photo.secret;
+						if(document.getElementById('resized').checked) {
+							photo_url += '_b';
+						} else {
+							photo_url += '_m';
+						}
+						photo_url += '.jpg';
+						console.log(photo_url);
+						
+						// set up image
+						var img = new Image();
+						img.src = photo_url;
+						
+						// set up link
+						var metadata = document.createElement('a');
+						metadata.href = 'http://www.flickr.com/people/' + photo.owner;
+
+						// set up container
+						var imgcontainer = document.createElement('div');
+						imgcontainer.classList.add('imgcontainer');
+						metadata.appendChild(img);
+						imgcontainer.appendChild(metadata);
+
+						imageFragment.appendChild(imgcontainer);
+			    	});
+			    	document.getElementById('subcontainer').innerHTML = '';
+			    	document.getElementById('subcontainer').appendChild(imageFragment);
+			    }
+			});
+		}
+	</script>
+</head>
+<body>
+	<h2>grids</h2>
+	<div id="controls">
+		<input type="checkbox" id="transformed" onchange="document.getElementById('container').classList.toggle('transformed')">
+		<label for="transformed">Overflow:scroll children in layer</label>
+		<input type="checkbox" id="resized" onchange="document.getElementById('container').classList.toggle('resized'); loadImages();">
+		<label for="resized">Images that need resizing</label>
+		
+		<div id="explainer">
+			<label>Explainer</label>	
+			<div>
+				<p>Containers with overflow:scroll repaint themselves every frame during a scroll.</p>
+				<p>If the container's children are their own layer, we can avoid repainting them on repeated scrolls (but still paint the now-empty container layer -- compare Timeline recordings and look for image resize events).</p>
+				<p>Using large images necessitates image resizes, and causes long paint times.</p>
+				<p>This is going to get better: try 'accelerated overflow scroll' in about:flags!</p>
+			</div>
+		</div>
+	</div>
+	<div id="container">
+		<div id="subcontainer">
+		</div>
+	</div>
+</body>
+</html>

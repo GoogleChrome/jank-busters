@@ -1,0 +1,333 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<style>
+			body {
+				margin: 0;
+			}
+			.transition {
+				-webkit-transition: -webkit-transform 1s linear, left 1s linear;
+			}
+			#drawer {
+				height: 100%;
+				width: 300px;
+				background-color: gray;
+				position: relative;
+				padding: 5px 10px;
+				box-sizing: border-box;
+				z-index: 2;
+			}
+			#drawer.shown #drawerToggle {
+				background-color: red;
+			}
+			#drawerToggle {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				height: 25px;
+				width: 25px;
+				background-color: LightGray;
+				padding: 3px;
+				-webkit-box-shadow: 3px 3px LightSteelBlue;
+			}
+			#drawer ul {
+				margin: 0;
+				margin-right: 50px;
+				padding: 0;
+				list-style: none;
+			}
+			#drawer li {
+				margin: 0;
+				margin-bottom: 2px;
+				padding: 5px;
+				display: block;
+				width: 100%;
+				background-color: #B1B9C4;
+			}
+			#controls {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				width: 300px;
+				padding: 20px;
+				border: 1px solid black;
+			}
+			#title {
+				position: fixed;
+				right: 50px;
+				bottom: 50px;
+				font-family: Georgia, sans-serif;
+				font-style: italic;
+			}
+		</style>
+		<script>
+			var janker = null;
+			function jankToggle(toggle) {
+				/* Install a 50ms busy-wait every 250ms */
+				if(toggle) {
+					janker = window.setInterval(function() {
+						var date = new Date();
+						while((new Date() - date) < 50) {
+							eval("1+1");
+						};
+					}, 250);
+				} else {
+					if(janker) window.clearInterval(janker);
+				}
+			}
+
+			// Abstract Drawer
+			function Drawer(strategy) {
+				// constants
+				this.SHOWN_LOCATION = 0;
+				this.HIDDEN_LOCATION = -250;
+
+				this.location = null;
+
+				// set up a clean, hidden Drawer 
+				this.drawer = document.getElementById('drawer');
+				this.setStrategy(strategy);
+				this.resetDrawer();
+
+				var _this = this;
+				// wire up toggle control
+				this.drawerToggle = document.getElementById('drawerToggle');
+				this.drawerToggle.onclick = function(e) {
+					_this.showHide();
+					return false;	// cancel bubbling
+				}
+				this.drawerToggle.onmousedown = function(e) {
+					event.stopPropagation();
+				}
+				
+			};
+
+			Drawer.prototype.destroy = function() {
+				this.clearStyles();
+				//TOOD add a "clear handlers" method and call it
+			}
+
+			Drawer.prototype.resetDrawer = function() {
+				this.clearStyles();
+				this.setLocation(this.HIDDEN_LOCATION);
+			}
+
+			Drawer.prototype.clearStyles = function() {
+				// Get rid of base CSS properties
+				this.drawer.style.left = '';
+				this.drawer.style.webkitTransform = '';
+				this.drawer.style.translate3D = '';
+			}
+
+			Drawer.prototype.showHide = function() {
+				this.drawer.classList.toggle('shown');
+			}
+
+			Drawer.prototype.isShown = function() {
+				return this.drawer.classList.contains('shown');
+			}
+
+			Drawer.prototype.setStrategy = function(strategy) {
+				// Acceptable strategies: 'positioned', 'translated', 'prepromoted'
+				this.strategy = strategy;
+			}
+
+			Drawer.prototype.setLocation = function(value) {
+				console.log('setting location to ' + value);
+				this.location = value;
+				switch(this.strategy) {
+					case 'positioned':
+						this.drawer.style.left = value + 'px';
+						break;
+					case 'translated':
+						this.drawer.style.webkitTransform = 'translateX(' + value + 'px)';
+						break;
+					case 'prepromoted':
+						this.drawer.style.webkitTransform = 'translate3D(' + value + 'px,0,0)';
+						break;
+					}
+			}
+
+			// CSS transition based Drawer
+			function TransitionDrawer(strategy) {
+				Drawer.call(this, strategy);
+				this.drawer.classList.add('transition');
+				// wire up mouse drag control
+				var _this = this;
+				// TODO move this to base class
+				this.drawer.onmousedown = function(mouseDownEvent) {
+					_this.locationStart = _this.location;
+					_this.dragStart = mouseDownEvent.x;
+					_this.drawer.classList.remove('transition');
+					window.onmousemove = function(mouseMoveEvent) {
+						var new_location = _this.locationStart + (mouseMoveEvent.x - _this.dragStart);
+						if(new_location < _this.HIDDEN_LOCATION)
+							new_location = _this.HIDDEN_LOCATION;
+						else if(new_location > _this.SHOWN_LOCATION)
+							new_location = _this.SHOWN_LOCATION;
+						_this.setLocation(new_location);
+					}
+					window.onmouseup = function() {
+						window.onmousemove = null;
+						// TODO hack: read a property to force relayout before adding transition
+						// so it doesn't accidentally kick in (classList additions all get batched)
+						var force_relayout = drawer.offsetTop;
+						_this.drawer.classList.add('transition');
+						// now go to nearest steady state
+						if(Math.abs(_this.location - _this.SHOWN_LOCATION) < Math.abs(_this.location - _this.HIDDEN_LOCATION))
+							_this.show();
+						else
+							_this.hide();
+					}
+				}
+			}
+			// TransitionDrawer inherits from Drawer
+			TransitionDrawer.prototype = Object.create(Drawer.prototype);
+
+			TransitionDrawer.prototype.destroy = function() {
+				Drawer.prototype.destroy.call(this);
+				this.drawer.classList.remove('transition');
+			}
+
+			TransitionDrawer.prototype.resetDrawer = function() {
+				this.drawer.classList.remove('transition');
+				Drawer.prototype.resetDrawer.call(this);
+				// TODO hack: read a property to force relayout before adding transition
+				// so it doesn't accidentally kick in (classList additions all get batched)
+				var force_relayout = drawer.offsetTop;
+				this.drawer.classList.add('transition');
+			}
+
+			TransitionDrawer.prototype.showHide = function() {
+				Drawer.prototype.showHide.call(this);
+				// we can juset set the styles and rely on the CSS transition for animation
+				if(this.isShown()) {
+					this.setLocation(this.SHOWN_LOCATION);
+				} else {
+					this.setLocation(this.HIDDEN_LOCATION);
+				}
+			}
+
+			TransitionDrawer.prototype.show = function() {
+				this.setLocation(this.SHOWN_LOCATION);
+			}
+
+			TransitionDrawer.prototype.hide = function() {
+				this.setLocation(this.HIDDEN_LOCATION);
+			}
+
+			TransitionDrawer.prototype.drag = function() {
+
+			}
+
+			// RAF based Drawer
+			function RAFDrawer(strategy) {
+				// animation durations in ms
+				this.ANIMATION_DURATION = 1000;
+
+				this.currentRAF = null;
+				Drawer.call(this, strategy);
+			}
+			// RAFDrawer inherits from Drawer
+			RAFDrawer.prototype = Object.create(Drawer.prototype);
+
+			RAFDrawer.prototype.destroy = function() {
+				Drawer.prototype.destroy.call(this);
+				this.cancelRAF();
+			}
+
+			RAFDrawer.prototype.setLocation = function(value) {
+				console.log('updating position to ' + value);
+				
+				Drawer.prototype.setLocation.call(this, value);
+			}
+
+			RAFDrawer.prototype.showHide = function() {
+				Drawer.prototype.showHide.call(this);
+				if(this.isShown()) {
+					this.installRAF(this.SHOWN_LOCATION);
+				} else {
+					this.installRAF(this.HIDDEN_LOCATION);
+				}
+			}
+
+			RAFDrawer.prototype.installRAF = function(end_location) {
+				var start_time = window.performance.now();
+				this.start_position_value = this.location;
+
+				var end_time = start_time + this.ANIMATION_DURATION;
+				var end_position_value = end_location;
+
+				var _this = this;
+				function drawLoop(timestamp) {
+					if(timestamp > end_time) {
+						_this.setLocation(end_location);	// round to the correct stopping location
+						return;
+					}
+					// interpolate from start_position_value to end_position_value over ANIMATION_DURATION
+					var progress = (end_time - timestamp) / _this.ANIMATION_DURATION; // from 1 to 0
+					if(end_position_value < _this.start_position_value)
+						progress = 1-progress;	// From 0 up to 1
+					var new_value = progress * (end_position_value + _this.start_position_value);
+					_this.setLocation(new_value);
+					_this.currentRAF = window.requestAnimationFrame(drawLoop);
+				}
+				this.currentRAF = window.requestAnimationFrame(drawLoop);
+			}
+
+			RAFDrawer.prototype.cancelRAF = function() {
+				if(this.currentRAF) window.cancelAnimationFrame(this.currentRAF);
+			}
+
+			var drawerInstance = null;
+			function updateSettings() {
+				if(drawerInstance) drawerInstance.destroy();
+				strategy = document.querySelector('input[name=strategy]:checked').value;
+				if(document.getElementById('useCSS').checked) {
+					drawerInstance = new TransitionDrawer(strategy);
+				} else {
+					drawerInstance = new RAFDrawer(strategy);
+				}
+
+				jankToggle(document.getElementById('jankon').checked);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="title"><h2>drawers<h2></div>
+		<div id="drawer" class="transition">
+			<h3>Drawer!</h3>
+			<div id="drawerToggle" onclick="drawerToggle();"></div>
+			<ul>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+			</ul>
+		</div>
+		<div id="controls">
+			<!-- change to option group -->
+			<input type="radio" name="strategy" value="positioned" id="positioned" checked="checked">
+			<label for="positioned">Use position: left</label><br/>
+			<input type="radio" name="strategy" value="translated" id="translated">
+			<label for="translated">Use translateX</label><br/>
+			<input type="radio" name="strategy" value="prepromoted" id="prepromoted">
+			<label for="prepromoted">Use translate3D (prepromote)</label><br/>
+			
+			<input type="checkbox" id="useCSS" checked="checked">
+			<label for="useCSS">use CSS animation</label><br/>
+			<input type="checkbox" id="jankon">
+			<label for="jankon">Periodic JS jank</label>
+		</div>
+		<script>
+			// wire checkboxes to update settings
+			Array.prototype.forEach.call(document.querySelectorAll('#controls input'), function(el) {
+				el.onchange = updateSettings;
+				});
+			// load initial settings from checkboxes
+			updateSettings();
+		</script>
+	</body>
+</html>

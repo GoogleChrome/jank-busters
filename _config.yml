@@ -1,0 +1,4 @@
+permalink: /posts/:categories/:year/:month/:day/:title
+name: Jank Free
+url: http://jankfree.org
+exclude: [less]

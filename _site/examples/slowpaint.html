@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+    <title>this div scrolls slowly</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      body {
+        height: 5000px;
+      }
+
+      #controls {
+        padding: 10px;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background-color: rgba(255,255,255,0.75);
+        border: 1px solid black;
+        z-index: 1;
+      }
+      #controls > * {
+        font-size: 150%;
+        vertical-align: middle;
+      }
+
+      .mover {
+        position: fixed;
+        width: 256px;
+     background: white;
+      }
+
+      .heavy-painting {
+
+        box-shadow: 15px 15px 15px;
+        border-radius: 60px;
+      }
+
+    </style>
+  <meta name="chromesniffer" id="chromesniffer_meta" content="{}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+  <body>
+    <div>
+
+        </div>
+    <script>
+     function updatePositions() {
+        var heavyScroll = false; //!!document.querySelector('#heavy-scroll').checked;
+        var items = document.querySelectorAll('.mover');
+
+        var cachedScrollTop = document.body.scrollTop;
+        for (var i = 0; i < items.length; i++) {
+          var phase;
+          if (heavyScroll)
+             phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+          else
+             phase = Math.sin((cachedScrollTop / 1250) + (i % 5));
+
+	  items[i].style.left = items[i].basicLeft + 100*phase + 'px';
+        }
+      }
+      function updatePaintClasses() {
+        var heavyPaint = true; //!!document.querySelector('#heavy-paint').checked;
+        var items = document.querySelectorAll('.mover');
+        for (var i = 0; i < items.length; i++) {
+          if (heavyPaint)
+            items[i].classList.add('heavy-painting');
+            else
+              items[i].classList.remove('heavy-painting');
+        }
+      }
+
+
+      window.addEventListener('scroll', updatePositions);
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var cols = 8;
+        var s = 256;
+        for (var i = 0; i < 2; i++) {
+          var el = document.createElement('img');
+          el.className = 'mover';
+
+          el.src="images/chrome-logo.png";
+          el.basicLeft = (i % cols) * s;
+          el.style.top = (Math.floor(i / cols) * s) + 'px';
+          document.body.appendChild(el);
+        }
+
+        updatePaintClasses();
+        updatePositions();
+      });
+    </script>
+
+
+
+
+
+<style type="text/css"></style>

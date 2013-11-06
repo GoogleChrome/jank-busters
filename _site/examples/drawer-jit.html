@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<style>
+			body {
+				margin: 0;
+			}
+			.transition {
+				-webkit-transition: -webkit-transform 1s linear, left 1s linear;
+			}
+			#drawer {
+				height: 100%;
+				width: 300px;
+				background-color: gray;
+				position: relative;
+				padding: 5px 10px;
+				box-sizing: border-box;
+				z-index: 2;
+			}
+			#drawer.positioned {
+				left: -250px;
+			}
+			#drawer.positioned.shown {
+				left: 0;
+			}
+			#drawer.translated {
+				-webkit-transform: translateX(-250px);
+			}
+			#drawer.translated.shown {
+				-webkit-transform: translateX(0);
+			}
+
+			#drawer.shown #drawerToggle {
+				background-color: red;
+			}
+			#drawerToggle {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				height: 25px;
+				width: 25px;
+				background-color: LightGray;
+				padding: 3px;
+				-webkit-box-shadow: 3px 3px LightSteelBlue;
+			}
+			#drawer ul {
+				margin: 0;
+				margin-right: 50px;
+				padding: 0;
+				list-style: none;
+			}
+			#drawer li {
+				margin: 0;
+				margin-bottom: 2px;
+				padding: 5px;
+				display: block;
+				width: 100%;
+				background-color: #B1B9C4;
+			}
+			#controls {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				width: 300px;
+				padding: 20px;
+				border: 1px solid black;
+			}
+			#title {
+				position: fixed;
+				right: 50px;
+				bottom: 50px;
+				font-family: Georgia, sans-serif;
+				font-style: italic;
+			}
+		</style>
+		<script>
+			var endTransition = null;
+
+			function drawerToggle() {
+				var drawer = document.getElementById('drawer');
+				switch(document.querySelector('input[name=strategy]:checked').value) {
+					case 'positioned':
+						drawer.classList.toggle('shown');
+						break;
+					case 'translated':
+						// add the transition now that we're ready to start animating
+						drawer.classList.add('transition');
+						endTransition = function() {
+							// remove the transition now that we're done animating
+							drawer.classList.remove('transition');
+							drawer.removeEventListener("webkitTransitionEnd", endTransition);
+						};
+						drawer.addEventListener("webkitTransitionEnd", endTransition);
+						// flush the transition event to the DOM with a fake yield,
+						// then actually adjust to the new position. Otherwise the
+						// transition doesn't kick in until after the position is
+						// already updated. Thanks, web platform.
+						window.setTimeout(function(){
+							drawer.classList.toggle('shown');
+						}, 0);
+						break;
+					case 'prepromoted':
+						drawer.classList.toggle('shown');
+						break;
+					}
+			}
+			function updateSettings() {
+				var drawer = document.getElementById('drawer');
+				// reset all classes
+				drawer.className = '';
+				// remove the transition end that might be lingering if we're in the middle of animating
+				drawer.removeEventListener("webkitTransitionEnd", endTransition);
+				// set up the CSS transition classes only if we're not JIT-ing
+				switch(document.querySelector('input[name=strategy]:checked').value) {
+					case 'positioned': 
+						drawer.classList.add('positioned');
+						drawer.classList.add('transition');
+						break;
+					case 'translated':
+						drawer.classList.add('translated');
+						break;
+					case 'prepromoted':
+						drawer.classList.add('translated');
+						drawer.classList.add('transition');
+						break;
+					}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="title"><h2>drawers<h2></div>
+		<!-- The drawer's classes control how it works, and get overwritten, so don't add any here.
+			 Leave "positioned" just so it starts with same as the initial checkbox without animating. -->
+		<div id="drawer" class="positioned">
+			<h3>Drawer!</h3>
+			
+			<div id="drawerToggle" onclick="drawerToggle();" ></div>
+			<ul>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+				<li>Stuff</li>
+			</ul>
+		</div>
+		<div id="controls">
+			<!-- change to option group -->
+			<input type="radio" name="strategy" value="positioned" id="positioned" checked="checked">
+			<label for="positioned">Use position: left</label><br/>
+			<input type="radio" name="strategy" value="translated" id="translated">
+			<label for="translated">Use translateX just-in-time</label><br/>
+			<input type="radio" name="strategy" value="prepromoted" id="prepromoted">
+			<label for="prepromoted">Use translateX</label><br/>
+		</div>
+		<script>
+			console.log(drawer.style);
+			// wire checkboxes to update settings
+			Array.prototype.forEach.call(document.querySelectorAll('#controls input'), function(el) {
+				el.onchange = updateSettings;
+				});
+			// load initial settings from checkboxes
+			updateSettings();
+		</script>
+	</body>
+</html>
