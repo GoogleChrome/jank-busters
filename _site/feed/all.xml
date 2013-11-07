@@ -4,19 +4,35 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>2013-11-06 20:02:23 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Nov 2013 20:00:00 +0000</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
-    <atom:link href="http://jankfree.org/feed/" rel="self" type="application/rss+xml" />
+    <link>http://jankfree.org/feed/all.xml</link>
+    <atom:link href="http://jankfree.org/feed/all.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>High Performance Animations</title>
+        <description>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/]]>
+        </description>
+        <pubDate>Thu, 07 Nov 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/]]></guid>
+        
+        <category>Animations</category>
+        
+        <category>Article</category>
+        
+      </item>
     
       <item>
         <title>Using classList for Great Good</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=hZJacl2VkKo]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/video/2013/11/06/using-classlist</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=hZJacl2VkKo</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=hZJacl2VkKo]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=hZJacl2VkKo]]></guid>
         
         <category>Layout</category>
         
@@ -27,11 +43,11 @@
       <item>
         <title>Leaner, Meaner, Faster Animations with requestAnimationFrame</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/speed/animations/]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/animations/article/2013/11/06/leaner-meaner-faster</link>
-        <guid isPermaLink="true">http://www.html5rocks.com/en/tutorials/speed/animations/</guid>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/speed/animations/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/speed/animations/]]></guid>
         
         <category>Animations</category>
         
@@ -42,11 +58,11 @@
       <item>
         <title>Jank Vision by Bobby Schultz</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://github.com/puppybits/Jank-Vision]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/tool/2013/11/06/jank-vision</link>
-        <guid isPermaLink="true">https://github.com/puppybits/Jank-Vision</guid>
+        <link><![CDATA[https://github.com/puppybits/Jank-Vision]]></link>
+        <guid isPermaLink="true"><![CDATA[https://github.com/puppybits/Jank-Vision]]></guid>
         
         <category>Paint</category>
         
@@ -57,11 +73,11 @@
       <item>
         <title>Gone in 60 Frames Per Second</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://vimeo.com/75540354]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/11/06/gone-in-60-fps</link>
-        <guid isPermaLink="true">http://vimeo.com/75540354</guid>
+        <link><![CDATA[http://vimeo.com/75540354]]></link>
+        <guid isPermaLink="true"><![CDATA[http://vimeo.com/75540354]]></guid>
         
         <category>Devtools</category>
         
@@ -72,11 +88,11 @@
       <item>
         <title>Adventures in Jank Busting: Parallax, performance, and the new Flickr Home Page</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://code.flickr.net/2013/06/04/adventures-in-jank-busting-parallax-performance-and-the-new-flickr-home-page/]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/casestudy/article/2013/11/06/flickr</link>
-        <guid isPermaLink="true">http://code.flickr.net/2013/06/04/adventures-in-jank-busting-parallax-performance-and-the-new-flickr-home-page/</guid>
+        <link><![CDATA[http://code.flickr.net/2013/06/04/adventures-in-jank-busting-parallax-performance-and-the-new-flickr-home-page/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://code.flickr.net/2013/06/04/adventures-in-jank-busting-parallax-performance-and-the-new-flickr-home-page/]]></guid>
         
         <category>Casestudy</category>
         
@@ -87,11 +103,11 @@
       <item>
         <title>FastDOM by Wilson Page</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://github.com/wilsonpage/fastdom]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/tool/2013/11/06/fastdom</link>
-        <guid isPermaLink="true">https://github.com/wilsonpage/fastdom</guid>
+        <link><![CDATA[https://github.com/wilsonpage/fastdom]]></link>
+        <guid isPermaLink="true"><![CDATA[https://github.com/wilsonpage/fastdom]]></guid>
         
         <category>Layout</category>
         
@@ -102,11 +118,11 @@
       <item>
         <title>Don't Guess it, Test it!</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://aerotwist.com/blog/dont-guess-it-test-it/]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/article/2013/11/06/dont-guess-it-test-it</link>
-        <guid isPermaLink="true">http://aerotwist.com/blog/dont-guess-it-test-it/</guid>
+        <link><![CDATA[http://aerotwist.com/blog/dont-guess-it-test-it/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://aerotwist.com/blog/dont-guess-it-test-it/]]></guid>
         
         <category>Devtools</category>
         
@@ -117,11 +133,11 @@
       <item>
         <title>A developer's guide to rendering performance</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://vimeo.com/77591536]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/video/2013/11/06/developer-guide-rendering-perf</link>
-        <guid isPermaLink="true">http://vimeo.com/77591536</guid>
+        <link><![CDATA[http://vimeo.com/77591536]]></link>
+        <guid isPermaLink="true"><![CDATA[http://vimeo.com/77591536]]></guid>
         
         <category>Paint</category>
         
@@ -132,11 +148,11 @@
       <item>
         <title>CSSConf 2013</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[jank-busters-cssconf/template.html]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/slides/2013/11/06/css-conf-2013</link>
-        <guid isPermaLink="true">jank-busters-cssconf/template.html</guid>
+        <link><![CDATA[jank-busters-cssconf/template.html]]></link>
+        <guid isPermaLink="true"><![CDATA[jank-busters-cssconf/template.html]]></guid>
         
         <category>Devtools</category>
         
@@ -147,11 +163,11 @@
       <item>
         <title>Preventing Layout Thrashing</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://wilsonpage.co.uk/preventing-layout-thrashing/]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/article/2013/11/06/avoid-layout-thrashing</link>
-        <guid isPermaLink="true">http://wilsonpage.co.uk/preventing-layout-thrashing/</guid>
+        <link><![CDATA[http://wilsonpage.co.uk/preventing-layout-thrashing/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://wilsonpage.co.uk/preventing-layout-thrashing/]]></guid>
         
         <category>Layout</category>
         
@@ -162,11 +178,11 @@
       <item>
         <title>The best way to avoid the dreaded 300ms click delay</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://plus.google.com/u/0/+RickByers/posts/ej7nsuoaaDa]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/touch/post/2013/11/06/avoid-300ms-delay</link>
-        <guid isPermaLink="true">https://plus.google.com/u/0/+RickByers/posts/ej7nsuoaaDa</guid>
+        <link><![CDATA[https://plus.google.com/u/0/+RickByers/posts/ej7nsuoaaDa]]></link>
+        <guid isPermaLink="true"><![CDATA[https://plus.google.com/u/0/+RickByers/posts/ej7nsuoaaDa]]></guid>
         
         <category>Touch</category>
         
@@ -177,11 +193,11 @@
       <item>
         <title>Avoiding Unnecessary Paints: Animated GIF Edition</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/speed/animated-gifs/]]>
         </description>
         <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/article/2013/11/06/animated-gifs</link>
-        <guid isPermaLink="true">http://www.html5rocks.com/en/tutorials/speed/animated-gifs/</guid>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/speed/animated-gifs/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/speed/animated-gifs/]]></guid>
         
         <category>Paint</category>
         
@@ -192,11 +208,11 @@
       <item>
         <title>Rendering without the lumpy bits</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://vimeo.com/64733304]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/video/2013/11/05/rendering-lumpy-bits</link>
-        <guid isPermaLink="true">https://vimeo.com/64733304</guid>
+        <link><![CDATA[https://vimeo.com/64733304]]></link>
+        <guid isPermaLink="true"><![CDATA[https://vimeo.com/64733304]]></guid>
         
         <category>Paint</category>
         
@@ -207,11 +223,11 @@
       <item>
         <title>Visually Re-engineering CSS For Faster Paint Times</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://addyosmani.com/blog/devtools-visually-re-engineering-css-for-faster-paint-times/]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/article/2013/11/05/reengineering-faster-paints</link>
-        <guid isPermaLink="true">http://addyosmani.com/blog/devtools-visually-re-engineering-css-for-faster-paint-times/</guid>
+        <link><![CDATA[http://addyosmani.com/blog/devtools-visually-re-engineering-css-for-faster-paint-times/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://addyosmani.com/blog/devtools-visually-re-engineering-css-for-faster-paint-times/]]></guid>
         
         <category>Paint</category>
         
@@ -222,11 +238,11 @@
       <item>
         <title>Gone In 60 Frames Per Second: A Pinterest Paint Performance Case Study</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.smashingmagazine.com/2013/06/10/pinterest-paint-performance-case-study/]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/casestudy/article/2013/11/05/pinterest</link>
-        <guid isPermaLink="true">http://www.smashingmagazine.com/2013/06/10/pinterest-paint-performance-case-study/</guid>
+        <link><![CDATA[http://www.smashingmagazine.com/2013/06/10/pinterest-paint-performance-case-study/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.smashingmagazine.com/2013/06/10/pinterest-paint-performance-case-study/]]></guid>
         
         <category>Casestudy</category>
         
@@ -237,11 +253,11 @@
       <item>
         <title>JSConf.eu 2013</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=8S_Vlq3jLZ0]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/11/05/js-conf-eu-2013</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=8S_Vlq3jLZ0</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=8S_Vlq3jLZ0]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=8S_Vlq3jLZ0]]></guid>
         
         <category>Devtools</category>
         
@@ -252,11 +268,11 @@
       <item>
         <title>Google I/O 2013: Jank Busters</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[jank-busters-io-2013/template.html]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/slides/2013/11/05/jank-busting-2013</link>
-        <guid isPermaLink="true">jank-busters-io-2013/template.html</guid>
+        <link><![CDATA[jank-busters-io-2013/template.html]]></link>
+        <guid isPermaLink="true"><![CDATA[jank-busters-io-2013/template.html]]></guid>
         
         <category>Devtools</category>
         
@@ -267,11 +283,11 @@
       <item>
         <title>Introducing Layout Boundaries</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://wilsonpage.co.uk/introducing-layout-boundaries/]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/article/2013/11/05/introducing-layout-boundaries</link>
-        <guid isPermaLink="true">http://wilsonpage.co.uk/introducing-layout-boundaries/</guid>
+        <link><![CDATA[http://wilsonpage.co.uk/introducing-layout-boundaries/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://wilsonpage.co.uk/introducing-layout-boundaries/]]></guid>
         
         <category>Layout</category>
         
@@ -282,11 +298,11 @@
       <item>
         <title>Improving Web App Performance With the Chrome DevTools Timeline and Profiles</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://addyosmani.com/blog/performance-optimisation-with-timeline-profiles/]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/article/2013/11/05/improve-web-app-perf</link>
-        <guid isPermaLink="true">http://addyosmani.com/blog/performance-optimisation-with-timeline-profiles/</guid>
+        <link><![CDATA[http://addyosmani.com/blog/performance-optimisation-with-timeline-profiles/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://addyosmani.com/blog/performance-optimisation-with-timeline-profiles/]]></guid>
         
         <category>Devtools</category>
         
@@ -297,11 +313,11 @@
       <item>
         <title>Boundarizr by Paul Lewis</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://github.com/paullewis/Boundarizr]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/tool/2013/11/05/boundarizr</link>
-        <guid isPermaLink="true">https://github.com/paullewis/Boundarizr</guid>
+        <link><![CDATA[https://github.com/paullewis/Boundarizr]]></link>
+        <guid isPermaLink="true"><![CDATA[https://github.com/paullewis/Boundarizr]]></guid>
         
         <category>Layout</category>
         
@@ -312,11 +328,11 @@
       <item>
         <title>Web Animations: We're Gonna Need a Bigger API!</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://coding.smashingmagazine.com/2013/03/04/animating-web-gonna-need-bigger-api/]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/animations/article/2013/11/05/bigger-api</link>
-        <guid isPermaLink="true">http://coding.smashingmagazine.com/2013/03/04/animating-web-gonna-need-bigger-api/</guid>
+        <link><![CDATA[http://coding.smashingmagazine.com/2013/03/04/animating-web-gonna-need-bigger-api/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://coding.smashingmagazine.com/2013/03/04/animating-web-gonna-need-bigger-api/]]></guid>
         
         <category>Animations</category>
         
@@ -327,11 +343,11 @@
       <item>
         <title>Web-view based Android apps and touch-related issues</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://plus.google.com/u/0/+RickByers/posts/hdRFYYXSEpA]]>
         </description>
         <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/touch/post/2013/11/05/android-webview-touch</link>
-        <guid isPermaLink="true">https://plus.google.com/u/0/+RickByers/posts/hdRFYYXSEpA</guid>
+        <link><![CDATA[https://plus.google.com/u/0/+RickByers/posts/hdRFYYXSEpA]]></link>
+        <guid isPermaLink="true"><![CDATA[https://plus.google.com/u/0/+RickByers/posts/hdRFYYXSEpA]]></guid>
         
         <category>Touch</category>
         
@@ -342,11 +358,11 @@
       <item>
         <title>Avoiding Unnecessary Paints</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/speed/unnecessary-paints/]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/article/2013/11/04/unnecessary-paints</link>
-        <guid isPermaLink="true">http://www.html5rocks.com/en/tutorials/speed/unnecessary-paints/</guid>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/speed/unnecessary-paints/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/speed/unnecessary-paints/]]></guid>
         
         <category>Paint</category>
         
@@ -357,11 +373,11 @@
       <item>
         <title>Trace Event Profiling Tool (about:tracing)</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://dev.chromium.org/developers/how-tos/trace-event-profiling-tool]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/article/2013/11/04/trace-event-profiling</link>
-        <guid isPermaLink="true">http://dev.chromium.org/developers/how-tos/trace-event-profiling-tool</guid>
+        <link><![CDATA[http://dev.chromium.org/developers/how-tos/trace-event-profiling-tool]]></link>
+        <guid isPermaLink="true"><![CDATA[http://dev.chromium.org/developers/how-tos/trace-event-profiling-tool]]></guid>
         
         <category>Devtools</category>
         
@@ -372,11 +388,11 @@
       <item>
         <title>Touch handlers considered risky!</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://plus.google.com/115788095648461403871/posts/cmzrtyBYPQc]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/touch/post/2013/11/04/touch-handlers-risky</link>
-        <guid isPermaLink="true">https://plus.google.com/115788095648461403871/posts/cmzrtyBYPQc</guid>
+        <link><![CDATA[https://plus.google.com/115788095648461403871/posts/cmzrtyBYPQc]]></link>
+        <guid isPermaLink="true"><![CDATA[https://plus.google.com/115788095648461403871/posts/cmzrtyBYPQc]]></guid>
         
         <category>Touch</category>
         
@@ -387,11 +403,11 @@
       <item>
         <title>Snow in Canvas Land</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://calendar.perfplanet.com/2012/snow-in-canvas-land/]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/animations/article/2013/11/04/snow-canvas</link>
-        <guid isPermaLink="true">http://calendar.perfplanet.com/2012/snow-in-canvas-land/</guid>
+        <link><![CDATA[http://calendar.perfplanet.com/2012/snow-in-canvas-land/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://calendar.perfplanet.com/2012/snow-in-canvas-land/]]></guid>
         
         <category>Animations</category>
         
@@ -402,11 +418,11 @@
       <item>
         <title>Parallaxin'</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/speed/parallax/]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/article/2013/11/04/parallaxin</link>
-        <guid isPermaLink="true">http://www.html5rocks.com/en/tutorials/speed/parallax/</guid>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/speed/parallax/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/speed/parallax/]]></guid>
         
         <category>Layout</category>
         
@@ -417,11 +433,11 @@
       <item>
         <title>Google I/O 2013: Jank Busting</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=n8ep4leoN9A]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/11/04/jank-busting-2013</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=n8ep4leoN9A</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=n8ep4leoN9A]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=n8ep4leoN9A]]></guid>
         
         <category>Devtools</category>
         
@@ -432,11 +448,11 @@
       <item>
         <title>jQuery Toronto: Gone In 60 Frames Per Second</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://speakerdeck.com/addyosmani/jquery-toronto-gone-in-60-frames-per-second]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/slides/2013/11/04/gone-in-60-fps</link>
-        <guid isPermaLink="true">https://speakerdeck.com/addyosmani/jquery-toronto-gone-in-60-frames-per-second</guid>
+        <link><![CDATA[https://speakerdeck.com/addyosmani/jquery-toronto-gone-in-60-frames-per-second]]></link>
+        <guid isPermaLink="true"><![CDATA[https://speakerdeck.com/addyosmani/jquery-toronto-gone-in-60-frames-per-second]]></guid>
         
         <category>Devtools</category>
         
@@ -447,11 +463,11 @@
       <item>
         <title>Building The New Financial Times Web App: A Case Study</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://coding.smashingmagazine.com/2013/05/23/building-the-new-financial-times-web-app/]]>
         </description>
         <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/casestudy/article/2013/11/04/financial-times</link>
-        <guid isPermaLink="true">http://coding.smashingmagazine.com/2013/05/23/building-the-new-financial-times-web-app/</guid>
+        <link><![CDATA[http://coding.smashingmagazine.com/2013/05/23/building-the-new-financial-times-web-app/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://coding.smashingmagazine.com/2013/05/23/building-the-new-financial-times-web-app/]]></guid>
         
         <category>Casestudy</category>
         
@@ -462,11 +478,11 @@
       <item>
         <title>Why Moving Elements With Translate() Is Better Than Pos:abs Top/left</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/]]>
         </description>
         <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/article/2013/11/03/top-left-vs-translates</link>
-        <guid isPermaLink="true">http://paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/</guid>
+        <link><![CDATA[http://paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/]]></guid>
         
         <category>Layout</category>
         
@@ -477,11 +493,11 @@
       <item>
         <title>Using Devtools new "show potential scroll bottlenecks" feature</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://plus.google.com/115788095648461403871/posts/LXKEENhnQSD]]>
         </description>
         <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/touch/post/2013/11/03/show-potential-bottlenecks</link>
-        <guid isPermaLink="true">https://plus.google.com/115788095648461403871/posts/LXKEENhnQSD</guid>
+        <link><![CDATA[https://plus.google.com/115788095648461403871/posts/LXKEENhnQSD]]></link>
+        <guid isPermaLink="true"><![CDATA[https://plus.google.com/115788095648461403871/posts/LXKEENhnQSD]]></guid>
         
         <category>Touch</category>
         
@@ -492,11 +508,11 @@
       <item>
         <title>requestAnimationFrame and window.performance.now</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://updates.html5rocks.com/2012/05/requestAnimationFrame-API-now-with-sub-millisecond-precision]]>
         </description>
         <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/animations/article/2013/11/03/raf-high-precision</link>
-        <guid isPermaLink="true">http://updates.html5rocks.com/2012/05/requestAnimationFrame-API-now-with-sub-millisecond-precision</guid>
+        <link><![CDATA[http://updates.html5rocks.com/2012/05/requestAnimationFrame-API-now-with-sub-millisecond-precision]]></link>
+        <guid isPermaLink="true"><![CDATA[http://updates.html5rocks.com/2012/05/requestAnimationFrame-API-now-with-sub-millisecond-precision]]></guid>
         
         <category>Animations</category>
         
@@ -507,11 +523,11 @@
       <item>
         <title>Jank Busting With Daft Punk</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://addyosmani.com/blog/jank-busting-with-daft-punk/]]>
         </description>
         <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/article/2013/11/03/jank-busting-daft-punk</link>
-        <guid isPermaLink="true">http://addyosmani.com/blog/jank-busting-with-daft-punk/</guid>
+        <link><![CDATA[http://addyosmani.com/blog/jank-busting-with-daft-punk/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://addyosmani.com/blog/jank-busting-with-daft-punk/]]></guid>
         
         <category>Devtools</category>
         
@@ -522,26 +538,11 @@
       <item>
         <title>Google I/O 2012: Jank Busting</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=hAzhayTnhEI]]>
         </description>
         <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/slides/2013/11/03/jank-busting-2012</link>
-        <guid isPermaLink="true">jank-busters-io/index.html</guid>
-        
-        <category>Devtools</category>
-        
-        <category>Slides</category>
-        
-      </item>
-    
-      <item>
-        <title>Google I/O 2012: Jank Busting</title>
-        <description>
-          <![CDATA[]]>
-        </description>
-        <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/11/03/jank-busting-2012</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=hAzhayTnhEI</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=hAzhayTnhEI]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=hAzhayTnhEI]]></guid>
         
         <category>Devtools</category>
         
@@ -550,13 +551,28 @@
       </item>
     
       <item>
-        <title>Profiling long paint times with DevTools Continuous Paint Mode</title>
+        <title>Google I/O 2012: Jank Busting</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[jank-busters-io/index.html]]>
         </description>
         <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/article/2013/11/03/continuous-paint</link>
-        <guid isPermaLink="true">http://updates.html5rocks.com/2013/02/Profiling-Long-Paint-Times-with-DevTools-Continuous-Painting-Mode</guid>
+        <link><![CDATA[jank-busters-io/index.html]]></link>
+        <guid isPermaLink="true"><![CDATA[jank-busters-io/index.html]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Slides</category>
+        
+      </item>
+    
+      <item>
+        <title>Profiling long paint times with DevTools Continuous Paint Mode</title>
+        <description>
+          <![CDATA[http://updates.html5rocks.com/2013/02/Profiling-Long-Paint-Times-with-DevTools-Continuous-Painting-Mode]]>
+        </description>
+        <pubDate>Sun, 03 Nov 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[http://updates.html5rocks.com/2013/02/Profiling-Long-Paint-Times-with-DevTools-Continuous-Painting-Mode]]></link>
+        <guid isPermaLink="true"><![CDATA[http://updates.html5rocks.com/2013/02/Profiling-Long-Paint-Times-with-DevTools-Continuous-Painting-Mode]]></guid>
         
         <category>Paint</category>
         
@@ -567,11 +583,11 @@
       <item>
         <title>Velocity Europe 'jank busting' slides</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[velocity-europe/index.html]]>
         </description>
         <pubDate>Sat, 02 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/slides/2013/11/02/velocity-eu-2012</link>
-        <guid isPermaLink="true">velocity-europe/index.html</guid>
+        <link><![CDATA[velocity-europe/index.html]]></link>
+        <guid isPermaLink="true"><![CDATA[velocity-europe/index.html]]></guid>
         
         <category>Devtools</category>
         
@@ -582,11 +598,11 @@
       <item>
         <title>Profiling your WebGL Game with the about:tracing flag</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/games/abouttracing/]]>
         </description>
         <pubDate>Sat, 02 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/article/2013/11/02/tracing-webgl-game</link>
-        <guid isPermaLink="true">http://www.html5rocks.com/en/tutorials/games/abouttracing/</guid>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/games/abouttracing/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/games/abouttracing/]]></guid>
         
         <category>Devtools</category>
         
@@ -597,11 +613,11 @@
       <item>
         <title>Scrolling performance</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/speed/scrolling/]]>
         </description>
         <pubDate>Sat, 02 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/layout/article/2013/11/02/scrolling-perf</link>
-        <guid isPermaLink="true">http://www.html5rocks.com/en/tutorials/speed/scrolling/</guid>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/speed/scrolling/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/speed/scrolling/]]></guid>
         
         <category>Layout</category>
         
@@ -612,11 +628,11 @@
       <item>
         <title>On translate3d and Layer Creation Hacks</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/]]>
         </description>
         <pubDate>Sat, 02 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/article/2013/11/02/layer-creation-hacks</link>
-        <guid isPermaLink="true">http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/</guid>
+        <link><![CDATA[http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/]]></guid>
         
         <category>Paint</category>
         
@@ -627,11 +643,11 @@
       <item>
         <title>Jank Busting for Better Rendering Performance</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.html5rocks.com/en/tutorials/speed/rendering/]]>
         </description>
         <pubDate>Sat, 02 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/animations/article/2013/11/02/jank-busting</link>
-        <guid isPermaLink="true">http://www.html5rocks.com/en/tutorials/speed/rendering/</guid>
+        <link><![CDATA[http://www.html5rocks.com/en/tutorials/speed/rendering/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.html5rocks.com/en/tutorials/speed/rendering/]]></guid>
         
         <category>Animations</category>
         
@@ -642,11 +658,11 @@
       <item>
         <title>The Breakpoint Ep. 4 — The Tour De Timeline</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=WpqZ0LjNU5A&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw]]>
         </description>
         <pubDate>Sat, 02 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/11/02/breakpoint-ep-4</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=WpqZ0LjNU5A&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=WpqZ0LjNU5A&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=WpqZ0LjNU5A&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw]]></guid>
         
         <category>Devtools</category>
         
@@ -657,11 +673,11 @@
       <item>
         <title>The Breakpoint Ep. 6: Accelerating Load Time, Run Time, and JS tooling</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=E8qvkGTwiV0&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw]]>
         </description>
         <pubDate>Fri, 01 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/11/01/breakpoint-ep-6</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=E8qvkGTwiV0&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=E8qvkGTwiV0&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=E8qvkGTwiV0&list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw]]></guid>
         
         <category>Devtools</category>
         
@@ -672,11 +688,11 @@
       <item>
         <title>Avoiding accidental layer creation</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://jsbin.com/efirip/5/quiet]]>
         </description>
         <pubDate>Fri, 01 Nov 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/paint/article/2013/11/01/avoid-layer-creation</link>
-        <guid isPermaLink="true">http://jsbin.com/efirip/5/quiet</guid>
+        <link><![CDATA[http://jsbin.com/efirip/5/quiet]]></link>
+        <guid isPermaLink="true"><![CDATA[http://jsbin.com/efirip/5/quiet]]></guid>
         
         <category>Paint</category>
         
@@ -687,11 +703,11 @@
       <item>
         <title>Velocity 2012 about:tracing lightning demo</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=g19aMgHCfWU]]>
         </description>
         <pubDate>Thu, 31 Oct 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/10/31/velocity-2012</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=g19aMgHCfWU</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=g19aMgHCfWU]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=g19aMgHCfWU]]></guid>
         
         <category>Devtools</category>
         
@@ -702,11 +718,11 @@
       <item>
         <title>Mobile Web Thursdays: Performance on Mobile</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[http://www.youtube.com/watch?v=h2djIdAFc5U&feature=youtu.be&t=30s]]>
         </description>
         <pubDate>Wed, 30 Oct 2013 00:00:00 +0000</pubDate>
-        <link>http://jankfree.org/posts/devtools/video/2013/10/30/mobile-web-thursdays</link>
-        <guid isPermaLink="true">http://www.youtube.com/watch?v=h2djIdAFc5U&feature=youtu.be&t=30s</guid>
+        <link><![CDATA[http://www.youtube.com/watch?v=h2djIdAFc5U&feature=youtu.be&t=30s]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=h2djIdAFc5U&feature=youtu.be&t=30s]]></guid>
         
         <category>Devtools</category>
         
