@@ -2,6 +2,74 @@
 layout: base
 ---
 
+  <section class="must-see">
+    <div class="container">
+      <h2>Jank Free Must-Sees!</h2>
+      <div class="intro">
+        <p>Strapped for time or just getting started with eliminating jank from your projects? These are our must-see resources!</p>
+      </div>
+
+      <div class="content">
+        <section>
+          <h3>Articles, Posts & Guides</h3>
+          <ul>
+
+            {% for post in site.posts %}
+              {% if post.categories contains 'mustsee' and post.categories contains 'article' %}
+              <li class="new">
+                <a href="{{ post.link }}">
+                  {{ post.title }}
+                </a>
+              </li>
+              {% endif %}
+            {% endfor %}
+
+          </ul>
+        </section>
+
+        <section>
+          <h3>Slides</h3>
+          <ul>
+
+            {% for post in site.posts %}
+              {% if post.categories contains 'mustsee' and post.categories contains 'slides' %}
+              <li class="new">
+                <a href="{{ post.link }}">
+                  {{ post.title }}
+                </a>
+              </li>
+              {% endif %}
+            {% endfor %}
+
+          </ul>
+        </section>
+      </div>
+
+      <section class="videos">
+        <h3>Videos</h3>
+        <ul>
+
+          {% for post in site.posts %}
+            {% if post.categories contains 'mustsee' and post.categories contains 'video' %}
+            <li>
+              <a href="{{ post.link }}">
+                <span class="thumb">
+                  <img src="{{ post.thumbnail }}">
+                </span>
+                <span class="title">{{ post.title }}</span>
+              </a>
+            </li>
+            {% endif %}
+          {% endfor %}
+
+        </ul>
+      </section>
+
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
   <section>
     <div class="container">
       <h2>Chrome DevTools & Tracing</h2>

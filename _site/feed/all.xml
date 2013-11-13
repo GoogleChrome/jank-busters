@@ -4,11 +4,28 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>Thu, 07 Nov 2013 20:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 Nov 2013 12:05:53 +0000</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
     <link>http://jankfree.org/feed/all.xml</link>
     <atom:link href="http://jankfree.org/feed/all.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>#perfmatters: Performance Tooling</title>
+        <description>
+          <![CDATA[https://docs.google.com/a/google.com/presentation/d/19R_E5B__kdE55L1bTpS6IFKbYbHq-PQKKky4do5Yc6A/edit#slide=id.g105c64d69_170]]>
+        </description>
+        <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[https://docs.google.com/a/google.com/presentation/d/19R_E5B__kdE55L1bTpS6IFKbYbHq-PQKKky4do5Yc6A/edit#slide=id.g105c64d69_170]]></link>
+        <guid isPermaLink="true"><![CDATA[https://docs.google.com/a/google.com/presentation/d/19R_E5B__kdE55L1bTpS6IFKbYbHq-PQKKky4do5Yc6A/edit#slide=id.g105c64d69_170]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Slides</category>
+        
+        <category>Mustsee</category>
+        
+      </item>
     
       <item>
         <title>High Performance Animations</title>
@@ -22,6 +39,8 @@
         <category>Animations</category>
         
         <category>Article</category>
+        
+        <category>Mustsee</category>
         
       </item>
     
@@ -143,6 +162,8 @@
         
         <category>Video</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -172,6 +193,8 @@
         <category>Layout</category>
         
         <category>Article</category>
+        
+        <category>Mustsee</category>
         
       </item>
     
@@ -278,6 +301,8 @@
         
         <category>Slides</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -307,6 +332,8 @@
         <category>Devtools</category>
         
         <category>Article</category>
+        
+        <category>Mustsee</category>
         
       </item>
     
@@ -398,6 +425,8 @@
         
         <category>Post</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -443,6 +472,8 @@
         
         <category>Video</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -457,6 +488,8 @@
         <category>Devtools</category>
         
         <category>Slides</category>
+        
+        <category>Mustsee</category>
         
       </item>
     
@@ -623,6 +656,8 @@
         
         <category>Article</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -653,6 +688,8 @@
         
         <category>Article</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -667,6 +704,8 @@
         <category>Devtools</category>
         
         <category>Video</category>
+        
+        <category>Mustsee</category>
         
       </item>
     
