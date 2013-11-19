@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <head>
+  <!--
+    * Opacity = 0 causes the layer to not get created.
+    * Repaints on animation start and stop
+    * Recalc style changes should not have been needed.
+    * More animations running than I would expect
+    * OnScroll burns 2ms, why?
+    * Layout is 4ms
+    * Show paint rects shows scrollbar repaints but
+      on android they are not repainting.
+
+    * Omnibox hiding causes visual jank, but not perf
+      jank.
+  -->
   <meta name="viewport" content="width=device-width">
   <style>
     body {
@@ -9,7 +22,7 @@
       position: absolute;
       width: 1px;
       visibility: hidden;
-      height: 1500px;
+      height: 2500px;
     }
     #image-1 {
       position: fixed;
@@ -38,7 +51,9 @@
   <div class="heading">and kill them dead</div>
   <div class="heading">using layers...</div>
   <div class="heading">opacity...</div>
-  <div class="heading">and transforms.</div>
+  <div class="heading">transforms.</div>
+  <div class="heading">... and btw!</div>
+  <div class="heading">Mind your recalcStyle!</div>
   <div class="heading">&nbsp;</div>
 <script>
   var img1 = document.querySelector("#image-1");
@@ -53,12 +68,20 @@
 
   var img1Height = parseInt(getComputedStyle(img1).height);
   function onScroll() {
+    var headingHeights = [];
+    for (var i = 0; i < headings.length; i++) {
+      var heading = headings[i];
+      headingHeights.push(parseInt(getComputedStyle(heading).height));
+    }
+
     var scrollTop;
-    var chromeVer = /Chrome\/(\d+)/.exec(navigator.userAgent)[1];
-    if (chromeVer >= 32)
-      scrollTop = document.documentElement.scrollTop;
-    else
-      scrollTop = document.body.scrollTop;
+    var stA;
+    try {
+      stA = document.body.scrollTop;
+    } catch(e) {
+      stA = 0;
+    }
+    var scrollTop = Math.max(document.documentElement.scrollTop, stA);
     var docPercentage = Math.max(0, scrollTop / scrollExtent);
 
     var nStops = headings.length;
@@ -71,7 +94,7 @@
     var iVis = Math.floor(docPercentage / stopSize);
     for (var i = 0; i < headings.length; i++) {
       var heading = headings[i];
-      var hH = parseInt(getComputedStyle(heading).height);
+      var hH = headingHeights[i];
       if (i < iVis) {
         heading.style.opacity = 0.001;
         heading.style.webkitTransform = 'translate3d(0,' + (-hH) + 'px,0)';
