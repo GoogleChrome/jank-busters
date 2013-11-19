@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width">
+  <style>
+    body {
+      margin: auto;
+    }
+    #spacer {
+      position: absolute;
+      width: 1px;
+      visibility: hidden;
+      height: 1500px;
+    }
+    #image-1 {
+      position: fixed;
+      left: 10px;
+      width: calc(100% - 20px);
+      opacity: 0.2;
+    }
+    .heading {
+      position: fixed;
+      width: calc(100% - 20px);
+      left: 10px;
+      font-size: 30px;
+      font-family: sans-serif;
+      -webkit-transition-property: -webkit-transform, opacity;
+      -webkit-transition-timing-function: ease-in-out;
+      -webkit-transition-duration: 0.2s;
+      text-align: center;
+    }
+  </style>
+<body>
+  <div id="spacer"></div>
+  <img id="image-1" src="../images/jankfree.svg"></img>
+  <div class="heading">&nbsp;</div>
+  <div class="heading">Jank often results from paint storms</div>
+  <div class="heading">Locate them with show-paint-rects</div>
+  <div class="heading">and kill them dead</div>
+  <div class="heading">using layers...</div>
+  <div class="heading">opacity...</div>
+  <div class="heading">and transforms.</div>
+  <div class="heading">&nbsp;</div>
+<script>
+  var img1 = document.querySelector("#image-1");
+  var headings = document.querySelectorAll(".heading");
+
+  function lerp(a, b, t) {
+    return a + ((b - a) * t);
+  }
+
+  var scrollExtent = document.body.scrollHeight - window.innerHeight;
+  var scrollHeight = document.body.scrollHeight;
+
+  var img1Height = parseInt(getComputedStyle(img1).height);
+  function onScroll() {
+    var scrollTop;
+    var chromeVer = /Chrome\/(\d+)/.exec(navigator.userAgent)[1];
+    if (chromeVer >= 32)
+      scrollTop = document.documentElement.scrollTop;
+    else
+      scrollTop = document.body.scrollTop;
+    var docPercentage = Math.max(0, scrollTop / scrollExtent);
+
+    var nStops = headings.length;
+    var stopSize = 1 / nStops;
+
+    var halfInnerHeight = window.innerHeight / 2;
+    var viewportCenter = halfInnerHeight;
+    var viewportBottom = window.innerHeight;
+
+    var iVis = Math.floor(docPercentage / stopSize);
+    for (var i = 0; i < headings.length; i++) {
+      var heading = headings[i];
+      var hH = parseInt(getComputedStyle(heading).height);
+      if (i < iVis) {
+        heading.style.opacity = 0.001;
+        heading.style.webkitTransform = 'translate3d(0,' + (-hH) + 'px,0)';
+      } else if (i == iVis) {
+        heading.style.webkitTransform = 'translate3d(0,' + (viewportCenter - hH * 0.5) + 'px,0)';
+        heading.style.opacity = 1.0;
+      } else {
+        heading.style.webkitTransform = 'translate3d(0,' + (viewportBottom) + 'px,0)';
+        heading.style.opacity = 0.001;
+      }
+    }
+
+    var img1Pad = 50;
+    var firstFewPercentage = Math.min(1, docPercentage / (stopSize * 2));
+    var y = lerp(150, viewportCenter - 170, firstFewPercentage);
+    img1.style.webkitTransform = 'translate3d(0,' + y + 'px,0)';
+  }
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+</script>
+</body>
