@@ -148,7 +148,7 @@ layout: base
       </div>
 
       <div class="content">
-        <section class="full-width">
+        <section>
           <h3>Posts</h3>
           <ul>
 
@@ -165,6 +165,22 @@ layout: base
           </ul>
         </section>
 
+        <section>
+          <h3>Resources</h3>
+          <ul>
+
+            {% for post in site.posts %}
+              {% if post.categories contains 'touch' and post.categories contains 'resource' %}
+              <li>
+                <a href="{{ post.link }}">
+                  {{ post.title }}
+                </a>
+              </li>
+              {% endif %}
+            {% endfor %}
+
+          </ul>
+        </section>
       </div>
       <div class="clear"></div>
     </div>
