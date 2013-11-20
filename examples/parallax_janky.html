@@ -53,12 +53,13 @@
 
   var img1Height = parseInt(getComputedStyle(img1).height);
   function onScroll() {
-    var scrollTop;
-    var chromeVer = /Chrome\/(\d+)/.exec(navigator.userAgent)[1];
-    if (chromeVer >= 32)
-      scrollTop = document.documentElement.scrollTop;
-    else
-      scrollTop = document.body.scrollTop;
+    var stA;
+    try {
+      stA = document.body.scrollTop;
+    } catch(e) {
+      stA = 0;
+    }
+    var scrollTop = Math.max(document.documentElement.scrollTop, stA);
     var docPercentage = Math.max(0, scrollTop / scrollExtent);
 
     var nStops = headings.length;

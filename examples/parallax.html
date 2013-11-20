@@ -2,6 +2,7 @@
 <head>
   <!--
     * Opacity = 0 causes the layer to not get created.
+    * Opacity = 1<->non-1 causes the layer to get repainted.
     * Repaints on animation start and stop
     * Recalc style changes should not have been needed.
     * More animations running than I would expect
@@ -100,7 +101,7 @@
         heading.style.webkitTransform = 'translate3d(0,' + (-hH) + 'px,0)';
       } else if (i == iVis) {
         heading.style.webkitTransform = 'translate3d(0,' + (viewportCenter - hH * 0.5) + 'px,0)';
-        heading.style.opacity = 1.0;
+        heading.style.opacity = 0.999;
       } else {
         heading.style.webkitTransform = 'translate3d(0,' + (viewportBottom) + 'px,0)';
         heading.style.opacity = 0.001;
