@@ -15,6 +15,7 @@
       jank.
   -->
   <meta name="viewport" content="width=device-width">
+  <script src="busy.js"></script>
   <style>
     body {
       margin: auto;
@@ -112,9 +113,65 @@
     var img1Pad = 50;
     var firstFewPercentage = Math.min(1, docPercentage / (stopSize * 2));
     var y = lerp(150, viewportCenter - 170, firstFewPercentage);
-    img1.style.webkitTransform = 'translate3d(0,' + y + 'px,0)';
+    img1.currentY = y;
+    updateImgTransform();
+  }
+  img1.deltaY = 0;
+  img1.deltaX = 0;
+  function updateImgTransform() {
+    img1.style.webkitTransform = 'translate3d(' + img1.deltaX + 'px' + ','
+      + (img1.currentY + img1.deltaY) + 'px,0)';
   }
   window.addEventListener("scroll", onScroll);
   onScroll();
+
+  var moving = false;
+  function findId(e, id) {
+    for (var i = 0; i < e.touches.length; i++)
+      if (e.touches[i].identifier == id)
+        return e.touches[i];
+    return undefined;
+  }
+
+  var didHit = false;
+  var downX = undefined;
+  var downY = undefined;
+  function touchStart(e) {
+    var t = findId(e, 0);
+    if (!t) {
+      didHit = false;
+      return;
+    }
+    downX = t.clientX;
+    downY = t.clientY;
+
+    var r = img1.getBoundingClientRect();
+    var inside = t.clientX >= r.left && t.clientX <= r.right &&
+      t.clientY >= r.top && t.clientY <= r.bottom;
+    didHit = inside;
+  }
+  function touchMove(e) {
+    var t = findId(e, 0);
+    if (!t)
+      return;
+    if (!didHit)
+      return;
+
+    var deltaX = t.clientX - downX;
+    var deltaY = t.clientY - downY;
+    e.preventDefault();
+    e.stopPropagation();
+    img1.deltaX = deltaX;
+    img1.deltaY = deltaY;
+    updateImgTransform();
+    return false;
+  }
+  function touchEnd(e) {
+  }
+
+  document.addEventListener('touchstart', touchStart);
+  document.addEventListener('touchmove', touchMove);
+  document.addEventListener('touchcancel', touchEnd);
+  document.addEventListener('touchend', touchEnd);
 </script>
 </body>
