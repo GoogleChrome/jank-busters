@@ -4,20 +4,24 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>Sat, 07 Dec 2013 12:04:40 -0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Dec 2013 12:07:24 -0800</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
     <link>http://jankfree.org/feed/all.xml</link>
     <atom:link href="http://jankfree.org/feed/all.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Where Did Rendering Go</title>
+        <title>Tip, "Rendering" recently moved in Dev Tools!</title>
         <description>
-          <![CDATA[]]>
+          <![CDATA[https://plus.google.com/116853723811027299597/posts/7dFvx8BLiY7]]>
         </description>
         <pubDate>Sat, 07 Dec 2013 00:00:00 +0000</pubDate>
-        <link><![CDATA[]]></link>
-        <guid isPermaLink="true"><![CDATA[]]></guid>
+        <link><![CDATA[https://plus.google.com/116853723811027299597/posts/7dFvx8BLiY7]]></link>
+        <guid isPermaLink="true"><![CDATA[https://plus.google.com/116853723811027299597/posts/7dFvx8BLiY7]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Article</category>
         
       </item>
     
