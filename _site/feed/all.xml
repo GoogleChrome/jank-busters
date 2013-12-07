@@ -4,11 +4,86 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>Wed, 13 Nov 2013 12:05:53 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Dec 2013 12:07:24 -0800</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
     <link>http://jankfree.org/feed/all.xml</link>
     <atom:link href="http://jankfree.org/feed/all.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Tip, "Rendering" recently moved in Dev Tools!</title>
+        <description>
+          <![CDATA[https://plus.google.com/116853723811027299597/posts/7dFvx8BLiY7]]>
+        </description>
+        <pubDate>Sat, 07 Dec 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[https://plus.google.com/116853723811027299597/posts/7dFvx8BLiY7]]></link>
+        <guid isPermaLink="true"><![CDATA[https://plus.google.com/116853723811027299597/posts/7dFvx8BLiY7]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Article</category>
+        
+      </item>
+    
+      <item>
+        <title>Getting 60 FPS using Chrome devtools</title>
+        <description>
+          <![CDATA[http://engineering.wingify.com/posts/getting-60fps-using-devtools/]]>
+        </description>
+        <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[http://engineering.wingify.com/posts/getting-60fps-using-devtools/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://engineering.wingify.com/posts/getting-60fps-using-devtools/]]></guid>
+        
+        <category>Casestudy</category>
+        
+        <category>Article</category>
+        
+      </item>
+    
+      <item>
+        <title>Fixing :hover jank</title>
+        <description>
+          <![CDATA[https://plus.google.com/+MalteUbl/posts/NsyYKenqYNP]]>
+        </description>
+        <pubDate>Mon, 25 Nov 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[https://plus.google.com/+MalteUbl/posts/NsyYKenqYNP]]></link>
+        <guid isPermaLink="true"><![CDATA[https://plus.google.com/+MalteUbl/posts/NsyYKenqYNP]]></guid>
+        
+        <category>Touch</category>
+        
+        <category>Post</category>
+        
+      </item>
+    
+      <item>
+        <title>Touch events community wiki</title>
+        <description>
+          <![CDATA[http://www.w3.org/community/touchevents/wiki/Main_Page]]>
+        </description>
+        <pubDate>Tue, 19 Nov 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[http://www.w3.org/community/touchevents/wiki/Main_Page]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.w3.org/community/touchevents/wiki/Main_Page]]></guid>
+        
+        <category>Touch</category>
+        
+        <category>Resource</category>
+        
+      </item>
+    
+      <item>
+        <title>Velocity Europe: Rendering Performance Case Studies</title>
+        <description>
+          <![CDATA[https://speakerdeck.com/addyosmani/velocityconf-rendering-performance-case-studies]]>
+        </description>
+        <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[https://speakerdeck.com/addyosmani/velocityconf-rendering-performance-case-studies]]></link>
+        <guid isPermaLink="true"><![CDATA[https://speakerdeck.com/addyosmani/velocityconf-rendering-performance-case-studies]]></guid>
+        
+        <category>Casestudy</category>
+        
+        <category>Article</category>
+        
+      </item>
     
       <item>
         <title>#perfmatters: Performance Tooling</title>
@@ -413,7 +488,7 @@
       </item>
     
       <item>
-        <title>Touch handlers considered risky!</title>
+        <title>When adding touch handlers can hurt scrolling performance</title>
         <description>
           <![CDATA[https://plus.google.com/115788095648461403871/posts/cmzrtyBYPQc]]>
         </description>
