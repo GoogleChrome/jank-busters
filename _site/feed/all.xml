@@ -4,11 +4,45 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>Sat, 07 Dec 2013 12:07:24 -0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2014 12:34:15 -0800</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
     <link>http://jankfree.org/feed/all.xml</link>
     <atom:link href="http://jankfree.org/feed/all.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>CSSConf 2013: Jank Busting</title>
+        <description>
+          <![CDATA[http://www.youtube.com/watch?v=n8ep4leoN9A]]>
+        </description>
+        <pubDate>Wed, 26 Feb 2014 00:00:00 +0000</pubDate>
+        <link><![CDATA[http://www.youtube.com/watch?v=n8ep4leoN9A]]></link>
+        <guid isPermaLink="true"><![CDATA[http://www.youtube.com/watch?v=n8ep4leoN9A]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Video</category>
+        
+        <category>Mustsee</category>
+        
+      </item>
+    
+      <item>
+        <title>The Runtime Performance Checklist</title>
+        <description>
+          <![CDATA[http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/]]>
+        </description>
+        <pubDate>Tue, 17 Dec 2013 00:00:00 +0000</pubDate>
+        <link><![CDATA[http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/]]></link>
+        <guid isPermaLink="true"><![CDATA[http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Article</category>
+        
+        <category>Mustsee</category>
+        
+      </item>
     
       <item>
         <title>Tip, "Rendering" recently moved in Dev Tools!</title>
