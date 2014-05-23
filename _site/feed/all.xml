@@ -4,7 +4,7 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>Fri, 23 May 2014 09:42:38 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 23 May 2014 09:50:19 -0700</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
     <link>http://jankfree.org/feed/all.xml</link>
@@ -38,6 +38,8 @@
         
         <category>Video</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -53,6 +55,8 @@
         
         <category>Slides</category>
         
+        <category>Mustsee</category>
+        
       </item>
     
       <item>
@@ -67,8 +71,6 @@
         <category>Devtools</category>
         
         <category>Video</category>
-        
-        <category>Mustsee</category>
         
       </item>
     
