@@ -4,11 +4,26 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>Fri, 23 May 2014 09:33:35 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 23 May 2014 09:38:35 -0700</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
     <link>http://jankfree.org/feed/all.xml</link>
     <atom:link href="http://jankfree.org/feed/all.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Jank Busting, HTML5 Dev Conf 2014</title>
+        <description>
+          <![CDATA[https://docs.google.com/a/chromium.org/presentation/d/1b82w3zZwAxV4h6bV35zCTMIUesglBmd59QNS-omXn4Q/]]>
+        </description>
+        <pubDate>Fri, 23 May 2014 00:00:00 +0000</pubDate>
+        <link><![CDATA[https://docs.google.com/a/chromium.org/presentation/d/1b82w3zZwAxV4h6bV35zCTMIUesglBmd59QNS-omXn4Q/]]></link>
+        <guid isPermaLink="true"><![CDATA[https://docs.google.com/a/chromium.org/presentation/d/1b82w3zZwAxV4h6bV35zCTMIUesglBmd59QNS-omXn4Q/]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Slides</category>
+        
+      </item>
     
       <item>
         <title>Chrome Dev Summit 2013: 60FPS Layout and Rendering</title>
