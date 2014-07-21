@@ -1,0 +1,22 @@
+<meta content="width=device-width,minimum-scale=1.0,initial-scale=1.0,user-scalable=yes" name="viewport">
+<style>
+body {
+  background: #eee;
+}
+.qxpbg {
+  width: 344px;
+  height: 100px;
+  background: #fff;
+  -webkit-transform-origin: 0 0;
+  transition: transform 5s;
+}
+</style>
+<div class="qxpbg"></div>
+<script>
+var bg = document.querySelector('.qxpbg');
+bg.style.transform = 'scale3d(1, 1, 1)';
+window.setTimeout(function() {
+  bg.style.transform = 'scale3d(1, 23.81, 1)';
+}, 100);
+</script>
+</body>
