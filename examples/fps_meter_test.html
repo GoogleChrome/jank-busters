@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A (mostly) smooth page</title>
+
+    <!-- fps meter snippet -->
+    <script src="fps_meter.js"></script>
+    <style>
+      .fps-meter {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        will-change: transform;
+        transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.appendChild(new FPSMeter());
+      });
+    </script>
+
+    <!-- actual page contents follow -->
+    <style>
+      * {
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 18pt;
+        color: #797979;
+      }
+      #item2 {
+        position: fixed;
+        left: 280px;
+        top: 70px;
+      }
+      input {
+        font-size: 130%;
+      }
+      label {
+        -webkit-user-select: none;
+      }
+      #foo {
+        -webkit-animation-duration: 10s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+      }
+
+      @-webkit-keyframes rotate {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body style="-webkit-transform:translateZ(0)">
+    <img id="foo" src="images/chrome-logo.png" width="250">
+    <div id="item2">
+      <div style="width: 500px">
+        <label>
+          <input id="jank" type="checkbox" onclick="toggleJank">Jank</button>
+        </label>
+      </div>
+    </div>
+    <script>
+      var rotating = false;
+      function startAnimation() {
+        var el = document.querySelector("img");
+        if(rotating)
+          el.style.webkitAnimationName = "";
+        else
+          el.style.webkitAnimationName = "rotate";
+        rotating = !rotating;
+      };
+      startAnimation();
+      document.querySelector('img').addEventListener('click', startAnimation);
+
+      function sleep(ms) {
+        var start = Date.now();
+        while(Date.now() < start + ms);
+      }
+
+      maybeJankPending = false;
+      function didJankStateChange() {
+        if (maybeJankPending)
+          return;
+        setTimeout(maybeJank, 0);
+        maybeJankPending = true;
+      }
+      function maybeJank() {
+        maybeJankPending = false;
+        if (document.querySelector('#jank').checked)
+          return;
+        console.time('jank');
+        sleep(4+Math.random() * 60);
+        console.timeEnd('jank');
+        setTimeout(maybeJank, Math.random(4));
+      };
+      didJankStateChange();
+
+    </script>
+  </body>
+</html>
