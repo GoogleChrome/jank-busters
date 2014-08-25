@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0,initial-scale=1.0, user-scalable=yes">
+
+    <style>
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    container {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .main-image {
+        width: 200px;
+        height: 200px;
+        background-image: url( 'http://www.seriouswheels.com/pics-2010/ghij/2010-Honda-Air-Concept-Design-Front-Angle-2560x1600.jpg' );
+        background-position: 1300px 1250px;
+        background-repeat: repeat;
+
+        border: 1px solid black;
+        box-shadow: 5px 5px 30px black;
+    }
+
+    @-webkit-keyframes zoomsplosion {
+        0% { width: 200px; height: 200px; background-position: 1300px 1250px; }
+        100% { width: 800px; height: 800px; background-position: 1000px 1000px; }
+    }
+    </style>
+  </head>
+  <body>
+    <container>
+      <div class="main-image"></div>
+    </container>
+    <script>
+    (function() {
+      /* Dont start the animation until the image is loaded. We're trying to
+       * show the benfit of meta viewport, not the impact of progressive jpeg
+       * decoding
+       */
+      var imgEl = document.createElement('img');
+      imgEl.src = 'http://www.seriouswheels.com/pics-2010/ghij/2010-Honda-Air-Concept-Design-Front-Angle-2560x1600.jpg';
+      imgEl.style.display = 'none';
+      document.head.appendChild(imgEl);
+      imgEl.addEventListener('load', function() {
+        var mainImageEl = document.querySelector('.main-image');
+        mainImageEl.style.webkitAnimation = 'zoomsplosion 5s ease-in-out infinite';
+      });
+    })();
+    </script>
+  </body>
+</html>
