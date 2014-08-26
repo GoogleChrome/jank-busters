@@ -4,11 +4,43 @@
 
     <title>Jank Free</title>
     <description>Let's make the web silky smooth!</description>
-    <lastBuildDate>Fri, 23 May 2014 09:50:19 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 26 Aug 2014 13:34:05 +0100</lastBuildDate>
     <language>en</language>
     <generator>Jank Free</generator>
     <link>http://jankfree.org/feed/all.xml</link>
     <atom:link href="http://jankfree.org/feed/all.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Mobile Web Performance Auditing</title>
+        <description>
+          <![CDATA[https://www.youtube.com/watch?v=WrA85a4ZIaM]]>
+        </description>
+        <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
+        <link><![CDATA[https://www.youtube.com/watch?v=WrA85a4ZIaM]]></link>
+        <guid isPermaLink="true"><![CDATA[https://www.youtube.com/watch?v=WrA85a4ZIaM]]></guid>
+        
+        <category>Paint</category>
+        
+        <category>Video</category>
+        
+        <category>Mustsee</category>
+        
+      </item>
+    
+      <item>
+        <title>CSS Triggers by Paul Lewis</title>
+        <description>
+          <![CDATA[http://csstriggers.com]]>
+        </description>
+        <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
+        <link><![CDATA[http://csstriggers.com]]></link>
+        <guid isPermaLink="true"><![CDATA[http://csstriggers.com]]></guid>
+        
+        <category>Paint</category>
+        
+        <category>Tool</category>
+        
+      </item>
     
       <item>
         <title>Jank Busting, HTML5 Dev Conf 2014</title>
@@ -26,23 +58,6 @@
       </item>
     
       <item>
-        <title>Chrome Dev Summit 2013: 60FPS Layout and Rendering</title>
-        <description>
-          <![CDATA[https://www.youtube.com/watch?v=YyQYhhy1dZI]]>
-        </description>
-        <pubDate>Fri, 23 May 2014 00:00:00 +0000</pubDate>
-        <link><![CDATA[https://www.youtube.com/watch?v=YyQYhhy1dZI]]></link>
-        <guid isPermaLink="true"><![CDATA[https://www.youtube.com/watch?v=YyQYhhy1dZI]]></guid>
-        
-        <category>Devtools</category>
-        
-        <category>Video</category>
-        
-        <category>Mustsee</category>
-        
-      </item>
-    
-      <item>
         <title>#perfmatters: 60FPS Layout and Rendering</title>
         <description>
           <![CDATA[https://docs.google.com/presentation/d/1CH8ifryioHDLT1Oryyy8amusUmq2FytpCPCpk0G3E4o/edit#slide=id.p]]>
@@ -54,6 +69,23 @@
         <category>Devtools</category>
         
         <category>Slides</category>
+        
+        <category>Mustsee</category>
+        
+      </item>
+    
+      <item>
+        <title>Chrome Dev Summit 2013: 60FPS Layout and Rendering</title>
+        <description>
+          <![CDATA[https://www.youtube.com/watch?v=YyQYhhy1dZI]]>
+        </description>
+        <pubDate>Fri, 23 May 2014 00:00:00 +0000</pubDate>
+        <link><![CDATA[https://www.youtube.com/watch?v=YyQYhhy1dZI]]></link>
+        <guid isPermaLink="true"><![CDATA[https://www.youtube.com/watch?v=YyQYhhy1dZI]]></guid>
+        
+        <category>Devtools</category>
+        
+        <category>Video</category>
         
         <category>Mustsee</category>
         
